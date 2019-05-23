@@ -220,7 +220,7 @@ function scene:show( event )
     -- Insert code here to make the scene come alive.
     -- Example: start timers, begin animation, play audio, etc.
     elseif ( phase == "did" ) then       
-        backgroundMusicSoundChannel = audio.play(backgroundMusic, {channel = 1, loops = 1})
+        backgroundMusicChannel = audio.play(backgroundMusic, {channel = 1, loops = 1})
         -- Add the event listeners
         muteButtonUnpressed:addEventListener("touch", MuteButtonUnpressedListener)
         muteButtonPressed:addEventListener("touch", MuteButtonPressedListener)
