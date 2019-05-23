@@ -34,7 +34,7 @@ local instructionsButton
 
 -- Creating Transitioning Function back to main menu
 local function BackTransition( )
-    composer.gotoScene( "main_menu", {effect = "slideLeft", time = 500})
+    composer.gotoScene( "main_menu", {effect = "zoomInOut", time = 500})
 end
 
 
@@ -53,7 +53,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image and set it to the center of the screen
-    bkg_image = display.newImageRect("Images/Instructions Screen.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/InstructionsPage.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
@@ -70,7 +70,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Creating Back Button
-    instructionsButton = widget.newButton( 
+    backButton = widget.newButton( 
     {
         -- Setting Position
         x = display.contentWidth*1/8,
@@ -89,11 +89,11 @@ function scene:create( event )
 
     } )
 
-    instructionsButton:scale(0.5, 0.5)
+    backButton:scale(0.5, 0.5)
     -----------------------------------------------------------------------------------------
 
     -- Associating Buttons with this scene
-    sceneGroup:insert( instructionsButton )
+    sceneGroup:insert(  backButton )
     
 end --function scene:create( event )
 
