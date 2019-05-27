@@ -10,7 +10,7 @@ display.setStatusBar(display.HiddenStatusBar)
 -----------------------------------------------------------------------------------------
 -- INITIALIZATIONS
 -----------------------------------------------------------------------------------------
-ADD BUTTON CLICK SOUNDS L
+--ADD BUTTON CLICK SOUNDS L
 -- Use Composer Libraries
 local composer = require( "composer" )
 local widget = require( "widget" )
@@ -52,7 +52,7 @@ local bkg_image9
 local bkg_image10
 
 -- countdown timer
-local timer
+local countDownTimer
 
 -- countdown timer text
 local clockText
@@ -70,19 +70,12 @@ local lives = 3
 -- score is equal to 0
 local score = 0
 
--- you lose and youwin
-local youLose
-local youWin
-
 -- displayed if answer is right or wrong
 local correctTextObject
 local incorrectTextObject
 
 -- random question
 local randomQuestion 
-
--- you lose image
-local youLose
 
 ---------------------------------------------------------------------------------------------
 --Answer objects 
@@ -101,12 +94,6 @@ local incorrectObject4
 ----------------------------------------------------------------------
 --SOUNDS
 ----------------------------------------------------------------------
-
-local youWinSound = audio.loadStream("Sounds/Fireworks.wav")
-local youWinSoundChannel
-
-local youLoseSound = audio.loadStream("Sounds/whack.mp3")
-local youLoseSoundChannel
 
 local correctSound = audio.loadStream("Sounds/Spring.mp3")
 local correctSoundChannel
@@ -146,14 +133,19 @@ end
 -- choose a question for the user to be asked
 local function AskQuestion()
     
+    -- reset the time
+    secondsLeft = totalSeconds
+
     -- choose random question
-    randomQuestion = math.random(1,10)
+    randomQuestion = math.random(1,1)
 
     -- if random question = 1, display question 1
     if (randomQuestion == 1) then
 
         -- display question 1
         bkg_image1.isVisible = true
+
+        --[[
         bkg_image2.isVisible = false
         bkg_image3.isVisible = false
         bkg_image4.isVisible = false
@@ -164,11 +156,21 @@ local function AskQuestion()
         bkg_image9.isVisible = false
         bkg_image10.isVisible = false
 
+]]--
+        -- display the answers
+        answerObject.text = "5"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "6"
+        incorrectObject4.text = "7"
+
+
     -- if random question = 2, display question 2
     elseif (randomQuestion == 2) then
 
         -- display question 1
         bkg_image1.isVisible = false
+        --[[
         bkg_image2.isVisible = true
         bkg_image3.isVisible = false
         bkg_image4.isVisible = false
@@ -179,11 +181,13 @@ local function AskQuestion()
         bkg_image9.isVisible = false
         bkg_image10.isVisible = false
 
+]]--
     -- if random question = 3, display question 3
     elseif (randomQuestion == 3) then
 
         -- display question 1
         bkg_image1.isVisible = false
+        --[[
         bkg_image2.isVisible = false
         bkg_image3.isVisible = true
         bkg_image4.isVisible = false
@@ -193,7 +197,7 @@ local function AskQuestion()
         bkg_image8.isVisible = false
         bkg_image9.isVisible = false
         bkg_image10.isVisible = false
-
+]]--
     -- if random question = 4, display question 4
     elseif (randomQuestion == 4) then
 
@@ -301,29 +305,10 @@ local function AskQuestion()
     end
 end
 
--- this function displays whether or not you got the question right
--- if the user's answer and the correct answer are the same:
-    local function AnswerListener ( touch )
-    if (userAnswer == correctAnswer) then
-        correctObject.isVisible = true
-        incorrectObject.isVisible = false
-        score = score+1
-        scoreText.text = " Score = " .. score
-        correctSoundChannel = audio.play( correctSound )
-        timer.performWithDelay( 2000, HideCorrect )
-        secondsLeft = totalSeconds
-        Win ()
-    else
-        incorrectObject.isVisible = true
-        timer.performWithDelay ( 2000, HideIncorrect )
-        incorrectSoundChannel = audio.play (incorrectSound)
-        lives = lives-1
-        DecreaseLives ()
-    end
-end
 
 -- decrease lives function
 local function DecreaseLives()
+    lives = lives - 1
 
     if (lives == 3) then
         secondsLeft = totalSeconds
@@ -344,14 +329,69 @@ local function DecreaseLives()
         heart1.isVisible = false
         heart2.isVisible = false
         heart3.isVisible = false
-        youLose.isVisible = true
-        youWin.isVisible = false
-        youLoseSoundChannel = audio.play( youLoseSound )
-        timer.cancel(countDownTimer)
-        clockText.isVisible = false
-        question1Object.isVisible = false
-        scoreText.isVisible = false
+
+        composer.gotoScene( "youLoseScreen" )
     end
+end
+
+
+-- hide correct
+local function HideCorrectTextObject()
+    correctTextObject.isVisible = false
+    AskQuestion()
+end
+
+-- hide incorrect
+local function HideIncorrectTextObject ()
+    incorrectTextObject.isVisible = false
+    AskQuestion()
+end
+
+
+-- this function displays whether or not you got the question right
+-- if the user's answer and the correct answer are the same:
+local function AnswerListener ( touch )
+
+    -- make the correct object visible
+    correctTextObject.isVisible = true    
+
+    -- increase score by 1
+    score = score+1
+    
+    -- update the score text
+    scoreText.text = " Score = " .. score
+
+    -- play correct sound
+    correctSoundChannel = audio.play( correctSound )
+
+    -- call HideCorrect after 2 seconds
+    timer.performWithDelay( 2000, HideCorrectTextObject )
+       
+end
+
+
+local function IncorrectObject1Listener (touch)
+    -- make the correct object visible
+    incorrectTextObject.isVisible = true    
+    
+    -- update the hearts
+    DecreaseLives ()
+
+    -- play the incorrect sound
+    incorrectSoundChannel = audio.play (incorrectSound)
+
+    -- hide the incorrect object after 2 seconds
+    timer.performWithDelay ( 2000, HideIncorrectTextObject )
+end
+
+local function AddTouchListeners()
+    answerObject:addEventListener("touch", AnswerListener)
+    incorrectObject1:addEventListener("touch", IncorrectObject1Listener)
+end
+
+local function RemoveTouchListeners()
+    answerObject:removeEventListener("touch", AnswerListener)
+    incorrectObject1:removeEventListener("touch", IncorrectObject1Listener)
 end
 
 -- update time
@@ -363,74 +403,17 @@ local function UpdateTime ()
     -- display the number of seconds left in the clock object
     clockText.text = "Seconds Left: " .. secondsLeft 
 
-    if (secondsLeft == 0) then
-        timer.performWithDelay (timer.cancel)
+    if (secondsLeft == 0) then        
         -- reset the number of seconds left
-        secondsLeft = totalSeconds
-        lives = lives - 1
+        secondsLeft = totalSeconds       
 
 
         -- if there are no lives left, play a lose sound show a you lose image and cancel the
         -- timer remove the third heart by making it invisible
-        if (lives == 2) then
-            heart3.isVisible = false
-            heart2.isVisible = true
-            heart1.isVisible = true
-            youLose.isVisible = false
-            youWin.isVisible = false
-
-        elseif (lives == 1) then
-            heart3.isVisible = false
-            heart2.isVisible = false
-            heart1.isVisible = true
-            youLose.isVisible = false
-            youWin.isVisible = false
-
-        elseif (lives == 0) then
-            heart3.isVisible = false
-            heart2.isVisible = false
-            heart1.isVisible = false
-            youLose.isVisible = true
-            youWin.isVisible = false
-            youLoseSoundChannel = audio.play( youLoseSound )
-            timer.cancel(countDownTimer)
-            scoreText.isVisible = false
-            clockText.isVisible = false
-            question1Object.isVisible = false
-            countDownTimer.isVisible = false
-            scoreText.isVisible = false
-            DecreaseLives ()
-        end
+        DecreaseLives ()
     end
 end
 
--- winning the game
-local function Win()
-    if (score == 4) then
-        youWin.isVisible = true
-        youWinSoundChannel = audio.play( youWinSound )
-        timer.cancel(countDownTimer)
-        clockText.isVisible = false
-        scoreText.isVisible = false
-        heart1.isVisible = false
-        heart2.isVisible = false
-        heart3.isVisible = false
-        question1Object.isVisible = false
-        backgroundImage.isVisible = false
-    end
-end
-
--- hide correct
-local function HideCorrect()
-    correctTextObject.isVisible = false
-    AskQuestion()
-end
-
--- hide incorrect
-local function HideIncorrect ()
-    incorrectTextObject.isVisible = false
-    AskQuestion()
-end
 
 -- start timer
 local function startTimer ()
@@ -479,21 +462,21 @@ function scene:create( event )
     clockText: setTextColor(30/255, 151/255, 50/255)
 
     -- answer objects
-    answerObject = display.newText (" 5 ", 60, 300, nil, 65)
-    answerObject: setTextColor(17/255, 17/255, 218/255)
+    answerObject = display.newText ("", 60, 300, nil, 65)
+    answerObject:setTextColor(17/255, 17/255, 218/255)
 
     -- incorrect objects
-    incorrectObject1 = display.newText (" 4 ", 250, 300, nil, 65)
-    incorrectObject1: setTextColor(17/255, 17/255, 218/255)
+    incorrectObject1 = display.newText ("", 250, 300, nil, 65)
+    incorrectObject1:setTextColor(17/255, 17/255, 218/255)
 
-    incorrectObject2 = display.newText (" 3 ", 60, 500, nil, 65)
-    incorrectObject2: setTextColor(17/255, 17/255, 218/255)
+    incorrectObject2 = display.newText ("", 60, 500, nil, 65)
+    incorrectObject2:setTextColor(17/255, 17/255, 218/255)
 
-    incorrectObject3 = display.newText (" 6 ", 250, 500, nil, 65)
-    incorrectObject3: setTextColor(17/255, 17/255, 218/255)
+    incorrectObject3 = display.newText ("", 250, 500, nil, 65)
+    incorrectObject3:setTextColor(17/255, 17/255, 218/255)
 
-    incorrectObject4 = display.newText (" 7 ", 150, 400, nil, 65)
-    incorrectObject4: setTextColor(17/255, 17/255, 218/255)
+    incorrectObject4 = display.newText ("", 150, 400, nil, 65)
+    incorrectObject4:setTextColor(17/255, 17/255, 218/255)
 
     -- create the correct and incorrect text objects and make them invisible
     correctTextObject = display.newText( "Correct!", display.contentWidth/2, display.contentHeight*2/3, nil, 65 )
@@ -503,12 +486,6 @@ function scene:create( event )
     incorrectTextObject = display.newText("Incorrect", display.contentWidth/2, display.contentHeight*2/3, nil, 65)
     incorrectTextObject: setTextColor (247/255, 27/255, 27/255)
     incorrectTextObject.isVisible = false
-
-    -- you lose screen
-    youLose = display.newImageRect ("Images/youLose.png", 768, 1024)
-
-    -- you win screen
-    youWin = display.newImageRect ("Images/youWin.png", 768, 1024)
 
     -- display hearts
     heart1 = display.newImageRect ("Images/heart.png", 100,100)
@@ -599,7 +576,9 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-
+            startTimer()
+            AskQuestion()
+            AddTouchListeners()
     end
 
 end --function scene:show( event )
@@ -624,6 +603,8 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
+        timer.cancel(countDownTimer)
+        RemoveTouchListeners()
         
     end
 
