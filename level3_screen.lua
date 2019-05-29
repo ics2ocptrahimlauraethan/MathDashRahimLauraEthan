@@ -40,16 +40,16 @@ display.setDefault("background", 204/255, 229/255, 255/255)
 -- The local variables for this scene
 
 -- shapes being displayed
-local bkg_image1
-local bkg_image2
-local bkg_image3
-local bkg_image4
-local bkg_image5
-local bkg_image6
-local bkg_image7
-local bkg_image8
-local bkg_image9
-local bkg_image10
+local lev3Q1_image
+local lev3Q2_image
+local lev3Q3_image
+local lev3Q4_image
+local lev3Q5_image
+local lev3Q6_image
+local lev3Q7_image
+local lev3Q8_image
+local lev3Q9_image
+local lev3Q10_image
 
 -- countdown timer
 local countDownTimer
@@ -57,12 +57,9 @@ local countDownTimer
 -- countdown timer text
 local clockText
 
--- question Text object
-local question1Object
-
 -- seconds 
-local secondsLeft = 11
-local totalSeconds = 11
+local secondsLeft = 14
+local totalSeconds = 14
 
 --lives
 local lives = 3
@@ -78,8 +75,11 @@ local incorrectTextObject
 local randomQuestion 
 
 ---------------------------------------------------------------------------------------------
---Answer objects 
+--Question & Answer objects 
 ---------------------------------------------------------------------------------------------
+
+-- question Text object
+local questionObject
 
 local answerObject
 
@@ -137,24 +137,26 @@ local function AskQuestion()
     secondsLeft = totalSeconds
 
     -- choose random question
-    randomQuestion = math.random(1,1)
+    randomQuestion = math.random(1,2)
 
     -- if random question = 1, display question 1
     if (randomQuestion == 1) then
 
-        -- display question 1
-        bkg_image1.isVisible = true
+        -- display the question
+        questionObject.text = "How many triangles are there?"
 
+        -- display question 1
+        lev3Q1_image.isVisible = true
+        lev3Q2_image.isVisible = false
         --[[
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = false
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = false
 
 ]]--
         -- display the answers
@@ -168,140 +170,163 @@ local function AskQuestion()
     -- if random question = 2, display question 2
     elseif (randomQuestion == 2) then
 
+        -- display the question
+        questionObject.text = "How many triangles are there?"
+
         -- display question 1
-        bkg_image1.isVisible = false
-        --[[
-        bkg_image2.isVisible = true
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = false
+        lev3Q1_image.isVisible = false
+        lev3Q2_image.isVisible = true
+            --[[
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = false
 
 ]]--
+
+        -- display the answers
+        answerObject.text = "5"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "6"
+        incorrectObject4.text = "7"
+
     -- if random question = 3, display question 3
     elseif (randomQuestion == 3) then
 
+        -- display the question
+        questionObject.text = "How many rectangles are there?"
+
         -- display question 1
-        bkg_image1.isVisible = false
+        lev3Q1_image.isVisible = false
         --[[
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = true
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = false
+        lev3Q2_image.isVisible = false
+        lev3Q3_image.isVisible = true
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = false
 ]]--
     -- if random question = 4, display question 4
     elseif (randomQuestion == 4) then
 
+        -- display the question
+        questionObject.text = "How many rectangles are there?"
+
         -- display question 1
-        bkg_image1.isVisible = false
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = true
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = false
+        lev3Q1_image.isVisible = false
+        lev3Q2_image.isVisible = false
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = true
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = false
 
     -- if random question = 5, display question 5
     elseif (randomQuestion == 5) then
 
+        -- display the question
+        questionObject.text = "How many triangles are there?"
+
         -- display question 1
-        bkg_image1.isVisible = false
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = true
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = false
+        lev3Q1_image.isVisible = false
+        lev3Q2_image.isVisible = false
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = true
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = false
 
     -- if random question = 6, display question 6
     elseif (randomQuestion == 6) then
 
+        -- display the question
+        questionObject.text = "How many hexagons are there?"
+
         -- display question 1
-        bkg_image1.isVisible = false
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = true
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = false
+        lev3Q1_image.isVisible = false
+        lev3Q2_image.isVisible = false
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = true
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = false
 
     -- if random question = 7, display question 7
     elseif (randomQuestion == 7) then
 
         -- display question 1
-        bkg_image1.isVisible = false
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = true
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = false
+        lev3Q1_image.isVisible = false
+        lev3Q2_image.isVisible = false
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = true
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = false
 
     -- if random question = 8, display question 8
     elseif (randomQuestion == 8) then
 
         -- display question 1
-        bkg_image1.isVisible = false
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = true
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = false
+        lev3Q1_image.isVisible = false
+        lev3Q2_image.isVisible = false
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = true
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = false
 
     -- if random question = 9, display question 9
     elseif (randomQuestion == 9) then
 
         -- display question 1
-        bkg_image1.isVisible = false
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = true
-        bkg_image10.isVisible = false
+        lev3Q1_image.isVisible = false
+        lev3Q2_image.isVisible = false
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = true
+        lev3Q10_image.isVisible = false
 
     -- if random question = 10, display question 10
     elseif (randomQuestion == 10) then
 
         -- display question 1
-        bkg_image1.isVisible = false
-        bkg_image2.isVisible = false
-        bkg_image3.isVisible = false
-        bkg_image4.isVisible = false
-        bkg_image5.isVisible = false
-        bkg_image6.isVisible = false
-        bkg_image7.isVisible = false
-        bkg_image8.isVisible = false
-        bkg_image9.isVisible = false
-        bkg_image10.isVisible = true
+        lev3Q1_image.isVisible = false
+        lev3Q2_image.isVisible = false
+        lev3Q3_image.isVisible = false
+        lev3Q4_image.isVisible = false
+        lev3Q5_image.isVisible = false
+        lev3Q6_image.isVisible = false
+        lev3Q7_image.isVisible = false
+        lev3Q8_image.isVisible = false
+        lev3Q9_image.isVisible = false
+        lev3Q10_image.isVisible = true
     end
 end
 
@@ -310,21 +335,21 @@ end
 local function DecreaseLives()
     lives = lives - 1
 
-    if (lives == 3) then
-        secondsLeft = totalSeconds
+    if (lives == 3) then        
         heart1.isVisible = true
         heart2.isVisible = true
         heart3.isVisible = true
+
     elseif (lives == 2) then
         heart1.isVisible = true
         heart2.isVisible = true
         heart3.isVisible = false
-        secondsLeft = totalSeconds
+
     elseif (lives == 1) then
         heart1.isVisible = true
         heart2.isVisible = false
         heart3.isVisible = false
-        secondsLeft = totalSeconds
+
     elseif (lives == 0) then
         heart1.isVisible = false
         heart2.isVisible = false
@@ -352,25 +377,71 @@ end
 -- if the user's answer and the correct answer are the same:
 local function AnswerListener ( touch )
 
-    -- make the correct object visible
-    correctTextObject.isVisible = true    
+    if (touch.phase == "began") then
+   
+        -- make the correct object visible
+        correctTextObject.isVisible = true    
 
-    -- increase score by 1
-    score = score+1
+        -- increase score by 1
+        score = score+1
     
-    -- update the score text
-    scoreText.text = " Score = " .. score
+        -- update the score text
+        scoreText.text = " Score = " .. score
 
-    -- play correct sound
-    correctSoundChannel = audio.play( correctSound )
+        -- play correct sound
+        correctSoundChannel = audio.play( correctSound )
 
-    -- call HideCorrect after 2 seconds
-    timer.performWithDelay( 2000, HideCorrectTextObject )
-       
+        -- call HideCorrect after 2 seconds
+        timer.performWithDelay( 2000, HideCorrectTextObject )
+    end
 end
 
-
 local function IncorrectObject1Listener (touch)
+
+    if (touch.phase == "began") then
+        -- make the correct object visible
+        incorrectTextObject.isVisible = true    
+    
+        -- update the hearts
+        DecreaseLives ()
+
+        -- play the incorrect sound
+        incorrectSoundChannel = audio.play (incorrectSound)
+
+        -- hide the incorrect object after 2 seconds
+        timer.performWithDelay ( 2000, HideIncorrectTextObject )
+    end
+end
+
+local function IncorrectObject2Listener (touch)
+    -- make the correct object visible
+    incorrectTextObject.isVisible = true    
+    
+    -- update the hearts
+    DecreaseLives ()
+
+    -- play the incorrect sound
+    incorrectSoundChannel = audio.play (incorrectSound)
+
+    -- hide the incorrect object after 2 seconds
+    timer.performWithDelay ( 2000, HideIncorrectTextObject )
+end
+
+local function IncorrectObject3Listener (touch)
+    -- make the correct object visible
+    incorrectTextObject.isVisible = true    
+    
+    -- update the hearts
+    DecreaseLives ()
+
+    -- play the incorrect sound
+    incorrectSoundChannel = audio.play (incorrectSound)
+
+    -- hide the incorrect object after 2 seconds
+    timer.performWithDelay ( 2000, HideIncorrectTextObject )
+end
+
+local function IncorrectObject4Listener (touch)
     -- make the correct object visible
     incorrectTextObject.isVisible = true    
     
@@ -414,6 +485,13 @@ local function UpdateTime ()
     end
 end
 
+-- winning the game and going back to level select
+local function Win()
+    if (score == 4) then
+        composer.gotoScene( "youWinScreen" )
+        timer.performWithDelay ( 4500, composer.gotoScene ("level_SelectScreen.lua") )
+    end
+end
 
 -- start timer
 local function startTimer ()
@@ -434,32 +512,137 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the shape 1 with x and y position
-    bkg_image1 = display.newImageRect("Images/lev3Q1.png", display.contentWidth/3, display.contentHeight)
-    bkg_image1.x = 725
-    bkg_image1.y = 475
+    lev3Q1_image = display.newImageRect("Images/lev3Q1.png", display.contentWidth/3, display.contentHeight)
+    lev3Q1_image.x = 725
+    lev3Q1_image.y = 475
 
     -- Width and height
-    bkg_image1.width = 500
-    bkg_image1.height = 500
+    lev3Q1_image.width = 500
+    lev3Q1_image.height = 500    
+
+    -- make invisible
+    lev3Q1_image.isVisible = false
 
     -- Insert the shape 2 with x and y position
-    bkg_image2 = display.newImageRect("Images/lev3Q2.png", display.contentWidth/3, display.contentHeight)
-    bkg_image2.x = 725
-    bkg_image2.y = 475
+    lev3Q2_image = display.newImageRect("Images/lev3Q2.png", display.contentWidth/3, display.contentHeight)
+    lev3Q2_image.x = 725
+    lev3Q2_image.y = 475
 
     -- Width and height
-    bkg_image2.width = 500
-    bkg_image2.height = 500
+    lev3Q2_image.width = 500
+    lev3Q2_image.height = 500
+
+    -- make invisible
+    lev3Q2_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+    lev3Q3_image = display.newImageRect("Images/lev3Q3.png", display.contentWidth/3, display.contentHeight)
+    lev3Q3_image.x = 725
+    lev3Q3_image.y = 475
+
+    -- Width and height
+    lev3Q3_image.width = 500
+    lev3Q3_image.height = 500
+
+    -- make invisible
+    lev3Q3_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+    lev3Q4_image = display.newImageRect("Images/lev3Q4.png", display.contentWidth/3, display.contentHeight)
+    lev3Q4_image.x = 725
+    lev3Q4_image.y = 475
+
+    -- Width and height
+    lev3Q4_image.width = 500
+    lev3Q4_image.height = 500
+
+    -- make invisible
+    lev3Q4_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+    lev3Q5_image = display.newImageRect("Images/lev3Q5.png", display.contentWidth/3, display.contentHeight)
+    lev3Q5_image.x = 725
+    lev3Q5_image.y = 475
+
+    -- Width and height
+    lev3Q5_image.width = 500
+    lev3Q5_image.height = 500
+
+    -- make invisible
+    lev3Q5_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+    lev3Q6_image = display.newImageRect("Images/lev3Q6.png", display.contentWidth/3, display.contentHeight)
+    lev3Q6_image.x = 725
+    lev3Q6_image.y = 475
+
+    -- Width and height
+    lev3Q6_image.width = 500
+    lev3Q6_image.height = 500
+
+    -- make invisible
+    lev3Q6_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+  --  lev3Q7_image = display.newImageRect("Images/lev3Q7.png", display.contentWidth/3, display.contentHeight)
+   -- lev3Q7_image.x = 725
+  --  lev3Q7_image.y = 475
+
+    -- Width and height
+ --   lev3Q7_image.width = 500
+  --  lev3Q7_image.height = 500
+
+-- make invisible
+--lev3Q7_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+    --lev3Q8_image = display.newImageRect("Images/lev3Q8.png", display.contentWidth/3, display.contentHeight)
+    --lev3Q8_image.x = 725
+   -- lev3Q8_image.y = 475
+
+    -- Width and height
+   -- lev3Q8_image.width = 500
+   -- lev3Q8_image.height = 500
+
+   -- make invisible
+--lev3Q8_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+   -- lev3Q9_image = display.newImageRect("Images/lev3Q9.png", display.contentWidth/3, display.contentHeight)
+    --lev3Q9_image.x = 725
+   -- lev3Q9_image.y = 475
+
+    -- Width and height
+    --lev3Q9_image.width = 500
+    --lev3Q9_image.height = 500
+
+    -- make invisible
+--lev3Q9_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+    --lev3Q10_image = display.newImageRect("Images/lev3Q10.png", display.contentWidth/3, display.contentHeight)
+   -- lev3Q10_image.x = 725
+  --  lev3Q10_image.y = 475
+
+    -- Width and height
+    ---lev3Q10_image.width = 500
+    --lev3Q10_image.height = 500
+
+    -- make invisible
+--lev3Q10_image.isVisible = false
 
     --create question
-    question1Object = display.newText (" How many triangles are shown? ", 320, 150, nil, 45)
+    questionObject = display.newText ("", 20, 120, nil, 45)
 
     --set color of text
-    question1Object: setTextColor(236/255, 110/255, 14/255)
+    questionObject: setTextColor(236/255, 110/255, 14/255)
+    questionObject.anchorX = 0
+    questionObject.anchorY = 0
 
-    -- displays the time remaining on the screen
-    clockText = display.newText("Time Left: " .. secondsLeft, 850, 175, nil, 50)
-    clockText: setTextColor(30/255, 151/255, 50/255)
+ 
+   -- displays the time remaining on the screen
+    clockText = display.newText("Seconds Left: " .. secondsLeft , 820, 180, nil, 50)
+    clockText: setTextColor(0/255, 0/255, 0/255)
 
     -- answer objects
     answerObject = display.newText ("", 60, 300, nil, 65)
@@ -470,7 +653,7 @@ function scene:create( event )
     incorrectObject1:setTextColor(17/255, 17/255, 218/255)
 
     incorrectObject2 = display.newText ("", 60, 500, nil, 65)
-    incorrectObject2:setTextColor(17/255, 17/255, 218/255)
+    incorrectObject2:setTextColor(17/2855, 17/255, 218/255)
 
     incorrectObject3 = display.newText ("", 250, 500, nil, 65)
     incorrectObject3:setTextColor(17/255, 17/255, 218/255)
@@ -479,11 +662,11 @@ function scene:create( event )
     incorrectObject4:setTextColor(17/255, 17/255, 218/255)
 
     -- create the correct and incorrect text objects and make them invisible
-    correctTextObject = display.newText( "Correct!", display.contentWidth/2, display.contentHeight*2/3, nil, 65 )
-    correctTextObject:setTextColor(249/255, 235/255, 33/255)
+    correctTextObject = display.newText( "Correct!", 350, 575, nil, 65 )
+    correctTextObject:setTextColor(15/255, 111/255, 0/255)
     correctTextObject.isVisible = false
 
-    incorrectTextObject = display.newText("Incorrect", display.contentWidth/2, display.contentHeight*2/3, nil, 65)
+    incorrectTextObject = display.newText("Incorrect", 350, 575, nil, 65)
     incorrectTextObject: setTextColor (247/255, 27/255, 27/255)
     incorrectTextObject.isVisible = false
 
@@ -503,7 +686,7 @@ function scene:create( event )
     heart3.y = 70
 
     -- create points object
-    scoreText = display.newText("", 375, display.contentHeight*7/8, nil, 60)
+    scoreText = display.newText("", 140, 50, nil, 60)
     scoreText:setTextColor(139/255, 10/255, 144/255)
     scoreText.text = "Score: " .. score
 
@@ -535,11 +718,11 @@ function scene:create( event )
 
     } )
 
-
     -- Insert objects
-    sceneGroup:insert( bkg_image1 ) 
+    sceneGroup:insert( lev3Q1_image ) 
+    sceneGroup:insert( lev3Q2_image ) 
     sceneGroup:insert( backButton ) 
-    sceneGroup:insert( question1Object ) 
+    sceneGroup:insert( questionObject ) 
     sceneGroup:insert( clockText ) 
     sceneGroup:insert( answerObject )
     sceneGroup:insert( incorrectObject1 )
@@ -550,7 +733,9 @@ function scene:create( event )
     sceneGroup:insert( heart2 )
     sceneGroup:insert( heart3 )
     sceneGroup:insert( scoreText )
-    sceneGroup:insert( bkg_image2 )
+    sceneGroup:insert( lev3Q2_image )
+    sceneGroup:insert( incorrectTextObject )
+    sceneGroup:insert( correctTextObject )
 
 end --function scene:create( event )
 
@@ -576,9 +761,10 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
-            startTimer()
-            AskQuestion()
-            AddTouchListeners()
+        lives = 3
+        startTimer()
+        AskQuestion()
+        AddTouchListeners()
     end
 
 end --function scene:show( event )
