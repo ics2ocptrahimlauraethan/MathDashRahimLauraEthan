@@ -51,6 +51,15 @@ local lev3Q8_image
 local lev3Q9_image
 local lev3Q10_image
 
+-- position of answers
+local randomPosition
+
+-- set the positions of the answers
+local X1 = 60
+local Y1 = 300
+
+local X2 = 
+
 -- countdown timer
 local countDownTimer
 
@@ -58,8 +67,8 @@ local countDownTimer
 local clockText
 
 -- seconds 
-local secondsLeft = 14
-local totalSeconds = 14
+local secondsLeft = 17
+local totalSeconds = 17
 
 --lives
 local lives = 3
@@ -137,7 +146,7 @@ local function AskQuestion()
     secondsLeft = totalSeconds
 
     -- choose random question
-    randomQuestion = math.random(1,2)
+    randomQuestion = math.random(1,10)
 
     -- if random question = 1, display question 1
     if (randomQuestion == 1) then
@@ -148,7 +157,6 @@ local function AskQuestion()
         -- display question 1
         lev3Q1_image.isVisible = true
         lev3Q2_image.isVisible = false
-        --[[
         lev3Q3_image.isVisible = false
         lev3Q4_image.isVisible = false
         lev3Q5_image.isVisible = false
@@ -158,14 +166,12 @@ local function AskQuestion()
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = false
 
-]]--
         -- display the answers
         answerObject.text = "5"
         incorrectObject1.text = "4"
         incorrectObject2.text = "3"
         incorrectObject3.text = "6"
         incorrectObject4.text = "7"
-
 
     -- if random question = 2, display question 2
     elseif (randomQuestion == 2) then
@@ -176,7 +182,6 @@ local function AskQuestion()
         -- display question 1
         lev3Q1_image.isVisible = false
         lev3Q2_image.isVisible = true
-            --[[
         lev3Q3_image.isVisible = false
         lev3Q4_image.isVisible = false
         lev3Q5_image.isVisible = false
@@ -186,14 +191,12 @@ local function AskQuestion()
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = false
 
-]]--
-
         -- display the answers
-        answerObject.text = "5"
+        answerObject.text = "7"
         incorrectObject1.text = "4"
         incorrectObject2.text = "3"
         incorrectObject3.text = "6"
-        incorrectObject4.text = "7"
+        incorrectObject4.text = "5"
 
     -- if random question = 3, display question 3
     elseif (randomQuestion == 3) then
@@ -203,7 +206,6 @@ local function AskQuestion()
 
         -- display question 1
         lev3Q1_image.isVisible = false
-        --[[
         lev3Q2_image.isVisible = false
         lev3Q3_image.isVisible = true
         lev3Q4_image.isVisible = false
@@ -213,7 +215,14 @@ local function AskQuestion()
         lev3Q8_image.isVisible = false
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = false
-]]--
+
+        -- display the answers
+        answerObject.text = "6"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "5"
+        incorrectObject4.text = "7"
+
     -- if random question = 4, display question 4
     elseif (randomQuestion == 4) then
 
@@ -231,6 +240,13 @@ local function AskQuestion()
         lev3Q8_image.isVisible = false
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = false
+
+        -- display the answers
+        answerObject.text = "7"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "6"
+        incorrectObject4.text = "5"
 
     -- if random question = 5, display question 5
     elseif (randomQuestion == 5) then
@@ -250,6 +266,13 @@ local function AskQuestion()
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = false
 
+        -- display the answers
+        answerObject.text = "7"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "6"
+        incorrectObject4.text = "5"
+
     -- if random question = 6, display question 6
     elseif (randomQuestion == 6) then
 
@@ -268,8 +291,18 @@ local function AskQuestion()
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = false
 
+        -- display the answers
+        answerObject.text = "2"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "6"
+        incorrectObject4.text = "7"
+
     -- if random question = 7, display question 7
     elseif (randomQuestion == 7) then
+
+        -- display the question
+        questionObject.text = "How many octagons are there?"
 
         -- display question 1
         lev3Q1_image.isVisible = false
@@ -283,8 +316,18 @@ local function AskQuestion()
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = false
 
+        -- display the answers
+        answerObject.text = "1"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "5"
+        incorrectObject4.text = "2"
+
     -- if random question = 8, display question 8
     elseif (randomQuestion == 8) then
+
+        -- display the question
+        questionObject.text = "How many pentagons are there?"
 
         -- display question 1
         lev3Q1_image.isVisible = false
@@ -298,8 +341,18 @@ local function AskQuestion()
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = false
 
+        -- display the answers
+        answerObject.text = "2"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "6"
+        incorrectObject4.text = "1"
+
     -- if random question = 9, display question 9
     elseif (randomQuestion == 9) then
+
+        -- display the question
+        questionObject.text = "How many octagons are there?"
 
         -- display question 1
         lev3Q1_image.isVisible = false
@@ -313,8 +366,18 @@ local function AskQuestion()
         lev3Q9_image.isVisible = true
         lev3Q10_image.isVisible = false
 
+        -- display the answers
+        answerObject.text = "2"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "3"
+        incorrectObject3.text = "6"
+        incorrectObject4.text = "5"
+
     -- if random question = 10, display question 10
     elseif (randomQuestion == 10) then
+
+        -- display the question
+        questionObject.text = "How many heptagons are there?"
 
         -- display question 1
         lev3Q1_image.isVisible = false
@@ -327,12 +390,60 @@ local function AskQuestion()
         lev3Q8_image.isVisible = false
         lev3Q9_image.isVisible = false
         lev3Q10_image.isVisible = true
+
+        -- display the answers
+        answerObject.text = "3"
+        incorrectObject1.text = "4"
+        incorrectObject2.text = "5"
+        incorrectObject3.text = "1"
+        incorrectObject4.text = "2"
     end
 end
 
+local function SetAnswerPositions()
+
+    randomPosition = math.random(1, 1)
+
+    if (randomPosition == 1) then
+        answerObject.x  = X1
+        answerObject.y = Y1
+
+        incorrectObject1.x = X2
+        incorrectObject1.y = Y2
+
+        incorrectObject2.x = X3
+        incorrectObject2.y = Y3
+
+        incorrectObject3.x = X4
+        incorrectObject3.y = Y4
+
+        incorrectObject4.x = X5
+        incorrectObject4.y = Y5 
+
+        elseif (randomPosition == 2) then
+
+        answerObject.x  = X1
+        answerObject.y = Y1
+
+        incorrectObject1.x = X2
+        incorrectObject1.y = Y2
+
+        incorrectObject2.x = X3
+        incorrectObject2.y = Y3
+
+        incorrectObject3.x = X4
+        incorrectObject3.y = Y4
+
+        incorrectObject4.x = X5
+        incorrectObject4.y = Y5
+
+
+    end
+end
 
 -- decrease lives function
 local function DecreaseLives()
+    print ("***Called DecreaseLives")
     lives = lives - 1
 
     if (lives == 3) then        
@@ -359,19 +470,19 @@ local function DecreaseLives()
     end
 end
 
-
 -- hide correct
 local function HideCorrectTextObject()
     correctTextObject.isVisible = false
     AskQuestion()
+    SetAnswerPositions()
 end
 
 -- hide incorrect
 local function HideIncorrectTextObject ()
     incorrectTextObject.isVisible = false
     AskQuestion()
+    SetAnswerPositions()
 end
-
 
 -- this function displays whether or not you got the question right
 -- if the user's answer and the correct answer are the same:
@@ -391,6 +502,9 @@ local function AnswerListener ( touch )
         -- play correct sound
         correctSoundChannel = audio.play( correctSound )
 
+        -- ask new question
+        timer.performWithDelay( 2000, AskQuestion() )
+
         -- call HideCorrect after 2 seconds
         timer.performWithDelay( 2000, HideCorrectTextObject )
     end
@@ -399,6 +513,7 @@ end
 local function IncorrectObject1Listener (touch)
 
     if (touch.phase == "began") then
+
         -- make the correct object visible
         incorrectTextObject.isVisible = true    
     
@@ -414,55 +529,72 @@ local function IncorrectObject1Listener (touch)
 end
 
 local function IncorrectObject2Listener (touch)
-    -- make the correct object visible
-    incorrectTextObject.isVisible = true    
+     
+    if (touch.phase == "began") then
+        -- make the correct object visible
+        incorrectTextObject.isVisible = true    
     
-    -- update the hearts
-    DecreaseLives ()
+        -- update the hearts
+        DecreaseLives ()
 
-    -- play the incorrect sound
-    incorrectSoundChannel = audio.play (incorrectSound)
+        -- play the incorrect sound
+        incorrectSoundChannel = audio.play (incorrectSound)
 
-    -- hide the incorrect object after 2 seconds
-    timer.performWithDelay ( 2000, HideIncorrectTextObject )
+        -- hide the incorrect object after 2 seconds
+        timer.performWithDelay ( 2000, HideIncorrectTextObject )
+    end
 end
 
 local function IncorrectObject3Listener (touch)
-    -- make the correct object visible
-    incorrectTextObject.isVisible = true    
     
-    -- update the hearts
-    DecreaseLives ()
+    if (touch.phase == "began") then
+    
+        -- make the correct object visible
+        incorrectTextObject.isVisible = true    
+    
+        -- update the hearts
+        DecreaseLives ()
 
-    -- play the incorrect sound
-    incorrectSoundChannel = audio.play (incorrectSound)
+        -- play the incorrect sound
+        incorrectSoundChannel = audio.play (incorrectSound)
 
-    -- hide the incorrect object after 2 seconds
-    timer.performWithDelay ( 2000, HideIncorrectTextObject )
+        -- hide the incorrect object after 2 seconds
+        timer.performWithDelay ( 2000, HideIncorrectTextObject )
+    end
 end
 
 local function IncorrectObject4Listener (touch)
-    -- make the correct object visible
-    incorrectTextObject.isVisible = true    
+
+    if (touch.phase == "began") then
+
+        -- make the correct object visible
+        incorrectTextObject.isVisible = true    
     
-    -- update the hearts
-    DecreaseLives ()
+        -- update the hearts
+        DecreaseLives ()
 
-    -- play the incorrect sound
-    incorrectSoundChannel = audio.play (incorrectSound)
+        -- play the incorrect sound
+        incorrectSoundChannel = audio.play (incorrectSound)
 
-    -- hide the incorrect object after 2 seconds
-    timer.performWithDelay ( 2000, HideIncorrectTextObject )
+        -- hide the incorrect object after 2 seconds
+        timer.performWithDelay ( 2000, HideIncorrectTextObject )
+    end
 end
 
 local function AddTouchListeners()
     answerObject:addEventListener("touch", AnswerListener)
     incorrectObject1:addEventListener("touch", IncorrectObject1Listener)
+    incorrectObject2:addEventListener("touch", IncorrectObject2Listener)
+    incorrectObject3:addEventListener("touch", IncorrectObject3Listener)
+    incorrectObject4:addEventListener("touch", IncorrectObject4Listener)
 end
 
 local function RemoveTouchListeners()
     answerObject:removeEventListener("touch", AnswerListener)
     incorrectObject1:removeEventListener("touch", IncorrectObject1Listener)
+    incorrectObject2:removeEventListener("touch", IncorrectObject2Listener)
+    incorrectObject3:removeEventListener("touch", IncorrectObject3Listener)
+    incorrectObject4:removeEventListener("touch", IncorrectObject4Listener)
 end
 
 -- update time
@@ -584,64 +716,63 @@ function scene:create( event )
     lev3Q6_image.isVisible = false
 
     -- Insert the shape 1 with x and y position
-  --  lev3Q7_image = display.newImageRect("Images/lev3Q7.png", display.contentWidth/3, display.contentHeight)
-   -- lev3Q7_image.x = 725
-  --  lev3Q7_image.y = 475
+    lev3Q7_image = display.newImageRect("Images/lev3Q7.png", display.contentWidth/3, display.contentHeight)
+    lev3Q7_image.x = 725
+    lev3Q7_image.y = 475
 
-    -- Width and height
- --   lev3Q7_image.width = 500
-  --  lev3Q7_image.height = 500
+    --Width and height
+    lev3Q7_image.width = 500
+    lev3Q7_image.height = 500
 
--- make invisible
---lev3Q7_image.isVisible = false
+    -- make invisible
+    lev3Q7_image.isVisible = false
 
     -- Insert the shape 1 with x and y position
-    --lev3Q8_image = display.newImageRect("Images/lev3Q8.png", display.contentWidth/3, display.contentHeight)
-    --lev3Q8_image.x = 725
-   -- lev3Q8_image.y = 475
+    lev3Q8_image = display.newImageRect("Images/lev3Q8.png", display.contentWidth/3, display.contentHeight)
+    lev3Q8_image.x = 725
+    lev3Q8_image.y = 475
 
-    -- Width and height
-   -- lev3Q8_image.width = 500
-   -- lev3Q8_image.height = 500
+    --Width and height
+    lev3Q8_image.width = 500
+    lev3Q8_image.height = 500
 
    -- make invisible
---lev3Q8_image.isVisible = false
+    lev3Q8_image.isVisible = false
 
-    -- Insert the shape 1 with x and y position
-   -- lev3Q9_image = display.newImageRect("Images/lev3Q9.png", display.contentWidth/3, display.contentHeight)
-    --lev3Q9_image.x = 725
-   -- lev3Q9_image.y = 475
-
-    -- Width and height
-    --lev3Q9_image.width = 500
-    --lev3Q9_image.height = 500
-
-    -- make invisible
---lev3Q9_image.isVisible = false
-
-    -- Insert the shape 1 with x and y position
-    --lev3Q10_image = display.newImageRect("Images/lev3Q10.png", display.contentWidth/3, display.contentHeight)
-   -- lev3Q10_image.x = 725
-  --  lev3Q10_image.y = 475
+    --Insert the shape 1 with x and y position
+    lev3Q9_image = display.newImageRect("Images/lev3Q9.png", display.contentWidth/3, display.contentHeight)
+    lev3Q9_image.x = 725
+    lev3Q9_image.y = 475
 
     -- Width and height
-    ---lev3Q10_image.width = 500
-    --lev3Q10_image.height = 500
+    lev3Q9_image.width = 500
+    lev3Q9_image.height = 500
 
     -- make invisible
---lev3Q10_image.isVisible = false
+    lev3Q9_image.isVisible = false
+
+    -- Insert the shape 1 with x and y position
+    lev3Q10_image = display.newImageRect("Images/lev3Q10.png", display.contentWidth/3, display.contentHeight)
+    lev3Q10_image.x = 725
+    lev3Q10_image.y = 475
+
+    -- Width and height
+    lev3Q10_image.width = 500
+    lev3Q10_image.height = 500
+
+    -- make invisible
+    lev3Q10_image.isVisible = false
 
     --create question
-    questionObject = display.newText ("", 20, 120, nil, 45)
+    questionObject = display.newText ("", 10, 120, nil, 45)
 
     --set color of text
     questionObject: setTextColor(236/255, 110/255, 14/255)
     questionObject.anchorX = 0
     questionObject.anchorY = 0
 
- 
    -- displays the time remaining on the screen
-    clockText = display.newText("Seconds Left: " .. secondsLeft , 820, 180, nil, 50)
+    clockText = display.newText("Seconds Left: " .. secondsLeft , 200, 200, nil, 50)
     clockText: setTextColor(0/255, 0/255, 0/255)
 
     -- answer objects
@@ -690,8 +821,7 @@ function scene:create( event )
     scoreText:setTextColor(139/255, 10/255, 144/255)
     scoreText.text = "Score: " .. score
 
-
------------------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------------
 
     -----------------------------------------------------------------------------------------
     -- BUTTON WIDGETS
@@ -721,6 +851,14 @@ function scene:create( event )
     -- Insert objects
     sceneGroup:insert( lev3Q1_image ) 
     sceneGroup:insert( lev3Q2_image ) 
+    sceneGroup:insert( lev3Q3_image )
+    sceneGroup:insert( lev3Q4_image )
+    sceneGroup:insert( lev3Q5_image )
+    sceneGroup:insert( lev3Q6_image )
+    sceneGroup:insert( lev3Q7_image )
+    sceneGroup:insert( lev3Q8_image )
+    sceneGroup:insert( lev3Q9_image )
+    sceneGroup:insert( lev3Q10_image )
     sceneGroup:insert( backButton ) 
     sceneGroup:insert( questionObject ) 
     sceneGroup:insert( clockText ) 
@@ -764,6 +902,7 @@ function scene:show( event )
         lives = 3
         startTimer()
         AskQuestion()
+        SetAnswerPositions()
         AddTouchListeners()
     end
 
