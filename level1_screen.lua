@@ -143,7 +143,7 @@ local function RandomizeShapeQuestion()
 		trapezoid4.isVisible = false
 		correctTrapezoid.isVisible = false
 
-		elseif (randomShape == 2) then
+	elseif (randomShape == 2) then
 		triangle1.isVisible = false
 		triangle2.isVisible = false
 		triangle3.isVisible = false
@@ -372,8 +372,8 @@ local function RandomizeSampleShape()
 		correctTrapezoid.rotation = 90
 
 	elseif (randomRotation == 3) then
-	correctTriangle.rotation = 180
-	correctTrapezoid.rotation = 180
+		correctTriangle.rotation = 180
+		correctTrapezoid.rotation = 180
 
 	elseif (randomRotation == 4) then
 		correctTriangle.rotation = 270
@@ -394,9 +394,9 @@ local function CheckDirectionTriangle()
 		correctShapeAnswerBoxPlaceholder.rotation = 0
 		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
-		elseif (correctTriangle.rotation == 270) then
-			correctShapeAnswerBoxPlaceholder.rotation = 270
-			userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
+	elseif (correctTriangle.rotation == 270) then
+		correctShapeAnswerBoxPlaceholder.rotation = 270
+		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
 	end
 end
@@ -414,9 +414,9 @@ local function CheckDirectionTrapezoid()
 		correctShapeAnswerBoxPlaceholder.rotation = 180
 		userTrapezoid.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
-		elseif (correctTrapezoid.rotation == 270) then
-			correctShapeAnswerBoxPlaceholder.rotation = 90
-			userTrapezoid.rotation = correctShapeAnswerBoxPlaceholder.rotation
+	elseif (correctTrapezoid.rotation == 270) then
+		correctShapeAnswerBoxPlaceholder.rotation = 90
+		userTrapezoid.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
 	end
 end
@@ -424,7 +424,8 @@ end
 local function StopLevel()
 
 	if (timerSpot.rotation == -361) then
-	timerSpot.rotation = 1
+		timerSpot.rotation = 1
+	end
 
 	if (timerSpot.rotation == 1) then
 		RandomAnswerPositions()
@@ -432,7 +433,6 @@ local function StopLevel()
 		CheckDirectionTriangle()
 		CheckDirectionTrapezoid()
 		RandomizeShapeQuestion()
-		end
 	end
 end
 
@@ -452,21 +452,21 @@ local function RestartClock()
 end
 
 
-
 local function CheckUserInput()
 
-		if (userTriangle.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
+	if (userTriangle.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
 		timerSpot:setFillColor(0, 1, 0)
 		Runtime:removeEventListener("enterFrame", RotateClock)
 		timer.performWithDelay(2000, RestartClock)
 		CheckDirectionTriangle()
 
-		elseif (userTriangle.rotation ~= correctShapeAnswerBoxPlaceholder.rotation) then
+	else
 		timerSpot:setFillColor(1, 0, 0)
 		Runtime:removeEventListener("enterFrame", RotateClock)
 		timer.performWithDelay(2000, RestartClock)
 		CheckDirectionTriangle()
-
+	end
+	
 	if (userTrapezoid.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
 		timerSpot:setFillColor(0, 1, 0)
 		Runtime:removeEventListener("enterFrame", RotateClock)
@@ -478,7 +478,6 @@ local function CheckUserInput()
 		Runtime:removeEventListener("enterFrame", RotateClock)
 		timer.performWithDelay(2000, RestartClock)
 
-		end
 	end
 end
 
