@@ -128,7 +128,7 @@ end
 local function RandomizeShapeQuestion()
 	local randomShape
 
-	randomShape = math.random(1, 1)
+	randomShape = math.random(1, 2)
 
 	if (randomShape == 1) then
 		triangle1.isVisible = true
@@ -383,19 +383,19 @@ end
 
 local function CheckDirectionTriangle()
 	if (correctTriangle.rotation == 0) then
-		correctShapeAnswerBoxPlaceholder.rotation = 270
+		correctShapeAnswerBoxPlaceholder.rotation = 180
 		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
 	elseif (correctTriangle.rotation == 90) then
-		correctShapeAnswerBoxPlaceholder.rotation = 0
-		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
-
-	elseif (correctTriangle.rotation == 180) then
 		correctShapeAnswerBoxPlaceholder.rotation = 90
 		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
+	elseif (correctTriangle.rotation == 180) then
+		correctShapeAnswerBoxPlaceholder.rotation = 0
+		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
+
 		elseif (correctTriangle.rotation == 270) then
-			correctShapeAnswerBoxPlaceholder.rotation = 180
+			correctShapeAnswerBoxPlaceholder.rotation = 270
 			userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
 	end
@@ -945,7 +945,8 @@ function scene:create( event )
 	trapezoid1:setFillColor(0, 0, 0)
 	trapezoid1.width = 75
 	trapezoid1.height = 75
-	trapezoid1:scale(-1,1)
+	trapezoid1:scale(1,1)
+	trapezoid1.rotation = 0
 
 	-- creating trapezoid2Vertices
 	trapezoid2Vertices = { 150, 20, 230, 20, 250, 200, 130, 200}
@@ -956,7 +957,7 @@ function scene:create( event )
 	trapezoid2.width = 75
 	trapezoid2.height = 75
 	trapezoid2:scale(1,1)
-	trapezoid2.rotation = 0
+	trapezoid2.rotation = 90
 
 	-- creating trapezoid3Vertices
 	trapezoid3Vertices = { 150, 20, 230, 20, 250, 200, 130, 200}
