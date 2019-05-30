@@ -7,6 +7,7 @@
 -----------------------------------------------------------------------------------------
 -- hide the staus bar
 display.setStatusBar(display.HiddenStatusBar)
+
 -----------------------------------------------------------------------------------------
 -- INITIALIZATIONS
 -----------------------------------------------------------------------------------------
@@ -58,7 +59,6 @@ local randomPosition
 local X1 = 60
 local Y1 = 300
 
-local X2 = 
 
 -- countdown timer
 local countDownTimer
@@ -121,22 +121,6 @@ local clickOnSoundChannel
 -- Creating Transitioning Function back to main menu
 local function BackTransition( )
     composer.gotoScene( "main_menu", {effect = "zoomOutInFadeRotate", time = 500})
-end
-
--- update time
-local function UpdateTime ()
-
-    -- decrement the number of seconds
-    secondsLeft = secondsLeft - 1
-
-    -- dipslay the number of seconds left in the clock object
-    clockText.text = " Seconds Left: " .. secondsLeft 
-end
-
--- start timer
-local function startTimer ()
-    -- create infinite timer
-    timer = timer.performWithDelay (1000, UpdateTime, 0)
 end
 
 -- choose a question for the user to be asked
@@ -420,7 +404,7 @@ local function SetAnswerPositions()
         incorrectObject4.x = X5
         incorrectObject4.y = Y5 
 
-        elseif (randomPosition == 2) then
+    elseif (randomPosition == 2) then
 
         answerObject.x  = X1
         answerObject.y = Y1
