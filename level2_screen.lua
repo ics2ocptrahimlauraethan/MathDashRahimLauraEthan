@@ -160,7 +160,7 @@ local function shapeDisplay()
 		quadrilateral.isVisible = true
 		quadrilateralImage.isVisible = true
 		triangle.isVisible = false
-		triangleImage.isvVsible = false
+		triangleImage.isVisible = false
 		square.isVisible = false
 		squareImage.isVisible = false
 		rectangle.isVisible = false
@@ -196,44 +196,65 @@ function scene:create( event )
 	Direction = display.newText("Complete the spelling of the shape.", display.contentWidth/2, display.contentHeight/3, nil, 50)
 
  	triangle = display.newText( "Tr_a_g_e", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	triangleImage = display.newImageRect("Images/triangle.png",display.contentWidth/2, display.contentHeight/2 )
-	triangleImage.x = contentCenterX
-	triangleImage.y = contentCenterY
+	triangleImage = display.newImageRect("Images/triangle.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	triangleImage.x = display.contentCenterX/1.1
+	triangleImage.y = display.contentCenterY/3
 	
 
 	square = display.newText( "Sq_ar_", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	squareImage = display.newImageRect("Images/square.png",display.contentWidth/2, display.contentHeight/2 )
-	squareImage.x = contentCenterX
-	squareImage.y = contentCenterY
+	squareImage = display.newImageRect("Images/square.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	squareImage.x = display.contentCenterX/1.1
+	squareImage.y = display.contentCenterY/3
 
 
 	rectangle = display.newText( "Rec__ng_e", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	rectangleImage = display.newImageRect("Images/rectangle.png",display.contentWidth/2, display.contentHeight/2 )
-	rectangleImage.x = contentCenterX
-	rectangleImage.y = contentCenterY
+	rectangleImage = display.newImageRect("Images/rectangle.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	rectangleImage.x = display.contentCenterX/1.1
+	rectangleImage.y = display.contentCenterY/3
 
 
 	pentagon = display.newText( "P_nt_go_", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	pentagonImage = display.newImageRect("Images/pentagon.png",display.contentWidth/2, display.contentHeight/2 )
-	pentagonImage.x = display.contentCenterX
-	pentagonImage.y = display.contentCenterY
+	pentagonImage = display.newImageRect("Images/pentagon.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	pentagonImage.x = display.contentCenterX/1.1
+	pentagonImage.y = display.contentCenterY/3
  
 
-	octogon = display.newText( "_c_o_on", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	octogonImage = display.newImageRect("Images/octogon.png",display.contentWidth/2, display.contentHeight/2 )
-	octogonImage.x = contentCenterX
-	octogonImage.y = contentCenterY
+	octogon = display.newText( "_c_a_on", display.contentWidth/2, display.contentHeight/2, nil, 150)
+	octogonImage = display.newImageRect("Images/octogon.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	octogonImage.x = display.contentCenterX/1.1
+	octogonImage.y = display.contentCenterY/3
 
 	quadrilateral = display.newText( "q__dr_lat_r_l", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	quadrilateralImage = display.newImageRect("Images/quadrilateral.png",display.contentWidth/2, display.contentHeight/2 )
-	quadrilateralImage.x = contentWidth
-	quadrilateralImage.y = contentHeight
+	quadrilateralImage = display.newImageRect("Images/quadrilateral.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	quadrilateralImage.x = display.contentCenterX/1.1
+	quadrilateralImage.y = display.contentCenterY/3
 
-
-	A = display.newText(" A ", display.contentWidth/4, display.contentHeight/1.2, nil, 30)
+	A = display.newText(" A ", display.contentWidth/4, display.contentHeight/1.2, nil, 50)
 	B = display.newText(" B ", display.contentWidth/3.6, display.contentHeight/1.2, nil, 30)
 	C = display.newText(" C ", display.contentWidth/3.3, display.contentHeight/1.2, nil, 30)
-	D = display.newText(" D ", display.contentWidth/4, display.contentHeight/1.2, nil, 30)
+	D = display.newText(" D ", display.contentWidth/3.1, display.contentHeight/1.2, nil, 30)
+	E = display.newText(" E ", display.contentWidth/2.9, display.contentHeight/1.2, nil, 30)
+	F = display.newText(" F ", display.contentWidth/2.72, display.contentHeight/1.2, nil, 30)
+	G = display.newText(" G ", display.contentWidth/2.55, display.contentHeight/1.2, nil, 30)
+	H = display.newText(" H ", display.contentWidth/2.4, display.contentHeight/1.2, nil, 30)
+	I = display.newText(" I ", display.contentWidth/2.3, display.contentHeight/1.2, nil, 30)
+	J = display.newText(" J ", display.contentWidth/2.23, display.contentHeight/1.2, nil, 30)
+	K = display.newText(" K ", display.contentWidth/2.13, display.contentHeight/1.2, nil, 30)
+	L = display.newText(" L ", display.contentWidth/2.04, display.contentHeight/1.2, nil, 30)
+	M = display.newText(" M ", display.contentWidth/1.96, display.contentHeight/1.2, nil, 30)
+	N = display.newText(" N ", display.contentWidth/1.87, display.contentHeight/1.2, nil, 30)
+	O = display.newText(" O ", display.contentWidth/1.79, display.contentHeight/1.2, nil, 30)
+	P = display.newText(" P ", display.contentWidth/1.71, display.contentHeight/1.2, nil, 30)
+	Q = display.newText(" Q ", display.contentWidth/1.64, display.contentHeight/1.2, nil, 30)
+	R = display.newText(" R ", display.contentWidth/1.57, display.contentHeight/1.2, nil, 30)
+	S = display.newText(" S ", display.contentWidth/1.5, display.contentHeight/1.2, nil, 30)
+	T = display.newText(" T ", display.contentWidth/1.45, display.contentHeight/1.2, nil, 30)
+	U = display.newText(" U ", display.contentWidth/1.4, display.contentHeight/1.2, nil, 30)
+	V = display.newText(" V ", display.contentWidth/1.35, display.contentHeight/1.2, nil, 30)
+	W = display.newText(" W ", display.contentWidth/1.3, display.contentHeight/1.2, nil, 30)
+	X = display.newText(" X ", display.contentWidth/1.25, display.contentHeight/1.2, nil, 30)
+	Y = display.newText(" Y ", display.contentWidth/1.21, display.contentHeight/1.2, nil, 30)
+	Z = display.newText(" Z ", display.contentWidth/1.18, display.contentHeight/1.2 , nil, 30)
 
 
 	-----------------------------------------------------------------------------------------
