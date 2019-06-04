@@ -48,17 +48,17 @@ end
 
 -- Creating Transition Function to level 1
 local function Level1ScreenTransition( )       
-    composer.gotoScene( "level1_screen.lua", {effect = "slideDown", time = 500})
+    composer.gotoScene( "level1_screen", {effect = "slideDown", time = 500})
 end 
 
 -- Creating Transition Function to level 2
 local function Level2ScreenTransition( )       
-    composer.gotoScene( "level2_screen.lua", {effect = "slideDown", time = 500})
+    composer.gotoScene( "level2_screen", {effect = "slideDown", time = 500})
 end 
 
 -- Creating Transition Function to level 3
 local function Level3ScreenTransition( )       
-    composer.gotoScene( "level3_screen.lua", {effect = "slideDown", time = 500})
+    composer.gotoScene( "level3_screen", {effect = "slideDown", time = 500})
 end 
 
 -----------------------------------------------------------------------------------------
@@ -78,14 +78,7 @@ function scene:create( event )
     -- set backgrouhnd color
     display.setDefault("background", 255/255, 255/255, 153/255)
 
-    -- display the level 2 icon
-    lev1Icon = display.newImageRect("Images/level1icon.PNG", 250, 250)
-
-    -- x and y of the level 1 icon
-    lev1Icon.x = 150
-    lev1Icon.y = display.contentHeight/2
-
-    -- text object
+     -- text object
     lev1TextObject = display.newText("Level 1", 150, 600, nil, 70)
 
     -- set color
@@ -123,6 +116,28 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Creating Back Button
+    lev1Icon = widget.newButton( 
+    {
+        -- Setting Position
+        x = 150,
+        y = display.contentHeight/2,
+
+        -- Setting Dimensions
+        width = 250,
+        height = 250,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/level1icon.PNG",
+        overFile = "Images/level1icon.PNG",
+
+        -- Setting Functional Properties
+        onRelease = Level1ScreenTransition
+
+    } )
+
+
+
+    -- Creating Back Button
     backButton = widget.newButton( 
     {
         -- Setting Position
@@ -145,29 +160,6 @@ function scene:create( event )
     backButton:scale(0.5, 0.5)
 
     -----------------------------------------------------------------------------------------
---[[
-    -- Creating level 1 Button
-    level1Button = widget.newButton( 
-    {
-        -- x and y of the level 1 icon
-        lev1Icon.x = 30,
-        lev1Icon.y = 500,
-        width = 250,
-        height = 250,
-        
-        -- Insert the images here
-        defaultFile = "Images/level1icon.PNG",
-        overFile = "Images/level1icon.PNG",
-
-        -- When the button is released, call the Credits transition function
-        onRelease = Level1ScreenTransition
-        
-    } ) 
-        
-    level1Button:scale(0.5, 0.5)
-    ----------------------------------------------------------------------------------------
-    -----------------------------------------------------------------------------------------
-]]--
     -- Associating Buttons with this scene
     sceneGroup:insert( backButton )
     sceneGroup:insert(lev1Icon)
