@@ -69,7 +69,7 @@ local X4 = 250
 local Y4 = 500
 
 local X5 = 150
-local X5 = 400
+local Y5 = 400
 
 -- countdown timer
 local countDownTimer
@@ -781,7 +781,7 @@ function scene:create( event )
     incorrectObject2 = display.newText ("", X3, Y3, nil, 65)
     incorrectObject2:setTextColor(17/2855, 17/255, 218/255)
 
-    incorrectObject3 = display.newText ("", X4, X4, nil, 65)
+    incorrectObject3 = display.newText ("", X4, Y4, nil, 65)
     incorrectObject3:setTextColor(17/255, 17/255, 218/255)
 
     incorrectObject4 = display.newText ("", X5, Y5, nil, 65)
