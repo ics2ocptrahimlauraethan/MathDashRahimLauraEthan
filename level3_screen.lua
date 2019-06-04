@@ -48,7 +48,7 @@ local lev3Q5_image
 local lev3Q6_image
 local lev3Q7_image
 local lev3Q8_image
-local lev3Q9_image
+local lev3Q9_image          
 local lev3Q10_image
 
 -- position of answers
@@ -58,7 +58,17 @@ local randomPosition
 local X1 = 60
 local Y1 = 300
 
-local X2 = 
+local X2 = 250
+local Y2 = 300
+
+local X3 = 60
+local Y3 = 500
+
+local X4 = 250
+local Y4 = 500
+
+local X5 = 150
+local X5 = 400
 
 -- countdown timer
 local countDownTimer
@@ -776,20 +786,20 @@ function scene:create( event )
     clockText: setTextColor(0/255, 0/255, 0/255)
 
     -- answer objects
-    answerObject = display.newText ("", 60, 300, nil, 65)
+    answerObject = display.newText ("", X1, Y1, nil, 65)
     answerObject:setTextColor(17/255, 17/255, 218/255)
 
     -- incorrect objects
-    incorrectObject1 = display.newText ("", 250, 300, nil, 65)
+    incorrectObject1 = display.newText ("", X2, Y2, nil, 65)
     incorrectObject1:setTextColor(17/255, 17/255, 218/255)
 
-    incorrectObject2 = display.newText ("", 60, 500, nil, 65)
+    incorrectObject2 = display.newText ("", X3, Y3, nil, 65)
     incorrectObject2:setTextColor(17/2855, 17/255, 218/255)
 
-    incorrectObject3 = display.newText ("", 250, 500, nil, 65)
+    incorrectObject3 = display.newText ("", X4, X4, nil, 65)
     incorrectObject3:setTextColor(17/255, 17/255, 218/255)
 
-    incorrectObject4 = display.newText ("", 150, 400, nil, 65)
+    incorrectObject4 = display.newText ("", X5, Y5, nil, 65)
     incorrectObject4:setTextColor(17/255, 17/255, 218/255)
 
     -- create the correct and incorrect text objects and make them invisible
@@ -965,3 +975,5 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
+
+--------------------------------------------------------------------------------------------
