@@ -14,7 +14,7 @@ display.setStatusBar(display.HiddenStatusBar)
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "instructions_screen"
+sceneName = "level_select"
 
 -- Creating Scene Object
 scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
@@ -78,6 +78,9 @@ function scene:create( event )
     -- set backgrouhnd color
     display.setDefault("background", 255/255, 255/255, 153/255)
 
+    -- display the level 2 icon
+    lev1Icon = display.newImageRect("Images/level1icon.PNG", 250, 250)
+
     -- x and y of the level 1 icon
     lev1Icon.x = 150
     lev1Icon.y = display.contentHeight/2
@@ -102,11 +105,11 @@ function scene:create( event )
     lev2TextObject : setTextColor(41/255, 88/255, 24/255)
 
     -- display the level 3 icon
-    lev3Icon = display.newImageRect("Images/level3icon.PNG", 250, 250)
+    --lev3Icon = display.newImageRect("Images/level3icon.PNG", 250, 250)
 
     -- x and y of the level 3 icon
-    lev3Icon.x = 600
-    lev3Icon.y = display.contentHeight/2
+    --lev3Icon.x = 600
+    --lev3Icon.y = display.contentHeight/2
 
     -- text object
     lev3TextObject = display.newText("Level 3", 600, 600, nil, 80)
@@ -142,18 +145,16 @@ function scene:create( event )
     backButton:scale(0.5, 0.5)
 
     -----------------------------------------------------------------------------------------
-
+--[[
     -- Creating level 1 Button
     level1Button = widget.newButton( 
     {
         -- x and y of the level 1 icon
-        lev1Icon.x = 30
-        lev1Icon.y = 500
-        --display.contentHeight/2
-
-        -- display the level 1 icon
-        lev1Icon = display.newImageRect("Images/level1icon.PNG", 250, 250)
-
+        lev1Icon.x = 30,
+        lev1Icon.y = 500,
+        width = 250,
+        height = 250,
+        
         -- Insert the images here
         defaultFile = "Images/level1icon.PNG",
         overFile = "Images/level1icon.PNG",
@@ -166,15 +167,15 @@ function scene:create( event )
     level1Button:scale(0.5, 0.5)
     ----------------------------------------------------------------------------------------
     -----------------------------------------------------------------------------------------
-
+]]--
     -- Associating Buttons with this scene
     sceneGroup:insert( backButton )
     sceneGroup:insert(lev1Icon)
     sceneGroup:insert(lev1TextObject)
-    sceneGroup:insert(level2icon)
+    sceneGroup:insert(lev2Icon)
     sceneGroup:insert(lev2TextObject)
     sceneGroup:insert(lev3TextObject)
-    sceneGroup:insert(level3icon)
+    --sceneGroup:insert(level3icon)
 end --function scene:create( event )
 
 -----------------------------------------------------------------------------------------
