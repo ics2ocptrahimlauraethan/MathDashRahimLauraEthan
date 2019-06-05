@@ -30,8 +30,20 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
 
 -- The local variables for this scene
+local answerBox1
+
+local letterSize = 75
+local letterWidth = 75
+
+local letterAOrignalX = display.contentWidth/9
+local letterAOrignalY = display.contentHeight/1.2
+
+local letterBOriginalX = letterAOrignalX + 75
+local letterBOrignalY = letterAOrignalY
+
 local triangle
 local triangleImage
+local answerBox1Filled = false
 
 
 local square
@@ -55,97 +67,175 @@ local quadrilateralImage
 local Direction
 
 local bkgImage
+local A
+local B
+local C
+local D
+local E
+local F
+local G
+local H
+local I
+local J
+local K
+local L
+local M
+local N
+local O
+local P
+local Q
+local R
+local S
+local T
+local U
+local V
+local W
+local X
+local Y
+local Z
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
-local function shapeDisplay()
-	randomOperator = math.random(1,6)
 
+local function CheckUserAnswerInput()
+
+end
+
+local function TouchListenerA(touch)
+
+	if (touch.phase == "began") then
+		print ("***Clicked A")
+		
+	elseif (touch.phase == "moved") then
+		A.x = touch.x
+		A.y = touch.y
+
+
+		
+	elseif (touch.phase == "ended") then
+	 -- if the number is dragged into the userAnswerBox, place it in the center of it
+        if (((answerBox1.x - answerBox1.width/2) < A.x ) and
+            ((answerBox1.x + answerBox1.width/2) > A.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < A.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > A.y ) ) then
+
+            -- setting the position of the number to be in the center of the box
+            A.x = answerBox1.x
+            A.y = answerBox1.y
+            answerBox1Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        --else make box go back to where it was
+        else
+            A.x = letterAOrignalX
+            A.y = letterAOrignalY
+        end
+	end     
+end 
+
+local function AskQuestion()
+	randomOperator = math.random(1,1)
+
+	-- TRIANGLE
 	if (randomOperator == 1) then
+		-- triangle is visible
 		triangle.isVisible = true
-		triangleImage.isvisible = true
+		triangleImage.isVisible = true
+
+		-- place the answerboxes corresponding to the triangle
+		answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
+		answerBox1.y = display.contentHeight/2
+
+		-- add answerBox1 listener
+		A:addEventListener("touch", TouchListenerA)
+
+		-- make all other shapes invisible
 		square.isVisible = false
-		squareImage.isvisible = false
+		squareImage.isVisible = false
 		rectangle.isVisible = false
-		rectangleImage.isvisible = false
+		rectangleImage.isVisible = false
 		pentagon.isVisible = false
-		pentagonImage.isvisible = false
+		pentagonImage.isVisible = false
 		octogon.isVisible = false
-		octogonImage.isvisible = false
+		octogonImage.isVisible = false
 		quadrilateral.isVisible = false
-		quadrilateralImage.isvisible = false
+		quadrilateralImage.isVisible = false
 
 	elseif (randomOperator == 2) then
 		square.isVisible = true
-		squareImage.isvisible = true
+		squareImage.isVisible = true
 		triangle.isVisible = false
-		triangleImage.isvisible = false
+		triangleImage.isVisible = false
 		rectangle.isVisible = false
-		rectangleImage.isvisible = false
+		rectangleImage.isVisible = false
 		pentagon.isVisible = false
-		pentagonImage.isvisible = false
+		pentagonImage.isVisible = false
 		octogon.isVisible = false
-		octogonImage.isvisible = false
+		octogonImage.isVisible = false
 		quadrilateral.isVisible = false		
-		quadrilateralImage.isvisible = false
+		quadrilateralImage.isVisible = false
 
 	elseif (randomOperator == 3) then
 		rectangle.isVisible = true
-		rectangleImage.isvisible = true
+		rectangleImage.isVisible = true
 		triangle.isVisible = false
-		triangleImage.isvisible = false
+		triangleImage.isVisible = false
 		square.isVisible = false
-		squareImage.isvisible = false
+		squareImage.isVisible = false
 		pentagon.isVisible = false
-		pentagonImage.isvisible = false
+		pentagonImage.isVisible = false
 		octogon.isVisible = false
-		octogonImage.isvisible = false
+		octogonImage.isVisible = false
 		quadrilateral.isVisible = false
-		quadrilateralImage.isvisible = false
+		quadrilateralImage.isVisible = false
 
 	elseif (randomOperator == 4) then
 		pentagon.isVisible = true
-		pentagonImage.isvisible = true
+		pentagonImage.isVisible = true
 		triangle.isVisible = false
-		triangleImage.isvisible = false
+		triangleImage.isVisible = false
 		square.isVisible = false
-		squareImage.isvisible = false
+		squareImage.isVisible = false
 		rectangle.isVisible = false
-		rectangleImage.isvisible = false
+		rectangleImage.isVisible = false
 		octogon.isVisible = false
-		octogonImage.isvisible = false
+		octogonImage.isVisible = false
 		quadrilateral.isVisible = false
-		quadrilateralImage.isvisible = false
+		quadrilateralImage.isVisible = false
 
 	elseif (randomOperator == 5) then
 		octogon.isVisible = true
-		octogonImage.isvisible = true
+		octogonImage.isVisible = true
 		triangle.isVisible = false
-		triangleImage.isvisible = false
+		triangleImage.isVisible = false
 		square.isVisible = false
-		squareImage.isvisible = false
+		squareImage.isVisible = false
 		rectangle.isVisible = false
-		rectangleImage.isvisible = false
+		rectangleImage.isVisible = false
 		pentagon.isVisible = false
-		pentagonImage.isvisible = false
+		pentagonImage.isVisible = false
 		quadrilateral.isVisible = false
-		quadrilateralImage.isvisible = false
+		quadrilateralImage.isVisible = false
 
 	elseif (randomOperator == 6) then
 		quadrilateral.isVisible = true
-		quadrilateralImage.isvisible = true
+		quadrilateralImage.isVisible = true
 		triangle.isVisible = false
-		triangleImage.isvisible = false
+		triangleImage.isVisible = false
 		square.isVisible = false
-		squareImage.isvisible = false
+		squareImage.isVisible = false
 		rectangle.isVisible = false
-		rectangleImage.isvisible = false
+		rectangleImage.isVisible = false
 		pentagon.isVisible = false
-		pentagonImage.isvisible = false
+		pentagonImage.isVisible = false
 		octogon.isVisible = false
-		octogonImage.isvisible = false
+		octogonImage.isVisible = false
 	end
 end
+
+
 
 
 -----------------------------------------------------------------------------------------
@@ -170,47 +260,74 @@ function scene:create( event )
 
 	Direction = display.newText("Complete the spelling of the shape.", display.contentWidth/2, display.contentHeight/3, nil, 50)
 
- 	triangle = display.newText( "Tr_a_g_e", display.contentWidth/2, display.contentHeight/2, nil, 150) 
-
-	triangleImage = display.newImageRect("Images/triangle.png",display.contentWidth/2, display.contentHeight/2 )
-	triangleImage.x = display.contentCenterX
-	triangleImage.y = display.contentCenterY
+ 	triangle = display.newText( "Tr_a_g_e", display.contentWidth/2, display.contentHeight/2, nil, 150)
+	triangleImage = display.newImageRect("Images/triangle.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	triangleImage.x = display.contentCenterX/1.1
+	triangleImage.y = display.contentCenterY/3
 	
 
 	square = display.newText( "Sq_ar_", display.contentWidth/2, display.contentHeight/2, nil, 150)
-
-	squareImage = display.newImageRect("Images/square.png",display.contentWidth/2, display.contentHeight/2 )
-	squareImage.x = display.contentCenterX
-	squareImage.y = display.contentCenterY
+	squareImage = display.newImageRect("Images/square.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	squareImage.x = display.contentCenterX/1.1
+	squareImage.y = display.contentCenterY/3
 
 
 	rectangle = display.newText( "Rec__ng_e", display.contentWidth/2, display.contentHeight/2, nil, 150)
-
-	rectangleImage = display.newImageRect("Images/rectangle.png",display.contentWidth/2, display.contentHeight/2 )
-	rectangleImage.x = display.contentCenterX
-	rectangleImage.y = display.contentCenterY
+	rectangleImage = display.newImageRect("Images/rectangle.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	rectangleImage.x = display.contentCenterX/1.1
+	rectangleImage.y = display.contentCenterY/3
 
 
 	pentagon = display.newText( "P_nt_go_", display.contentWidth/2, display.contentHeight/2, nil, 150)
-
-	pentagonImage = display.newImageRect("Images/pentagon.png",display.contentWidth/2, display.contentHeight/2 )
-	pentagonImage.x = display.contentCenterX
-	pentagonImage.y = display.contentCenterY
+	pentagonImage = display.newImageRect("Images/pentagon.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	pentagonImage.x = display.contentCenterX/1.1
+	pentagonImage.y = display.contentCenterY/3
  
 
-	octogon = display.newText( "_c_o_on", display.contentWidth/2, display.contentHeight/2, nil, 150)
-
-	octogonImage = display.newImageRect("Images/octogon.png",display.contentWidth/2, display.contentHeight/2 )
-	octogonImage.x = display.contentCenterX
-	octogonImage.y = display.contentCenterY
+	octogon = display.newText( "_c_a_on", display.contentWidth/2, display.contentHeight/2, nil, 150)
+	octogonImage = display.newImageRect("Images/octogon.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	octogonImage.x = display.contentCenterX/1.1
+	octogonImage.y = display.contentCenterY/3
 
 	quadrilateral = display.newText( "q__dr_lat_r_l", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	
-	quadrilateralImage = display.newImageRect("Images/quadrilateral.png",display.contentWidth/2, display.contentHeight/2 )
-	quadrilateralImage.x = display.contentCenterX
-	quadrilateralImage.y = display.contentCenterY
+	quadrilateralImage = display.newImageRect("Images/quadrilateral.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+	quadrilateralImage.x = display.contentCenterX/1.1
+	quadrilateralImage.y = display.contentCenterY/3
+
+	A = display.newText(" A ", letterAOrignalX, letterAOrignalY, nil, letterSize)
+	--B = display.newText(" B ", letterAStartX + letterWidth, display.contentHeight/1.2, nil, letterSize)
+	--C = display.newText(" C " ,letterAStartX + letterWidth*2, display.contentHeight/1.2, nil, 30)
+	D = display.newText(" D ", display.contentWidth/3.1, display.contentHeight/1.2, nil, 30)
+	E = display.newText(" E ", display.contentWidth/2.9, display.contentHeight/1.2, nil, 30)
+	F = display.newText(" F ", display.contentWidth/2.72, display.contentHeight/1.2, nil, 30)
+	G = display.newText(" G ", display.contentWidth/2.55, display.contentHeight/1.2, nil, 30)
+	H = display.newText(" H ", display.contentWidth/2.4, display.contentHeight/1.2, nil, 30)
+	I = display.newText(" I ", display.contentWidth/2.3, display.contentHeight/1.2, nil, 30)
+	J = display.newText(" J ", display.contentWidth/2.23, display.contentHeight/1.2, nil, 30)
+	K = display.newText(" K ", display.contentWidth/2.13, display.contentHeight/1.2, nil, 30)
+	L = display.newText(" L ", display.contentWidth/2.04, display.contentHeight/1.2, nil, 30)
+	M = display.newText(" M ", display.contentWidth/1.96, display.contentHeight/1.2, nil, 30)
+	N = display.newText(" N ", display.contentWidth/1.87, display.contentHeight/1.2, nil, 30)
+	O = display.newText(" O ", display.contentWidth/1.79, display.contentHeight/1.2, nil, 30)
+	P = display.newText(" P ", display.contentWidth/1.71, display.contentHeight/1.2, nil, 30)
+	Q = display.newText(" Q ", display.contentWidth/1.64, display.contentHeight/1.2, nil, 30)
+	R = display.newText(" R ", display.contentWidth/1.57, display.contentHeight/1.2, nil, 30)
+	S = display.newText(" S ", display.contentWidth/1.5, display.contentHeight/1.2, nil, 30)
+	T = display.newText(" T ", display.contentWidth/1.45, display.contentHeight/1.2, nil, 30)
+	U = display.newText(" U ", display.contentWidth/1.4, display.contentHeight/1.2, nil, 30)
+	V = display.newText(" V ", display.contentWidth/1.35, display.contentHeight/1.2, nil, 30)
+	W = display.newText(" W ", display.contentWidth/1.3, display.contentHeight/1.2, nil, 30)
+	X = display.newText(" X ", display.contentWidth/1.25, display.contentHeight/1.2, nil, 30)
+	Y = display.newText(" Y ", display.contentWidth/1.21, display.contentHeight/1.2, nil, 30)
+	Z = display.newText(" Z ", display.contentWidth/1.18, display.contentHeight/1.2 , nil, 30)
+
 
 	-----------------------------------------------------------------------------------------
+
+	-- the black box where the user will drag the answer
+    answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130, 0, 0)
+    answerBox1.x = display.contentWidth * 0.6
+    answerBox1.y = display.contentHeight * 0.9
 
 
 
@@ -228,6 +345,7 @@ function scene:create( event )
 	sceneGroup:insert( quadrilateral )
 	sceneGroup:insert( quadrilateralImage )
 	sceneGroup:insert( Direction )
+	sceneGroup:insert( A )
 
 
 end --function scene:create( event )
@@ -249,7 +367,7 @@ function scene:show( event )
 	-----------------------------------------------------------------------------------------
 
 	elseif ( phase == "did" ) then
-		shapeDisplay()
+		AskQuestion()
 
 		-- Called when the scene is now on screen.
 		-- Insert code here to make the scene come alive.
@@ -309,6 +427,8 @@ scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
+
+-----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
 

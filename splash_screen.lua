@@ -43,7 +43,7 @@ local textSoundChannel
 local companyImageBeforeGlow
 local companyImageAfterGlow
 local companyText
-
+local bkg
 --------------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 --------------------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ function scene:create( event )
     local sceneGroup = self.view
 
     -- set the background to be black
-    display.setDefault("background", 0, 0, 0)
+    display.setDefault("background", 1, 1, 1)
 
     companyImageBeforeGlow = display.newImage("Images/CompanyLogo2EthanL.png", 512, 384)
     companyImageAfterGlow = display.newImage("Images/CompanyLogoEthanL.png", 512, 384)
