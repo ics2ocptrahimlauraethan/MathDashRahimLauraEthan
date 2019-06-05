@@ -1,12 +1,6 @@
------------------------------------------------------------------------------------------
---
--- credits_screen.lua
--- Created by: Ethan Legault
--- Special thanks to Wal Wal for helping in the design of this framework.
--- Date: May 2019
--- Description: This is the credits page, displaying a back button to the main menu.
------------------------------------------------------------------------------------------
-
+--Level Select Screen--
+-----------------------------------------------------------------------------
+--Made by: Laura Duffley
 -----------------------------------------------------------------------------------------
 -- INITIALIZATIONS
 -----------------------------------------------------------------------------------------
@@ -15,10 +9,12 @@
 local composer = require( "composer" )
 local widget = require( "widget" )
 
+-- hide the status bar
+display.setStatusBar(display.HiddenStatusBar)
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "instructions_screen"
+sceneName = "level_select"
 
 -- Creating Scene Object
 scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
@@ -26,17 +22,44 @@ scene = composer.newScene( sceneName ) -- This function doesn't accept a string,
 -----------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
 -----------------------------------------------------------------------------------------
-local bkg_image
-local instructionsButton
+-- declaring the image and text varibales for this scene
+local lev1Icon
+local lev1TextObject
+
+local lev2Icon
+local lev2IextOject
+
+local lev3Icon
+local lev3TextObject
+
+-- declaring the buttons
+local backButton
+local level1Button
+local level2Button
+local level3Button
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
--- Creating Transitioning Function back to main menu
+-- Creating Transitioning Function to go back to main menu
 local function BackTransition( )
     composer.gotoScene( "main_menu", {effect = "zoomInOut", time = 500})
 end
 
+-- Creating Transition Function to level 1
+local function Level1ScreenTransition( )       
+    composer.gotoScene( "level1_screen", {effect = "slideDown", time = 500})
+end 
+
+-- Creating Transition Function to level 2
+local function Level2ScreenTransition( )       
+    composer.gotoScene( "level2_screen", {effect = "slideDown", time = 500})
+end 
+
+-- Creating Transition Function to level 3
+local function Level3ScreenTransition( )       
+    composer.gotoScene( "level3_screen", {effect = "slideDown", time = 500})
+end 
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -49,32 +72,77 @@ function scene:create( event )
     local sceneGroup = self.view
 
     -----------------------------------------------------------------------------------------
-    -- BACKGROUND AND DISPLAY OBJECTS
+    -- BACKGROUND AND DISPLAY STATIC OBJECTS
     -----------------------------------------------------------------------------------------
 
-    -- Insert the background image and set it to the center of the screen
-    bkg_image = display.newImageRect("Images/InstructionsPage.png", display.contentWidth, display.contentHeight)
-    bkg_image.x = display.contentCenterX
-    bkg_image.y = display.contentCenterY
-    bkg_image.width = display.contentWidth
-    bkg_image.height = display.contentHeight
+    -- set backgrouhnd color
+    display.setDefault("background", 255/255, 255/255, 153/255)
 
-    -- Associating display objects with this scene 
-    sceneGroup:insert( bkg_image )
+     -- text object
+    lev1TextObject = display.newText("Level 1", 150, 600, nil, 70)
 
-    -- Send the background image to the back layer so all other objects can be on top
-    bkg_image:toBack()
+    -- set color
+    lev1TextObject : setTextColor(41/255, 88/255, 24/255)
 
-    -----------------------------------------------------------------------------------------
+    -- display the level 2 icon
+    lev2Icon = display.newImageRect("Images/level2icon.PNG", 250, 250)
+
+    -- x and y of the level 2 icon
+    lev2Icon.x = display.contentWidth/2
+    lev2Icon.y = display.contentHeight/2
+
+    -- text object
+    lev2TextObject = display.newText("Level 2", display.contentWidth/2, 500, nil, 80)
+
+    -- set color
+    lev2TextObject : setTextColor(41/255, 88/255, 24/255)
+
+    -- display the level 3 icon
+    --lev3Icon = display.newImageRect("Images/level3icon.PNG", 250, 250)
+
+    -- x and y of the level 3 icon
+    --lev3Icon.x = 600
+    --lev3Icon.y = display.contentHeight/2
+
+    -- text object
+    lev3TextObject = display.newText("Level 3", 600, 600, nil, 80)
+
+    -- set color
+    lev3TextObject : setTextColor(41/255, 88/255, 24/255)
+
+
+-----------------------------------------------------------------------------------------
     -- BUTTON WIDGETS
     -----------------------------------------------------------------------------------------
+
+    -- Creating Back Button
+    lev1Icon = widget.newButton( 
+    {
+        -- Setting Position
+        x = 150,
+        y = display.contentHeight/2,
+
+        -- Setting Dimensions
+        width = 250,
+        height = 250,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/level1icon.PNG",
+        overFile = "Images/level1icon.PNG",
+
+        -- Setting Functional Properties
+        onRelease = Level1ScreenTransition
+
+    } )
+
+
 
     -- Creating Back Button
     backButton = widget.newButton( 
     {
         -- Setting Position
         x = display.contentWidth*1/8,
-        y = display.contentHeight*7/8,
+        y = display.contentHeight*15/16,
 
         -- Setting Dimensions
         -- width = 1000,
@@ -90,11 +158,16 @@ function scene:create( event )
     } )
 
     backButton:scale(0.5, 0.5)
-    -----------------------------------------------------------------------------------------
 
+    -----------------------------------------------------------------------------------------
     -- Associating Buttons with this scene
-    sceneGroup:insert(  backButton )
-    
+    sceneGroup:insert( backButton )
+    sceneGroup:insert(lev1Icon)
+    sceneGroup:insert(lev1TextObject)
+    sceneGroup:insert(lev2Icon)
+    sceneGroup:insert(lev2TextObject)
+    sceneGroup:insert(lev3TextObject)
+    --sceneGroup:insert(level3icon)
 end --function scene:create( event )
 
 -----------------------------------------------------------------------------------------
@@ -181,5 +254,3 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
-
-

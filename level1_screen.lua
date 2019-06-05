@@ -150,7 +150,7 @@ local function RandomizeShapeQuestion()
 		trapezoid4.isVisible = false
 		correctTrapezoid.isVisible = false
 
-		elseif (randomShape == 2) then
+	elseif (randomShape == 2) then
 		triangle1.isVisible = false
 		triangle2.isVisible = false
 		triangle3.isVisible = false
@@ -374,8 +374,8 @@ local function RandomizeSampleShape()
 		correctTrapezoid.rotation = 90
 
 	elseif (randomRotation == 3) then
-	correctTriangle.rotation = 180
-	correctTrapezoid.rotation = 180
+		correctTriangle.rotation = 180
+		correctTrapezoid.rotation = 180
 
 	elseif (randomRotation == 4) then
 		correctTriangle.rotation = 270
@@ -413,16 +413,6 @@ local function CheckDirectionTrapezoid()
 	end
 end
 
-local function StopClock()
-	if (timerSpot.rotation == -361) then
-		RandomAnswerPositions()
-		RandomizeSampleShape()
-		RandomizeShapeQuestion()
-		CheckDirectionTriangle()
-		CheckDirectionTrapezoid()
-	end
-end
-
 local function RotateClock()
 	timerSpot:rotate(-0.5)
 end
@@ -452,20 +442,30 @@ local function LivesCheck()
 	end
 end
 
-
 local function CheckUserInput()
 
-		if (userTriangle.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
+	if (userTriangle.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
 		timerSpot:setFillColor(0, 1, 0)
 		timer.performWithDelay(2000, RestartClock)
 		Runtime:removeEventListener("enterFrame", RotateClock)
 		score = score + 1
+		CheckDirectionTriangle()
 
-		elseif (userTriangle.rotation ~= correctShapeAnswerBoxPlaceholder.rotation) then
+	elseif (userTriangle.rotation ~= correctShapeAnswerBoxPlaceholder.rotation) then
 		timerSpot:setFillColor(1, 0, 0)
 		timer.performWithDelay(2000, RestartClock)
 		Runtime:removeEventListener("enterFrame", RotateClock)
 		lives = lives - 1
+		CheckDirectionTriangle()
+	
+	if (userTrapezoid.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
+		timerSpot:setFillColor(0, 1, 0)
+		timer.performWithDelay(2000, RestartClock)
+
+	elseif (userTrapezoid.rotation ~= correctShapeAnswerBoxPlaceholder.rotation) then
+		timerSpot:setFillColor(1, 0, 0)
+		timer.performWithDelay(2000, RestartClock)
+		end
 	end
 	Scoreboard()
 	LivesCheck()
@@ -736,7 +736,6 @@ local function AddShapeListeners()
 	trapezoid4:addEventListener("touch", TouchListenerShapeAnswerSlot3)
 	Runtime:addEventListener("enterFrame", RotateClock)
 	Runtime:addEventListener("enterFrame", KeepShapeCoords)
-	Runtime:addEventListener("enterFrame", StopClock)
 end
 
 
@@ -752,7 +751,6 @@ local function RemoveShapeListeners()
 	trapezoid4:removeEventListener("touch", TouchListenerShapeAnswerSlot3)
 	Runtime:removeEventListener("enterFrame", RotateClock)
 	Runtime:removeEventListener("enterFrame", KeepShapeCoords)
-	Runtime:removeEventListener("enterFrame", StopClock)
 end
 
 -----------------------------------------------------------------------------------------
