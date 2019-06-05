@@ -10,6 +10,7 @@
 -- INITIALIZATIONS
 -----------------------------------------------------------------------------------------
 display.setStatusBar(display.HiddenStatusBar)
+
 -- Use Composer Libraries
 local composer = require( "composer" )
 local widget = require( "widget" )
@@ -29,8 +30,20 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
 
 -- The local variables for this scene
+local answerBox1
+
+local letterSize = 75
+local letterWidth = 75
+
+local letterAOrignalX = display.contentWidth/9
+local letterAOrignalY = display.contentHeight/1.2
+
+local letterBOriginalX = letterAOrignalX + 75
+local letterBOrignalY = letterAOrignalY
+
 local triangle
 local triangleImage
+local answerBox1Filled = false
 
 
 local square
@@ -83,12 +96,62 @@ local Z
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
-local function shapeDisplay()
-	randomOperator = math.random(1,6)
 
+local function CheckUserAnswerInput()
+
+end
+
+local function TouchListenerA(touch)
+
+	if (touch.phase == "began") then
+		print ("***Clicked A")
+		
+	elseif (touch.phase == "moved") then
+		A.x = touch.x
+		A.y = touch.y
+
+
+		
+	elseif (touch.phase == "ended") then
+	 -- if the number is dragged into the userAnswerBox, place it in the center of it
+        if (((answerBox1.x - answerBox1.width/2) < A.x ) and
+            ((answerBox1.x + answerBox1.width/2) > A.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < A.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > A.y ) ) then
+
+            -- setting the position of the number to be in the center of the box
+            A.x = answerBox1.x
+            A.y = answerBox1.y
+            answerBox1Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        --else make box go back to where it was
+        else
+            A.x = letterAOrignalX
+            A.y = letterAOrignalY
+        end
+	end     
+end 
+
+local function AskQuestion()
+	randomOperator = math.random(1,1)
+
+	-- TRIANGLE
 	if (randomOperator == 1) then
+		-- triangle is visible
 		triangle.isVisible = true
 		triangleImage.isVisible = true
+
+		-- place the answerboxes corresponding to the triangle
+		answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
+		answerBox1.y = display.contentHeight/2
+
+		-- add answerBox1 listener
+		A:addEventListener("touch", TouchListenerA)
+
+		-- make all other shapes invisible
 		square.isVisible = false
 		squareImage.isVisible = false
 		rectangle.isVisible = false
@@ -173,6 +236,8 @@ local function shapeDisplay()
 end
 
 
+
+
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -229,9 +294,9 @@ function scene:create( event )
 	quadrilateralImage.x = display.contentCenterX/1.1
 	quadrilateralImage.y = display.contentCenterY/3
 
-	A = display.newText(" A ", display.contentWidth/4, display.contentHeight/1.2, nil, 50)
-	B = display.newText(" B ", display.contentWidth/3.6, display.contentHeight/1.2, nil, 30)
-	C = display.newText(" C ", display.contentWidth/3.3, display.contentHeight/1.2, nil, 30)
+	A = display.newText(" A ", letterAOrignalX, letterAOrignalY, nil, letterSize)
+	--B = display.newText(" B ", letterAStartX + letterWidth, display.contentHeight/1.2, nil, letterSize)
+	--C = display.newText(" C " ,letterAStartX + letterWidth*2, display.contentHeight/1.2, nil, 30)
 	D = display.newText(" D ", display.contentWidth/3.1, display.contentHeight/1.2, nil, 30)
 	E = display.newText(" E ", display.contentWidth/2.9, display.contentHeight/1.2, nil, 30)
 	F = display.newText(" F ", display.contentWidth/2.72, display.contentHeight/1.2, nil, 30)
@@ -258,6 +323,11 @@ function scene:create( event )
 
 
 	-----------------------------------------------------------------------------------------
+
+	-- the black box where the user will drag the answer
+    answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130, 0, 0)
+    answerBox1.x = display.contentWidth * 0.6
+    answerBox1.y = display.contentHeight * 0.9
 
 
 
@@ -297,7 +367,7 @@ function scene:show( event )
 	-----------------------------------------------------------------------------------------
 
 	elseif ( phase == "did" ) then
-		shapeDisplay()
+		AskQuestion()
 
 		-- Called when the scene is now on screen.
 		-- Insert code here to make the scene come alive.
@@ -357,6 +427,8 @@ scene:addEventListener( "create", scene )
 scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
+
+-----------------------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------
 
