@@ -115,6 +115,13 @@ local trapezoid4PreviousY
 local userTriangle
 local userTrapezoid
 local score
+local scoreText
+local lives
+local heart1
+local heart2
+local heart3
+local questionsCorrect
+local questionsIncorrect
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -192,11 +199,6 @@ local function RandomAnswerPositions()
 		triangle2PreviousY = triangle2.y
 		triangle3PreviousY = triangle3.y
 		triangle4PreviousY = triangle4.y
-
-		triangle1PreviousX = triangle1.x
-		triangle2PreviousX = triangle2.x
-		triangle3PreviousX = triangle3.x
-		triangle4PreviousX = triangle4.x
 
 		triangle1PreviousX = triangle1.x
 		triangle2PreviousX = triangle2.x
@@ -383,56 +385,41 @@ end
 
 local function CheckDirectionTriangle()
 	if (correctTriangle.rotation == 0) then
-		correctShapeAnswerBoxPlaceholder.rotation = 180
-		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
+		correctShapeAnswerBoxPlaceholder.rotation = 0
 
 	elseif (correctTriangle.rotation == 90) then
-		correctShapeAnswerBoxPlaceholder.rotation = 90
-		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
+		correctShapeAnswerBoxPlaceholder.rotation = 270
 
 	elseif (correctTriangle.rotation == 180) then
-		correctShapeAnswerBoxPlaceholder.rotation = 0
-		userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
+		correctShapeAnswerBoxPlaceholder.rotation = 180
 
 		elseif (correctTriangle.rotation == 270) then
-			correctShapeAnswerBoxPlaceholder.rotation = 270
-			userTriangle.rotation = correctShapeAnswerBoxPlaceholder.rotation
-
+			correctShapeAnswerBoxPlaceholder.rotation = 90
 	end
 end
 
 local function CheckDirectionTrapezoid()
 	if (correctTrapezoid.rotation == 0) then
 		correctShapeAnswerBoxPlaceholder.rotation = 0
-		userTrapezoid.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
 	elseif (correctTrapezoid.rotation == 90) then
 		correctShapeAnswerBoxPlaceholder.rotation = 270
-		userTrapezoid.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
 	elseif (correctTrapezoid.rotation == 180) then
 		correctShapeAnswerBoxPlaceholder.rotation = 180
-		userTrapezoid.rotation = correctShapeAnswerBoxPlaceholder.rotation
 
 		elseif (correctTrapezoid.rotation == 270) then
 			correctShapeAnswerBoxPlaceholder.rotation = 90
-			userTrapezoid.rotation = correctShapeAnswerBoxPlaceholder.rotation
-
 	end
 end
 
-local function StopLevel()
-
+local function StopClock()
 	if (timerSpot.rotation == -361) then
-	timerSpot.rotation = 1
-
-	if (timerSpot.rotation == 1) then
 		RandomAnswerPositions()
 		RandomizeSampleShape()
+		RandomizeShapeQuestion()
 		CheckDirectionTriangle()
 		CheckDirectionTrapezoid()
-		RandomizeShapeQuestion()
-		end
 	end
 end
 
@@ -451,35 +438,37 @@ local function RestartClock()
 	timerSpot.rotation = 0
 end
 
+local function Scoreboard()
+	scoreText.text = "Score: " .. score
+end
+
+local function LivesCheck()
+	if (lives == 2) then
+		heart3.isVisible = false
+		elseif (lives == 1) then
+		heart2.isVisible = false
+		elseif (lives == 0) then
+		heart1.isVisible = false
+	end
+end
 
 
 local function CheckUserInput()
 
 		if (userTriangle.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
 		timerSpot:setFillColor(0, 1, 0)
-		Runtime:removeEventListener("enterFrame", RotateClock)
 		timer.performWithDelay(2000, RestartClock)
-		CheckDirectionTriangle()
+		Runtime:removeEventListener("enterFrame", RotateClock)
+		score = score + 1
 
 		elseif (userTriangle.rotation ~= correctShapeAnswerBoxPlaceholder.rotation) then
 		timerSpot:setFillColor(1, 0, 0)
-		Runtime:removeEventListener("enterFrame", RotateClock)
 		timer.performWithDelay(2000, RestartClock)
-		CheckDirectionTriangle()
-
-	if (userTrapezoid.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
-		timerSpot:setFillColor(0, 1, 0)
 		Runtime:removeEventListener("enterFrame", RotateClock)
-		timer.performWithDelay(2000, RestartClock)
-
-
-	elseif (userTrapezoid.rotation ~= correctShapeAnswerBoxPlaceholder.rotation) then
-		timerSpot:setFillColor(1, 0, 0)
-		Runtime:removeEventListener("enterFrame", RotateClock)
-		timer.performWithDelay(2000, RestartClock)
-
-		end
+		lives = lives - 1
 	end
+	Scoreboard()
+	LivesCheck()
 end
 
 local function TouchListenerCorrectShapeAnswer(touch)
@@ -591,6 +580,8 @@ local function TouchListenerShapeAnswerSlot1(touch)
 				-- call the function to check if the user's input is correct or not
 			   MakeEverythingFalse()
 			   shapeAnswerSlot1:toBack()
+			   CheckDirectionTriangle()
+			   CheckDirectionTrapezoid()
 			   CheckUserInput()
 			--else make box go back to where it was
 			else
@@ -745,7 +736,7 @@ local function AddShapeListeners()
 	trapezoid4:addEventListener("touch", TouchListenerShapeAnswerSlot3)
 	Runtime:addEventListener("enterFrame", RotateClock)
 	Runtime:addEventListener("enterFrame", KeepShapeCoords)
-	Runtime:addEventListener("enterFrame", StopLevel)
+	Runtime:addEventListener("enterFrame", StopClock)
 end
 
 
@@ -761,7 +752,7 @@ local function RemoveShapeListeners()
 	trapezoid4:removeEventListener("touch", TouchListenerShapeAnswerSlot3)
 	Runtime:removeEventListener("enterFrame", RotateClock)
 	Runtime:removeEventListener("enterFrame", KeepShapeCoords)
-	Runtime:removeEventListener("enterFrame", StopLevel)
+	Runtime:removeEventListener("enterFrame", StopClock)
 end
 
 -----------------------------------------------------------------------------------------
@@ -804,7 +795,7 @@ function scene:create( event )
 	side1Text:setFillColor(0, 0, 0)
 
 	-- creating side2Text
-	side2Text = display.newText("Place Side 2", display.contentWidth/1.5, display.contentHeight/16, nil, 50)
+	side2Text = display.newText("Mirror Side 1", display.contentWidth/1.5, display.contentHeight/16, nil, 50)
 	side2Text:setFillColor(0, 0, 0)
 
 	-- creating instructions text
@@ -877,7 +868,7 @@ function scene:create( event )
 	correctShapeAnswerBoxPlaceholder.rotation = 0
 
 	-- creating triangleVertices1
-	triangleVertices1 = { 130, 20, 250, 110, 130, 200}
+	triangleVertices1 = { 200, 20, 250, 200, 150, 200}
 
 	-- creating triangle1
 	triangle1 = display.newPolygon(445, 200, triangleVertices1)
@@ -888,9 +879,10 @@ function scene:create( event )
 	triangle1.width = 75
 	triangle1.height = 75
 	triangle1.rotation = 0
+	triangle1:setFillColor(1, 0, 0)
 
 	-- creating triangleVertices2
-	triangleVertices2 = { 130, 20, 250, 110, 130, 200}
+	triangleVertices2 = { 200, 20, 250, 200, 150, 200}
 
 	-- creating triangle2
 	triangle2 = display.newPolygon(445, 200, triangleVertices2)
@@ -901,9 +893,10 @@ function scene:create( event )
 	triangle2.width = 75
 	triangle2.height = 75
 	triangle2.rotation = 90
+	triangle2:setFillColor(1, 1, 0)
 
 	-- creating triangleVertices3
-	triangleVertices3 = { 130, 20, 250, 110, 130, 200}
+	triangleVertices3 = { 200, 20, 250, 200, 150, 200}
 
 	-- creating triangle3
 	triangle3 = display.newPolygon(445, 200, triangleVertices3)
@@ -914,9 +907,10 @@ function scene:create( event )
 	triangle3.width = 75
 	triangle3.height = 75
 	triangle3.rotation = 180
+	triangle3:setFillColor(0, 1, 0)
 
 	-- creating triangleVertices4
-	triangleVertices4 = { 130, 20, 250, 110, 130, 200}
+	triangleVertices4 = { 200, 20, 250, 200, 150, 200}
 
 	-- creating triangle4
 	triangle4 = display.newPolygon(445, 200, triangleVertices4)
@@ -927,9 +921,10 @@ function scene:create( event )
 	triangle4.width = 75
 	triangle4.height = 75
 	triangle4.rotation = 270
+	triangle4:setFillColor(0, 0, 1)
 
 	-- creating correctTriangleVertices
-	correctTriangleVertices = { 130, 20, 250, 110, 130, 200}
+	correctTriangleVertices = { 200, 20, 250, 200, 150, 200}
 
 	-- creating correctTriangle
 	correctTriangle = display.newPolygon(445, 200, correctTriangleVertices)
@@ -947,6 +942,7 @@ function scene:create( event )
 	trapezoid1.height = 75
 	trapezoid1:scale(1,1)
 	trapezoid1.rotation = 0
+	trapezoid1:setFillColor(1, 0, 0)
 
 	-- creating trapezoid2Vertices
 	trapezoid2Vertices = { 150, 20, 230, 20, 250, 200, 130, 200}
@@ -958,6 +954,7 @@ function scene:create( event )
 	trapezoid2.height = 75
 	trapezoid2:scale(1,1)
 	trapezoid2.rotation = 90
+	trapezoid2:setFillColor(1, 1, 0)
 
 	-- creating trapezoid3Vertices
 	trapezoid3Vertices = { 150, 20, 230, 20, 250, 200, 130, 200}
@@ -969,6 +966,7 @@ function scene:create( event )
 	trapezoid3.height = 75
 	trapezoid3:scale(1,1)
 	trapezoid3.rotation = 180
+	trapezoid3:setFillColor(0, 1, 0)
 
 	-- creating trapezoid4Vertices
 	trapezoid4Vertices = { 150, 20, 230, 20, 250, 200, 130, 200}
@@ -980,6 +978,7 @@ function scene:create( event )
 	trapezoid4.height = 75
 	trapezoid4:scale(1,1)
 	trapezoid4.rotation = 270
+	trapezoid4:setFillColor(0, 0, 1)
 
 	-- creating correctTrapezoidVertices
 	correctTrapezoidVertices = { 150, 20, 230, 20, 250, 200, 130, 200}
@@ -999,6 +998,28 @@ function scene:create( event )
 
 	-- make score
 	score = 0
+
+	-- make score text
+	scoreText = display.newText("Score: ", display.contentWidth/3*2.75, display.contentHeight/4*2, nil, 40)
+	scoreText:setFillColor(0, 0, 0)
+
+	-- make lives
+	lives = 3
+
+	-- make heart 1
+	heart1 = display.newImage("Images/heart.png", display.contentWidth/3*2.6, 500)
+	heart1.width = 50
+	heart1.height = 50
+
+	-- make heart 2
+	heart2 = display.newImage("Images/heart.png", display.contentWidth/3*2.75, 500)
+	heart2.width = 50
+	heart2.height = 50
+
+	-- make heart 3
+	heart3 = display.newImage("Images/heart.png", display.contentWidth/3*2.9, 500)
+	heart3.width = 50
+	heart3.height = 50
 
 	-- make userTriangle
 	userTriangle = display.newPolygon(445, 200, correctTriangleVertices)
@@ -1049,8 +1070,10 @@ function scene:create( event )
 	sceneGroup:insert( trapezoid4 )
 	sceneGroup:insert( correctTrapezoid )
 	sceneGroup:insert( userTrapezoid )
-
-
+	sceneGroup:insert( scoreText )
+	sceneGroup:insert( heart1 )
+	sceneGroup:insert( heart2 )
+	sceneGroup:insert( heart3 )
 
 end --function scene:create( event )
 
