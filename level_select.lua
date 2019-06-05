@@ -79,41 +79,30 @@ function scene:create( event )
     display.setDefault("background", 255/255, 255/255, 153/255)
 
      -- text object
-<<<<<<< HEAD
+
     lev1TextObject = display.newText("Level 1", 150, 575, nil, 70)
-=======
-    lev1TextObject = display.newText("Level 1", 150, 600, nil, 80)
->>>>>>> 486a02bce333c5079bf08f07f59c4e6cf6ba6ba6
+
+ --   lev1TextObject = display.newText("Level 1", 150, 600, nil, 80)
+
 
     -- set color
     lev1TextObject:setTextColor(41/255, 88/255, 24/255)
 
-    -- display the level 2 icon
-    lev2Icon = display.newImageRect("Images/level2icon.PNG", 250, 250)
 
-    -- text object
-<<<<<<< HEAD
-    lev2TextObject = display.newText("Level 2", display.contentWidth/2, 575, nil, 80)
-=======
-    lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
->>>>>>> 486a02bce333c5079bf08f07f59c4e6cf6ba6ba6
+
+    lev2TextObject = display.newText("Level 2", display.contentWidth/2, 575, nil, 70)
+
+ --   lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
+
 
     -- set color
     lev2TextObject:setTextColor(41/255, 88/255, 24/255)
 
-    -- display the level 3 icon
-    lev3Icon = display.newImageRect("Images/level3icon.PNG", 250, 250)
 
-    -- x and y of the level 3 icon
-<<<<<<< HEAD
-    lev3Icon.x = 600
-=======
-    lev3Icon.x = 875
->>>>>>> 486a02bce333c5079bf08f07f59c4e6cf6ba6ba6
-    lev3Icon.y = display.contentHeight/2
+
 
     -- text object
-    lev3TextObject = display.newText("Level 3", 875, 600, nil, 80)
+    lev3TextObject = display.newText("Level 3", 875, 575, nil, 70)
 
     -- set color
     lev3TextObject:setTextColor(41/255, 88/255, 24/255)
@@ -167,7 +156,7 @@ function scene:create( event )
     lev3Icon = widget.newButton( 
     {
         -- Setting Position
-        x = 700
+        x = 850,
         y = display.contentHeight/2,
 
         -- Setting Dimensions
@@ -214,7 +203,6 @@ function scene:create( event )
     sceneGroup:insert(lev2TextObject)
     sceneGroup:insert(lev3Icon)
     sceneGroup:insert(lev3TextObject)
-    sceneGroup:insert(level3icon)
 
 end --function scene:create( event )
 
