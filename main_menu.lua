@@ -42,8 +42,6 @@ local muteButtonPressed
 -----------------------------------------------------------------------------------------
 -- SOUNDS
 -----------------------------------------------------------------------------------------
-
-
 local backgroundMusic = audio.loadSound("Sounds/CIRCUSII.wav")
 local backgroundMusicChannel
 
@@ -68,6 +66,11 @@ end
 -- Creating Transition to Instructions Screen
 local function InstructionsTransition( )
     composer.gotoScene( "instructions_screen", {effect = "slideRight", time = 1000})
+end
+
+-- Creating Transition to the level select Screen
+local function LevelSelectScreenTransition( )
+    composer.gotoScene( "instructions_screen", {effect = "slideLeft", time = 1000})
 end
 
 local function MuteButtonUnpressedListener(touch)
@@ -133,7 +136,7 @@ function scene:create( event )
             overFile = "Images/PlayButtonPressedCompany.png",
 
             -- When the button is released, call the Level1 screen transition function
-            onRelease = Level1ScreenTransition          
+            onRelease = LevelSelectScreenTransition          
         } )
 
         playButton:scale(0.5, 0.5)
