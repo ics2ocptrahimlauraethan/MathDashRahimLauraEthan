@@ -84,24 +84,17 @@ function scene:create( event )
 
  --   lev1TextObject = display.newText("Level 1", 150, 600, nil, 80)
 
-
     -- set color
     lev1TextObject:setTextColor(41/255, 88/255, 24/255)
 
-
-
     lev2TextObject = display.newText("Level 2", display.contentWidth/2, 575, nil, 70)
 
- --   lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
+ --  lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
 
-
-    -- set color
+-- set color
     lev2TextObject:setTextColor(41/255, 88/255, 24/255)
 
-
-
-
-    -- text object
+-- text object
     lev3TextObject = display.newText("Level 3", 875, 575, nil, 70)
 
     -- set color
@@ -156,7 +149,7 @@ function scene:create( event )
     lev3Icon = widget.newButton( 
     {
         -- Setting Position
-        x = 850,
+        x = 875,
         y = display.contentHeight/2,
 
         -- Setting Dimensions
