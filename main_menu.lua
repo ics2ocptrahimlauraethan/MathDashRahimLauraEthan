@@ -70,7 +70,7 @@ end
 
 -- Creating Transition to the level select Screen
 local function LevelSelectScreenTransition( )
-    composer.gotoScene( "instructions_screen", {effect = "slideLeft", time = 1000})
+    composer.gotoScene( "level_select", {effect = "slideLeft", time = 1000})
 end
 
 local function MuteButtonUnpressedListener(touch)
