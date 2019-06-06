@@ -196,12 +196,15 @@ function scene:create( event )
     sceneGroup:insert(lev2TextObject)
     sceneGroup:insert(lev3Icon)
     sceneGroup:insert(lev3TextObject)
-    sceneGroup:insert(bkg)
 
 end --function scene:create( event )
 
 -----------------------------------------------------------------------------------------
+-- LOCAL FUNCTIONS
+-----------------------------------------------------------------------------------------
 
+
+------------------------------------------------------------------------------------------
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
 
@@ -223,6 +226,7 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
+
     end
 
 end -- function scene:show( event )

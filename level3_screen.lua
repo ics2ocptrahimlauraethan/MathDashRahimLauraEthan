@@ -57,10 +57,10 @@ local randomPosition
 
 -- set the positions of the answers
 local X1 = 60
-local Y1 = 300
+local Y1 = 310
 
 local X2 = 250
-local Y2 = 300
+local Y2 = 310
 
 local X3 = 60
 local Y3 = 500
@@ -684,9 +684,9 @@ end
 local function Win()
     if (score == 4) then
         composer.gotoScene ("youWinScreen")
-
-        --timer.performWithDelay ( 4500, 
         composer.gotoScene ("level_select")
+         
+        --timer.performWithDelay( 4500,
     end
 end
 
@@ -707,6 +707,15 @@ function scene:create( event )
     local sceneGroup = self.view
 
     -----------------------------------------------------------------------------------------
+
+        -- backgroud creation
+    bkg = display.newImageRect ("Images/lev3_bkg.png", 1024, 768)
+
+    -- set the bkg's x and y
+    bkg.x = display.contentWidth/2
+    bkg.y = display.contentHeight/2
+
+
 
     -- Insert the shape 1 with x and y position
     lev3Q1_image = display.newImageRect("Images/lev3Q1.png", display.contentWidth/3, display.contentHeight)
@@ -838,7 +847,7 @@ function scene:create( event )
 
    -- displays the time remaining on the screen
     clockText = display.newText("Seconds Left: " .. secondsLeft , 200, 200, nil, 50)
-    clockText: setTextColor(0/255, 0/255, 0/255)
+    clockText: setTextColor(255/255, 255/255, 153/255)
 
     -- answer objects
     answerObject = display.newText ("", X1, Y1, nil, 65)
@@ -872,27 +881,20 @@ function scene:create( event )
     heart3 = display.newImageRect ("Images/heart.png", 100,100)
 
     -- set x,y position of hearts
-    heart1.x = 650
+    heart1.x = 550
     heart1.y = 70
 
-    heart2.x = 800
+    heart2.x = 700
     heart2.y = 70
 
-    heart3.x = 950
+    heart3.x = 850
     heart3.y = 70
 
     -- create points object
     scoreText = display.newText("", 140, 50, nil, 60)
-    scoreText:setTextColor(139/255, 10/255, 144/255)
+    scoreText:setTextColor(255/255, 153/255, 255/255)
     scoreText.text = "Score: " .. score
 
-    -- backgroud creation
-    bkg = display.newImageRect ("Images/lev3_bkg.png", 1024, 768)
-
-    -- set the bkg's x and y
-    bkg.x = display.contentWidth/2
-    bkg.y = display.contentHeight/2
-    bkg:toBack()
 
     -----------------------------------------------------------------------------------------
 
@@ -922,6 +924,7 @@ function scene:create( event )
     } )
 
     -- Insert objects
+    sceneGroup:insert ( bkg )
     sceneGroup:insert( lev3Q1_image ) 
     sceneGroup:insert( lev3Q2_image ) 
     sceneGroup:insert( lev3Q3_image )
@@ -947,7 +950,6 @@ function scene:create( event )
     sceneGroup:insert( lev3Q2_image )
     sceneGroup:insert( incorrectTextObject )
     sceneGroup:insert( correctTextObject )
-    sceneGroup:insert ( bkg )
 
 end --function scene:create( event )
 
