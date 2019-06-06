@@ -1,3 +1,4 @@
+
 -----------------------------------------------------------------------------------------
 --
 -- level1_screen.lua
@@ -40,6 +41,96 @@ local letterAOrignalY = display.contentHeight/1.2
 
 local letterBOriginalX = letterAOrignalX + 75
 local letterBOrignalY = letterAOrignalY
+
+local letterCOriginalX = letterAOrignalX + 150
+local letterCOrignalY = letterAOrignalY
+
+local letterDOriginalX = letterAOrignalX + 225
+local letterDOrignalY = letterAOrignalY
+
+
+local letterEOriginalX = letterAOrignalX + 300
+local letterEOrignalY = letterAOrignalY
+
+
+
+local letterFOriginalX = letterAOrignalX + 375
+local letterFOrignalY = letterAOrignalY
+
+
+local letterGOriginalX = letterAOrignalX + 450
+local letterGOrignalY = letterAOrignalY
+
+
+local letterHOriginalX = letterAOrignalX + 525
+local letterHOrignalY = letterAOrignalY
+
+
+local letterIOriginalX = letterAOrignalX + 600
+local letterIOrignalY = letterAOrignalY
+
+
+local letterJOriginalX = letterAOrignalX + 675
+local letterJOrignalY = letterAOrignalY
+
+
+local letterKOriginalX = letterAOrignalX + 750
+local letterKOrignalY = letterAOrignalY
+
+
+local letterLOriginalX = letterAOrignalX + 825
+local letterLOrignalY = letterAOrignalY
+
+
+local letterMOriginalX = letterAOrignalX + 900
+local letterMOrignalY = letterAOrignalY
+
+
+local letterNOriginalX = letterAOrignalX + 975
+local letterNOrignalY = letterAOrignalY
+
+
+local letterOOriginalX = letterAOrignalX + 1050
+local letterOOrignalY = letterAOrignalY
+
+
+local letterPOriginalX = letterAOrignalX + 1125
+local letterPOrignalY = letterAOrignalY
+
+
+local letterQOriginalX = letterAOrignalX + 1200
+local letterQOrignalY = letterAOrignalY
+
+
+local letterROriginalX = letterAOrignalX + 1275
+local letterROrignalY = letterAOrignalY
+
+
+local letterSOriginalX = letterAOrignalX + 1350
+local letterSOrignalY = letterAOrignalY
+
+
+local letterTOriginalX = letterAOrignalX + 1425
+local letterTOrignalY = letterAOrignalY
+
+
+local letterUOriginalX = letterAOrignalX + 1500
+local letterUOrignalY = letterAOrignalY
+
+local letterVOriginalX = letterAOrignalX + 1575
+local letterVOrignalY = letterAOrignalY
+
+local letterWOriginalX = letterAOrignalX + 1650
+local letterWOrignalY = letterAOrignalY
+
+local letterXOriginalX = letterAOrignalX + 1725
+local letterXOrignalY = letterAOrignalY
+
+local letterYOriginalX = letterAOrignalX + 1800
+local letterYOrignalY = letterAOrignalY
+
+local letterZOriginalX = letterAOrignalX + 1875
+local letterZOrignalY = letterAOrignalY
 
 local triangle
 local triangleImage
@@ -297,29 +388,29 @@ function scene:create( event )
 	A = display.newText(" A ", letterAOrignalX, letterAOrignalY, nil, letterSize)
 	--B = display.newText(" B ", letterAStartX + letterWidth, display.contentHeight/1.2, nil, letterSize)
 	--C = display.newText(" C " ,letterAStartX + letterWidth*2, display.contentHeight/1.2, nil, 30)
-	D = display.newText(" D ", display.contentWidth/3.1, display.contentHeight/1.2, nil, 30)
-	E = display.newText(" E ", display.contentWidth/2.9, display.contentHeight/1.2, nil, 30)
-	F = display.newText(" F ", display.contentWidth/2.72, display.contentHeight/1.2, nil, 30)
-	G = display.newText(" G ", display.contentWidth/2.55, display.contentHeight/1.2, nil, 30)
-	H = display.newText(" H ", display.contentWidth/2.4, display.contentHeight/1.2, nil, 30)
-	I = display.newText(" I ", display.contentWidth/2.3, display.contentHeight/1.2, nil, 30)
-	J = display.newText(" J ", display.contentWidth/2.23, display.contentHeight/1.2, nil, 30)
-	K = display.newText(" K ", display.contentWidth/2.13, display.contentHeight/1.2, nil, 30)
-	L = display.newText(" L ", display.contentWidth/2.04, display.contentHeight/1.2, nil, 30)
-	M = display.newText(" M ", display.contentWidth/1.96, display.contentHeight/1.2, nil, 30)
-	N = display.newText(" N ", display.contentWidth/1.87, display.contentHeight/1.2, nil, 30)
-	O = display.newText(" O ", display.contentWidth/1.79, display.contentHeight/1.2, nil, 30)
-	P = display.newText(" P ", display.contentWidth/1.71, display.contentHeight/1.2, nil, 30)
-	Q = display.newText(" Q ", display.contentWidth/1.64, display.contentHeight/1.2, nil, 30)
-	R = display.newText(" R ", display.contentWidth/1.57, display.contentHeight/1.2, nil, 30)
-	S = display.newText(" S ", display.contentWidth/1.5, display.contentHeight/1.2, nil, 30)
-	T = display.newText(" T ", display.contentWidth/1.45, display.contentHeight/1.2, nil, 30)
-	U = display.newText(" U ", display.contentWidth/1.4, display.contentHeight/1.2, nil, 30)
-	V = display.newText(" V ", display.contentWidth/1.35, display.contentHeight/1.2, nil, 30)
-	W = display.newText(" W ", display.contentWidth/1.3, display.contentHeight/1.2, nil, 30)
-	X = display.newText(" X ", display.contentWidth/1.25, display.contentHeight/1.2, nil, 30)
-	Y = display.newText(" Y ", display.contentWidth/1.21, display.contentHeight/1.2, nil, 30)
-	Z = display.newText(" Z ", display.contentWidth/1.18, display.contentHeight/1.2 , nil, 30)
+	D = display.newText(" D ", letterAStartX + letterWidth* 3, letterAOrignalY, nil, 30)
+	E = display.newText(" E ", letterEOriginalX, letterAOrignalY, nil, 30)
+	F = display.newText(" F ", letterFOriginalX, letterAOrignalY, nil, 30)
+	G = display.newText(" G ", letterGOriginalX, letterAOrignalY, nil, 30)
+	H = display.newText(" H ", letterHOriginalX, letterAOrignalY, nil, 30)
+	I = display.newText(" I ", letterIOriginalX, letterAOrignalY, nil, 30)
+	J = display.newText(" J ", letterJOriginalX, letterAOrignalY, nil, 30)
+	K = display.newText(" K ", letterKOriginalX, letterAOrignalY, nil, 30)
+	L = display.newText(" L ", letterLOriginalX, letterAOrignalY, nil, 30)
+	M = display.newText(" M ", letterMOriginalX, letterAOrignalY, nil, 30)
+	N = display.newText(" N ", letterNOriginalX, letterAOrignalY, nil, 30)
+	O = display.newText(" O ", letterOOriginalX, letterAOrignalY, nil, 30)
+	P = display.newText(" P ", letterPOriginalX, letterAOrignalY, nil, 30)
+	Q = display.newText(" Q ", letterQOriginalX, letterAOrignalY, nil, 30)
+	R = display.newText(" R ", letterROriginalX, letterAOrignalY, nil, 30)
+	S = display.newText(" S ", letterSOriginalX, letterAOrignalY, nil, 30)
+	T = display.newText(" T ", letterTOriginalX, letterAOrignalY, nil, 30)
+	U = display.newText(" U ", letterUOriginalX, letterAOrignalY, nil, 30)
+	V = display.newText(" V ", letterVOriginalX, letterAOrignalY, nil, 30)
+	W = display.newText(" W ", letterWOriginalX, letterAOrignalY, nil, 30)
+	X = display.newText(" X ", letterXOriginalX, letterAOrignalY, nil, 30)
+	Y = display.newText(" Y ", letterYOriginalX, letterAOrignalY, nil, 30)
+	Z = display.newText(" Z ", letterZOriginalX, letterAOrignalY , nil, 30)
 
 
 	-----------------------------------------------------------------------------------------
