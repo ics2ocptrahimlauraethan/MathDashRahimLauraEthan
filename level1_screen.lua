@@ -120,8 +120,6 @@ local lives
 local heart1
 local heart2
 local heart3
-local questionsCorrect
-local questionsIncorrect
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -442,6 +440,15 @@ local function LivesCheck()
 	end
 end
 
+local function Transitions()
+	if (score == 5) then
+		composer.gotoScene("youWinScreen")
+
+	elseif (lives == 0) then
+		composer.gotoScene("youLoseScreen")
+	end
+end
+
 local function CheckUserInput()
 
 	if (userTriangle.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
@@ -736,6 +743,7 @@ local function AddShapeListeners()
 	trapezoid4:addEventListener("touch", TouchListenerShapeAnswerSlot3)
 	Runtime:addEventListener("enterFrame", RotateClock)
 	Runtime:addEventListener("enterFrame", KeepShapeCoords)
+	Runtime:addEventListener("enterFrame", Transitions)
 end
 
 
@@ -751,6 +759,7 @@ local function RemoveShapeListeners()
 	trapezoid4:removeEventListener("touch", TouchListenerShapeAnswerSlot3)
 	Runtime:removeEventListener("enterFrame", RotateClock)
 	Runtime:removeEventListener("enterFrame", KeepShapeCoords)
+	Runtime:removeEventListener("enterFrame", Transitions)
 end
 
 -----------------------------------------------------------------------------------------

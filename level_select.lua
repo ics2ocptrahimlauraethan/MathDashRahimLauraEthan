@@ -27,7 +27,7 @@ local lev1Icon
 local lev1TextObject
 
 local lev2Icon
-local lev2IextOject
+local lev2IextObject
 
 local lev3Icon
 local lev3TextObject
@@ -79,43 +79,33 @@ function scene:create( event )
     display.setDefault("background", 255/255, 255/255, 153/255)
 
      -- text object
-    lev1TextObject = display.newText("Level 1", 150, 600, nil, 70)
+
+    lev1TextObject = display.newText("Level 1", 150, 575, nil, 70)
+
+ --   lev1TextObject = display.newText("Level 1", 150, 600, nil, 80)
 
     -- set color
-    lev1TextObject : setTextColor(41/255, 88/255, 24/255)
+    lev1TextObject:setTextColor(41/255, 88/255, 24/255)
 
-    -- display the level 2 icon
-    lev2Icon = display.newImageRect("Images/level2icon.PNG", 250, 250)
+    lev2TextObject = display.newText("Level 2", display.contentWidth/2, 575, nil, 70)
 
-    -- x and y of the level 2 icon
-    lev2Icon.x = display.contentWidth/2
-    lev2Icon.y = display.contentHeight/2
+ --  lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
 
-    -- text object
-    lev2TextObject = display.newText("Level 2", display.contentWidth/2, 500, nil, 80)
+-- set color
+    lev2TextObject:setTextColor(41/255, 88/255, 24/255)
 
-    -- set color
-    lev2TextObject : setTextColor(41/255, 88/255, 24/255)
-
-    -- display the level 3 icon
-    --lev3Icon = display.newImageRect("Images/level3icon.PNG", 250, 250)
-
-    -- x and y of the level 3 icon
-    --lev3Icon.x = 600
-    --lev3Icon.y = display.contentHeight/2
-
-    -- text object
-    lev3TextObject = display.newText("Level 3", 600, 600, nil, 80)
+-- text object
+    lev3TextObject = display.newText("Level 3", 875, 575, nil, 70)
 
     -- set color
-    lev3TextObject : setTextColor(41/255, 88/255, 24/255)
+    lev3TextObject:setTextColor(41/255, 88/255, 24/255)
 
 
 -----------------------------------------------------------------------------------------
     -- BUTTON WIDGETS
     -----------------------------------------------------------------------------------------
 
-    -- Creating Back Button
+    -- Creating level 1 Button
     lev1Icon = widget.newButton( 
     {
         -- Setting Position
@@ -135,7 +125,45 @@ function scene:create( event )
 
     } )
 
+    -- Creating level 2 Button
+    lev2Icon = widget.newButton( 
+    {
+        -- Setting Position
+        x = display.contentWidth/2,
+        y = display.contentHeight/2,
 
+        -- Setting Dimensions
+        width = 250,
+        height = 250,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/level2icon.PNG",
+        overFile = "Images/level2icon.PNG",
+
+        -- Setting Functional Properties
+        onRelease = Level2ScreenTransition
+
+    } )
+
+    -- Creating level 3 Button
+    lev3Icon = widget.newButton( 
+    {
+        -- Setting Position
+        x = 875,
+        y = display.contentHeight/2,
+
+        -- Setting Dimensions
+        width = 250,
+        height = 250,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/level3icon.PNG",
+        overFile = "Images/level3icon.PNG",
+
+        -- Setting Functional Properties
+        onRelease = Level3ScreenTransition
+
+    } )
 
     -- Creating Back Button
     backButton = widget.newButton( 
@@ -166,8 +194,9 @@ function scene:create( event )
     sceneGroup:insert(lev1TextObject)
     sceneGroup:insert(lev2Icon)
     sceneGroup:insert(lev2TextObject)
+    sceneGroup:insert(lev3Icon)
     sceneGroup:insert(lev3TextObject)
-    --sceneGroup:insert(level3icon)
+
 end --function scene:create( event )
 
 -----------------------------------------------------------------------------------------
