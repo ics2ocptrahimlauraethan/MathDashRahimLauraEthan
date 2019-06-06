@@ -26,8 +26,8 @@ sceneName = "level3_screen"
 -- Creating Scene Object
 local scene = composer.newScene( sceneName )
 
--- setting the background color
-display.setDefault("background", 204/255, 229/255, 255/255)
+-- setting the background 
+local bkg
 
 -------------------------------------------------------------------------------------------
 --GLOBAL VARIABLES
@@ -397,7 +397,7 @@ end
 
 local function SetAnswerPositions()
 
-    randomPosition = math.random(1, 1)
+    randomPosition = math.random(1, 5)
 
     if (randomPosition == 1) then
         answerObject.x  = X1
@@ -417,20 +417,71 @@ local function SetAnswerPositions()
 
     elseif (randomPosition == 2) then
 
-        answerObject.x  = X1
-        answerObject.y = Y1
+        answerObject.x  = X2
+        answerObject.y = Y2
 
-        incorrectObject1.x = X2
-        incorrectObject1.y = Y2
+        incorrectObject1.x = X3
+        incorrectObject1.y = Y3
 
-        incorrectObject2.x = X3
-        incorrectObject2.y = Y3
+        incorrectObject2.x = X4
+        incorrectObject2.y = Y4
 
-        incorrectObject3.x = X4
-        incorrectObject3.y = Y4
+        incorrectObject3.x = X5
+        incorrectObject3.y = Y5
 
-        incorrectObject4.x = X5
-        incorrectObject4.y = Y5
+        incorrectObject4.x = X1
+        incorrectObject4.y = Y1
+
+        elseif (randomPosition == 3) then
+
+        answerObject.x  = X3
+        answerObject.y = Y3
+
+        incorrectObject1.x = X4
+        incorrectObject1.y = Y4
+
+        incorrectObject2.x = X5
+        incorrectObject2.y = Y5
+
+        incorrectObject3.x = X1
+        incorrectObject3.y = Y1
+
+        incorrectObject4.x = X2
+        incorrectObject4.y = Y2
+
+        elseif (randomPosition == 4) then
+
+        answerObject.x  = X4
+        answerObject.y = Y4
+
+        incorrectObject1.x = X5
+        incorrectObject1.y = Y5
+
+        incorrectObject2.x = X1
+        incorrectObject2.y = Y1
+
+        incorrectObject3.x = X2
+        incorrectObject3.y = Y2
+
+        incorrectObject4.x = X3
+        incorrectObject4.y = Y3
+
+        elseif (randomPosition == 5) then
+
+        answerObject.x  = X5
+        answerObject.y = Y5
+
+        incorrectObject1.x = X1
+        incorrectObject1.y = Y1
+
+        incorrectObject2.x = X2
+        incorrectObject2.y = Y2
+
+        incorrectObject3.x = X3
+        incorrectObject3.y = Y3
+
+        incorrectObject4.x = X4
+        incorrectObject4.y = Y4
 
 
     end
@@ -497,11 +548,16 @@ local function AnswerListener ( touch )
         -- play correct sound
         correctSoundChannel = audio.play( correctSound )
 
+        -- win function check
+        if (score == 4) then
+            composer.gotoScene ("youWinScreen")
+        end
+
         -- ask new question
-        timer.performWithDelay( 2000, AskQuestion )
+        timer.performWithDelay( 1000, AskQuestion )
 
         -- call HideCorrect after 2 seconds
-        timer.performWithDelay( 2000, HideCorrectTextObject )
+        timer.performWithDelay( 1000, HideCorrectTextObject )
     end
 end
 
@@ -519,10 +575,10 @@ local function IncorrectObject1Listener (touch)
         incorrectSoundChannel = audio.play (incorrectSound)
 
         -- hide the incorrect object after 2 seconds
-        timer.performWithDelay ( 2000, HideIncorrectTextObject )
+        timer.performWithDelay ( 1000, HideIncorrectTextObject )
 
         -- ask new question
-        timer.performWithDelay( 2000, AskQuestion )
+        timer.performWithDelay( 1000, AskQuestion )
     end
 end
 
@@ -539,10 +595,10 @@ local function IncorrectObject2Listener (touch)
         incorrectSoundChannel = audio.play (incorrectSound)
 
         -- hide the incorrect object after 2 seconds
-        timer.performWithDelay ( 2000, HideIncorrectTextObject )
+        timer.performWithDelay ( 1000, HideIncorrectTextObject )
 
         -- ask new question
-        timer.performWithDelay( 2000, AskQuestion )
+        timer.performWithDelay( 1000, AskQuestion )
     end
 end
 
@@ -560,10 +616,10 @@ local function IncorrectObject3Listener (touch)
         incorrectSoundChannel = audio.play (incorrectSound)
 
         -- hide the incorrect object after 2 seconds
-        timer.performWithDelay ( 2000, HideIncorrectTextObject )
+        timer.performWithDelay ( 1000, HideIncorrectTextObject )
 
         -- ask new question        
-        timer.performWithDelay( 2000, AskQuestion )
+        timer.performWithDelay( 1000, AskQuestion )
     end
 end
 
@@ -581,10 +637,10 @@ local function IncorrectObject4Listener (touch)
         incorrectSoundChannel = audio.play (incorrectSound)
 
         -- hide the incorrect object after 2 seconds
-        timer.performWithDelay ( 2000, HideIncorrectTextObject )
+        timer.performWithDelay ( 1000, HideIncorrectTextObject )
 
         -- ask new question
-        timer.performWithDelay( 2000, AskQuestion )
+        timer.performWithDelay( 1000, AskQuestion )
     end
 end
 
@@ -627,7 +683,8 @@ end
 -- winning the game and going back to level select
 local function Win()
     if (score == 4) then
-        composer.gotoScene( "youWinScreen" )
+        composer.gotoScene ("youWinScreen")
+
         --timer.performWithDelay ( 4500, 
         composer.gotoScene ("level_select")
     end
@@ -829,6 +886,14 @@ function scene:create( event )
     scoreText:setTextColor(139/255, 10/255, 144/255)
     scoreText.text = "Score: " .. score
 
+    -- backgroud creation
+    bkg = display.newImageRect ("Images/lev3_bkg.png", 1024, 768)
+
+    -- set the bkg's x and y
+    bkg.x = display.contentWidth/2
+    bkg.y = display.contentHeight/2
+    bkg:toBack()
+
     -----------------------------------------------------------------------------------------
 
     -----------------------------------------------------------------------------------------
@@ -882,6 +947,7 @@ function scene:create( event )
     sceneGroup:insert( lev3Q2_image )
     sceneGroup:insert( incorrectTextObject )
     sceneGroup:insert( correctTextObject )
+    sceneGroup:insert ( bkg )
 
 end --function scene:create( event )
 

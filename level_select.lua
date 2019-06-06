@@ -118,7 +118,7 @@ function scene:create( event )
 
         -- Setting Visual Properties
         defaultFile = "Images/level1icon.PNG",
-        overFile = "Images/level1icon.PNG",
+        overFile = "Images/level1iconPressed.png",
 
         -- Setting Functional Properties
         onRelease = Level1ScreenTransition
@@ -138,7 +138,7 @@ function scene:create( event )
 
         -- Setting Visual Properties
         defaultFile = "Images/level2icon.PNG",
-        overFile = "Images/level2icon.PNG",
+        overFile = "Images/level2iconPressed.png",
 
         -- Setting Functional Properties
         onRelease = Level2ScreenTransition
@@ -158,7 +158,7 @@ function scene:create( event )
 
         -- Setting Visual Properties
         defaultFile = "Images/level3icon.PNG",
-        overFile = "Images/level3icon.PNG",
+        overFile = "Images/level3iconPressed.png",
 
         -- Setting Functional Properties
         onRelease = Level3ScreenTransition
@@ -196,6 +196,7 @@ function scene:create( event )
     sceneGroup:insert(lev2TextObject)
     sceneGroup:insert(lev3Icon)
     sceneGroup:insert(lev3TextObject)
+    sceneGroup:insert(bkg)
 
 end --function scene:create( event )
 
