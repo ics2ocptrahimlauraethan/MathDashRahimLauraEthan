@@ -866,7 +866,6 @@ function scene:create( event )
     sceneGroup:insert( heart2 )
     sceneGroup:insert( heart3 )
     sceneGroup:insert( scoreText )
-    sceneGroup:insert( lev3Q2_image )
     sceneGroup:insert( incorrectTextObject )
     sceneGroup:insert( correctTextObject )
 

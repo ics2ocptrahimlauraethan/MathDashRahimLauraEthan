@@ -76,7 +76,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- set backgrouhnd color
-    display.setDefault("background", 255/255, 255/255, 153/255)
+    display.setDefault("background", 62/255, 154/255, 196/255)
 
      -- text object
     lev1TextObject = display.newText("Level 1", 150, 600, nil, 80)
@@ -84,25 +84,11 @@ function scene:create( event )
     -- set color
     lev1TextObject:setTextColor(41/255, 88/255, 24/255)
 
-    -- display the level 2 icon
-    lev2Icon = display.newImageRect("Images/level2icon.PNG", 250, 250)
-
-    -- x and y of the level 2 icon
-    lev2Icon.x = display.contentWidth/2
-    lev2Icon.y = display.contentHeight/2
-
     -- text object
     lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
 
     -- set color
     lev2TextObject:setTextColor(41/255, 88/255, 24/255)
-
-    -- display the level 3 icon
-    lev3Icon = display.newImageRect("Images/level3icon.PNG", 250, 250)
-
-    -- x and y of the level 3 icon
-    lev3Icon.x = 875
-    lev3Icon.y = display.contentHeight/2
 
     -- text object
     lev3TextObject = display.newText("Level 3", 875, 600, nil, 80)
@@ -135,6 +121,45 @@ function scene:create( event )
 
     } )
 
+    -- Creating lev2Icon Button
+    lev2Icon = widget.newButton( 
+    {
+        -- Setting Position
+        x = display.contentWidth/2,
+        y = display.contentHeight/2,
+
+        -- Setting Dimensions
+        width = 250,
+        height = 250,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/level2icon.PNG",
+        overFile = "Images/level2icon.PNG",
+
+        -- Setting Functional Properties
+        onRelease = Level2ScreenTransition
+
+    } )
+
+        -- Creating lev3Icon Button
+    lev3Icon = widget.newButton( 
+    {
+        -- Setting Position
+        x = 875,
+        y = display.contentHeight/2,
+
+        -- Setting Dimensions
+        width = 250,
+        height = 250,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/level3icon.PNG",
+        overFile = "Images/level3icon.PNG",
+
+        -- Setting Functional Properties
+        onRelease = Level3ScreenTransition
+
+    } )
 
 
     -- Creating Back Button
