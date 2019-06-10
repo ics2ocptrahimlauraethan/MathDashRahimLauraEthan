@@ -708,14 +708,12 @@ function scene:create( event )
 
     -----------------------------------------------------------------------------------------
 
-        -- backgroud creation
+    -- backgroud creation
     bkg = display.newImageRect ("Images/lev3_bkg.png", 1024, 768)
 
     -- set the bkg's x and y
     bkg.x = display.contentWidth/2
     bkg.y = display.contentHeight/2
-
-
 
     -- Insert the shape 1 with x and y position
     lev3Q1_image = display.newImageRect("Images/lev3Q1.png", display.contentWidth/3, display.contentHeight)
