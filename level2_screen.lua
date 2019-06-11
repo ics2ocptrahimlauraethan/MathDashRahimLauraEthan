@@ -1,5 +1,4 @@
 
-
 -----------------------------------------------------------------------------------------
 --
 -- level1_screen.lua
@@ -336,7 +335,6 @@ end
 
 -- The function called when the screen doesn't exist
 function scene:create( event )
-
 	-- Creating a group that associates objects with the scene
 	local sceneGroup = self.view
 	bkgImage = display.newImageRect("Images/bkg.jpg", 3048, 1536)
@@ -408,7 +406,7 @@ function scene:create( event )
 	T = display.newText(" T ", letterTOriginalX, letterAOriginalY, nil, letterSize)
 	U = display.newText(" U ", letterUOriginalX, letterAOriginalY, nil, letterSize)
 	V = display.newText(" V ", letterVOriginalX, letterAOriginalY, nil, letterSize)
-	
+	W = display.newText(" W ", letterWOriginalX, letterAOriginalY, nil, letterSize)
 	X = display.newText(" X ", letterXOriginalX, letterAOriginalY, nil, letterSize)
 	Y = display.newText(" Y ", letterYOriginalX, letterAOriginalY, nil, letterSize)
 	Z = display.newText(" Z ", letterZOriginalX, letterAOriginalY, nil, letterSize)
@@ -545,6 +543,8 @@ scene:addEventListener( "show", scene )
 scene:addEventListener( "hide", scene )
 scene:addEventListener( "destroy", scene )
 
+-----------------------------------------------------------------------------------------
 
+-----------------------------------------------------------------------------------------
 
 return scene
