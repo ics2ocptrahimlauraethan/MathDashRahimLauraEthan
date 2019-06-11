@@ -36,101 +36,101 @@ local answerBox1
 local letterSize = 75
 local letterWidth = 75
 
-local letterAOrignalX = display.contentWidth/9
-local letterAOrignalY = display.contentHeight/1.2
+local letterAOriginalX = display.contentWidth/9
+local letterAOriginalY = display.contentHeight/1.2
 
-local letterBOriginalX = letterAOrignalX + 75
-local letterBOrignalY = letterAOrignalY
+local letterBOriginalX = letterAOriginalX + 75
+local letterBOriginalY = letterAOriginalY
 
-local letterCOriginalX = letterAOrignalX + 150
-local letterCOrignalY = letterAOrignalY
+local letterCOriginalX = letterAOriginalX + 150
+local letterCOriginalY = letterAOriginalY
 
-local letterDOriginalX = letterAOrignalX + 225
-local letterDOrignalY = letterAOrignalY
-
-
-local letterEOriginalX = letterAOrignalX + 300
-local letterEOrignalY = letterAOrignalY
+local letterDOriginalX = letterAOriginalX + 225
+local letterDOriginalY = letterAOriginalY
 
 
-
-local letterFOriginalX = letterAOrignalX + 375
-local letterFOrignalY = letterAOrignalY
-
-
-local letterGOriginalX = letterAOrignalX + 450
-local letterGOrignalY = letterAOrignalY
+local letterEOriginalX = letterAOriginalX + 300
+local letterEOriginalY = letterAOriginalY
 
 
-local letterHOriginalX = letterAOrignalX + 525
-local letterHOrignalY = letterAOrignalY
+
+local letterFOriginalX = letterAOriginalX + 375
+local letterFOriginalY = letterAOriginalY
 
 
-local letterIOriginalX = letterAOrignalX + 600
-local letterIOrignalY = letterAOrignalY
+local letterGOriginalX = letterAOriginalX + 450
+local letterGOriginalY = letterAOriginalY
 
 
-local letterJOriginalX = letterAOrignalX + 675
-local letterJOrignalY = letterAOrignalY
+local letterHOriginalX = letterAOriginalX + 525
+local letterHOriginalY = letterAOriginalY
 
 
-local letterKOriginalX = letterAOrignalX + 750
-local letterKOrignalY = letterAOrignalY
+local letterIOriginalX = letterAOriginalX + 600
+local letterIOriginalY = letterAOriginalY
 
 
-local letterLOriginalX = letterAOrignalX + 825
-local letterLOrignalY = letterAOrignalY
+local letterJOriginalX = letterAOriginalX + 675
+local letterJOriginalY = letterAOriginalY
 
 
-local letterMOriginalX = letterAOrignalX + 900
-local letterMOrignalY = letterAOrignalY
+local letterKOriginalX = letterAOriginalX + 750
+local letterKOriginalY = letterAOriginalY
 
 
-local letterNOriginalX = letterAOrignalX + 975
-local letterNOrignalY = letterAOrignalY
+local letterLOriginalX = letterAOriginalX + 825
+local letterLOriginalY = letterAOriginalY
 
 
-local letterOOriginalX = letterAOrignalX + 1050
-local letterOOrignalY = letterAOrignalY
+local letterMOriginalX = letterAOriginalX + 900
+local letterMOriginalY = letterAOriginalY
 
 
-local letterPOriginalX = letterAOrignalX + 1125
-local letterPOrignalY = letterAOrignalY
+local letterNOriginalX = letterAOriginalX + 975
+local letterNOriginalY = letterAOriginalY
 
 
-local letterQOriginalX = letterAOrignalX + 1200
-local letterQOrignalY = letterAOrignalY
+local letterOOriginalX = letterAOriginalX + 1050
+local letterOOriginalY = letterAOriginalY
 
 
-local letterROriginalX = letterAOrignalX + 1275
-local letterROrignalY = letterAOrignalY
+local letterPOriginalX = letterAOriginalX + 1125
+local letterPOriginalY = letterAOriginalY
 
 
-local letterSOriginalX = letterAOrignalX + 1350
-local letterSOrignalY = letterAOrignalY
+local letterQOriginalX = letterAOriginalX + 1200
+local letterQOriginalY = letterAOriginalY
 
 
-local letterTOriginalX = letterAOrignalX + 1425
-local letterTOrignalY = letterAOrignalY
+local letterROriginalX = letterAOriginalX + 1275
+local letterROriginalY = letterAOriginalY
 
 
-local letterUOriginalX = letterAOrignalX + 1500
-local letterUOrignalY = letterAOrignalY
+local letterSOriginalX = letterAOriginalX + 1350
+local letterSOriginalY = letterAOriginalY
 
-local letterVOriginalX = letterAOrignalX + 1575
-local letterVOrignalY = letterAOrignalY
 
-local letterWOriginalX = letterAOrignalX + 1650
-local letterWOrignalY = letterAOrignalY
+local letterTOriginalX = letterAOriginalX + 1425
+local letterTOriginalY = letterAOriginalY
 
-local letterXOriginalX = letterAOrignalX + 1725
-local letterXOrignalY = letterAOrignalY
 
-local letterYOriginalX = letterAOrignalX + 1800
-local letterYOrignalY = letterAOrignalY
+local letterUOriginalX = letterAOriginalX + 1500
+local letterUOriginalY = letterAOriginalY
 
-local letterZOriginalX = letterAOrignalX + 1875
-local letterZOrignalY = letterAOrignalY
+local letterVOriginalX = letterAOriginalX + 1575
+local letterVOriginalY = letterAOriginalY
+
+local letterWOriginalX = letterAOriginalX + 1650
+local letterWOriginalY = letterAOriginalY
+
+local letterXOriginalX = letterAOriginalX + 1725
+local letterXOriginalY = letterAOriginalY
+
+local letterYOriginalX = letterAOriginalX + 1800
+local letterYOriginalY = letterAOriginalY
+
+local letterZOriginalX = letterAOriginalX + 1875
+local letterZOriginalY = letterAOriginalY
 
 local triangle
 local triangleImage
@@ -220,8 +220,8 @@ local function TouchListenerA(touch)
 
         --else make box go back to where it was
         else
-            A.x = letterAOrignalX
-            A.y = letterAOrignalY
+            A.x = letterAOriginalX
+            A.y = letterAOriginalY
         end
 	end     
 end 
@@ -385,32 +385,32 @@ function scene:create( event )
 	quadrilateralImage.x = display.contentCenterX/1.1
 	quadrilateralImage.y = display.contentCenterY/3
 
-	A = display.newText(" A ", letterAOrignalX, letterAOrignalY, nil, letterSize)
-	--B = display.newText(" B ", letterAStartX + letterWidth, display.contentHeight/1.2, nil, letterSize)
-	--C = display.newText(" C " ,letterAStartX + letterWidth*2, display.contentHeight/1.2, nil, 30)
-	D = display.newText(" D ", letterAStartX + letterWidth* 3, letterAOrignalY, nil, 30)
-	E = display.newText(" E ", letterEOriginalX, letterAOrignalY, nil, 30)
-	F = display.newText(" F ", letterFOriginalX, letterAOrignalY, nil, 30)
-	G = display.newText(" G ", letterGOriginalX, letterAOrignalY, nil, 30)
-	H = display.newText(" H ", letterHOriginalX, letterAOrignalY, nil, 30)
-	I = display.newText(" I ", letterIOriginalX, letterAOrignalY, nil, 30)
-	J = display.newText(" J ", letterJOriginalX, letterAOrignalY, nil, 30)
-	K = display.newText(" K ", letterKOriginalX, letterAOrignalY, nil, 30)
-	L = display.newText(" L ", letterLOriginalX, letterAOrignalY, nil, 30)
-	M = display.newText(" M ", letterMOriginalX, letterAOrignalY, nil, 30)
-	N = display.newText(" N ", letterNOriginalX, letterAOrignalY, nil, 30)
-	O = display.newText(" O ", letterOOriginalX, letterAOrignalY, nil, 30)
-	P = display.newText(" P ", letterPOriginalX, letterAOrignalY, nil, 30)
-	Q = display.newText(" Q ", letterQOriginalX, letterAOrignalY, nil, 30)
-	R = display.newText(" R ", letterROriginalX, letterAOrignalY, nil, 30)
-	S = display.newText(" S ", letterSOriginalX, letterAOrignalY, nil, 30)
-	T = display.newText(" T ", letterTOriginalX, letterAOrignalY, nil, 30)
-	U = display.newText(" U ", letterUOriginalX, letterAOrignalY, nil, 30)
-	V = display.newText(" V ", letterVOriginalX, letterAOrignalY, nil, 30)
-	W = display.newText(" W ", letterWOriginalX, letterAOrignalY, nil, 30)
-	X = display.newText(" X ", letterXOriginalX, letterAOrignalY, nil, 30)
-	Y = display.newText(" Y ", letterYOriginalX, letterAOrignalY, nil, 30)
-	Z = display.newText(" Z ", letterZOriginalX, letterAOrignalY , nil, 30)
+	A = display.newText(" A ", letterAOriginalX, letterAOriginalY, nil, letterSize)
+	B = display.newText(" B ", letterBOriginalX, letterAOriginalY, nil, letterSize)
+	C = display.newText(" C ", letterCOriginalX, letterAOriginalY, nil, letterSize)
+	D = display.newText(" D ", letterDOriginalX, letterAOriginalY, nil, letterSize)
+	E = display.newText(" E ", letterEOriginalX, letterAOriginalY, nil, letterSize)
+	F = display.newText(" F ", letterFOriginalX, letterAOriginalY, nil, letterSize)
+	G = display.newText(" G ", letterGOriginalX, letterAOriginalY, nil, letterSize)
+	H = display.newText(" H ", letterHOriginalX, letterAOriginalY, nil, letterSize)
+	I = display.newText(" I ", letterIOriginalX, letterAOriginalY, nil, letterSize)
+	J = display.newText(" J ", letterJOriginalX, letterAOriginalY, nil, letterSize)
+	K = display.newText(" K ", letterKOriginalX, letterAOriginalY, nil, letterSize)
+	L = display.newText(" L ", letterLOriginalX, letterAOriginalY, nil, letterSize)
+	M = display.newText(" M ", letterMOriginalX, letterAOriginalY, nil, letterSize)
+	N = display.newText(" N ", letterNOriginalX, letterAOriginalY, nil, letterSize)
+	O = display.newText(" O ", letterOOriginalX, letterAOriginalY, nil, letterSize)
+	P = display.newText(" P ", letterPOriginalX, letterAOriginalY, nil, letterSize)
+	Q = display.newText(" Q ", letterQOriginalX, letterAOriginalY, nil, letterSize)
+	R = display.newText(" R ", letterROriginalX, letterAOriginalY, nil, letterSize)
+	S = display.newText(" S ", letterSOriginalX, letterAOriginalY, nil, letterSize)
+	T = display.newText(" T ", letterTOriginalX, letterAOriginalY, nil, letterSize)
+	U = display.newText(" U ", letterUOriginalX, letterAOriginalY, nil, letterSize)
+	V = display.newText(" V ", letterVOriginalX, letterAOriginalY, nil, letterSize)
+	
+	X = display.newText(" X ", letterXOriginalX, letterAOriginalY, nil, letterSize)
+	Y = display.newText(" Y ", letterYOriginalX, letterAOriginalY, nil, letterSize)
+	Z = display.newText(" Z ", letterZOriginalX, letterAOriginalY, nil, letterSize)
 
 
 	-----------------------------------------------------------------------------------------
@@ -437,6 +437,31 @@ function scene:create( event )
 	sceneGroup:insert( quadrilateralImage )
 	sceneGroup:insert( Direction )
 	sceneGroup:insert( A )
+	sceneGroup:insert( B )
+	sceneGroup:insert( C )
+	sceneGroup:insert( D )
+	sceneGroup:insert( E )
+	sceneGroup:insert( F )
+	sceneGroup:insert( G )
+	sceneGroup:insert( H )
+	sceneGroup:insert( I )
+	sceneGroup:insert( J )
+	sceneGroup:insert( K )
+	sceneGroup:insert( L )
+	sceneGroup:insert( M )
+	sceneGroup:insert( N )
+	sceneGroup:insert( O )
+	sceneGroup:insert( P )
+	sceneGroup:insert( Q )
+	sceneGroup:insert( R )
+	sceneGroup:insert( S )
+	sceneGroup:insert( T )
+	sceneGroup:insert( U )
+	sceneGroup:insert( V )
+	sceneGroup:insert( W )
+	sceneGroup:insert( X )
+	sceneGroup:insert( Y )
+	sceneGroup:insert( Z )
 
 
 end --function scene:create( event )
