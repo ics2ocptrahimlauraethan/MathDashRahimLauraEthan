@@ -37,6 +37,9 @@ local backButton
 local level1Button
 local level2Button
 local level3Button
+
+-- background image
+local bkg
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -75,30 +78,33 @@ function scene:create( event )
     -- BACKGROUND AND DISPLAY STATIC OBJECTS
     -----------------------------------------------------------------------------------------
 
-    -- set backgrouhnd color
-    display.setDefault("background", 255/255, 255/255, 153/255)
+    -- set background
+    bkg = display.newImageRect ("Images/levelSelectbkg.png", 1024, 768)
 
-     -- text object
-
+    -- set x and y position
+    bkg.x = display.contentWidth/2
+    bkg.y = display.contentHeight/2
+    
+    -- text object
     lev1TextObject = display.newText("Level 1", 150, 575, nil, 70)
 
  --   lev1TextObject = display.newText("Level 1", 150, 600, nil, 80)
 
     -- set color
-    lev1TextObject:setTextColor(41/255, 88/255, 24/255)
+    lev1TextObject:setTextColor(168/255, 238/255, 231/255)
 
     lev2TextObject = display.newText("Level 2", display.contentWidth/2, 575, nil, 70)
 
  --  lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
 
 -- set color
-    lev2TextObject:setTextColor(41/255, 88/255, 24/255)
+    lev2TextObject:setTextColor(168/255, 238/255, 231/255)
 
 -- text object
     lev3TextObject = display.newText("Level 3", 875, 575, nil, 70)
 
     -- set color
-    lev3TextObject:setTextColor(41/255, 88/255, 24/255)
+    lev3TextObject:setTextColor(168/255, 238/255, 231/255)
 
 
 -----------------------------------------------------------------------------------------
@@ -118,7 +124,7 @@ function scene:create( event )
 
         -- Setting Visual Properties
         defaultFile = "Images/level1icon.PNG",
-        overFile = "Images/level1icon.PNG",
+        overFile = "Images/level1iconPressed.png",
 
         -- Setting Functional Properties
         onRelease = Level1ScreenTransition
@@ -138,7 +144,7 @@ function scene:create( event )
 
         -- Setting Visual Properties
         defaultFile = "Images/level2icon.PNG",
-        overFile = "Images/level2icon.PNG",
+        overFile = "Images/level2iconPressed.png",
 
         -- Setting Functional Properties
         onRelease = Level2ScreenTransition
@@ -158,7 +164,7 @@ function scene:create( event )
 
         -- Setting Visual Properties
         defaultFile = "Images/level3icon.PNG",
-        overFile = "Images/level3icon.PNG",
+        overFile = "Images/level3iconPressed.png",
 
         -- Setting Functional Properties
         onRelease = Level3ScreenTransition
@@ -189,6 +195,7 @@ function scene:create( event )
 
     -----------------------------------------------------------------------------------------
     -- Associating Buttons with this scene
+        sceneGroup:insert(bkg)
     sceneGroup:insert( backButton )
     sceneGroup:insert(lev1Icon)
     sceneGroup:insert(lev1TextObject)
@@ -200,7 +207,11 @@ function scene:create( event )
 end --function scene:create( event )
 
 -----------------------------------------------------------------------------------------
+-- LOCAL FUNCTIONS
+-----------------------------------------------------------------------------------------
 
+
+------------------------------------------------------------------------------------------
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
 
@@ -222,6 +233,7 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
+
     end
 
 end -- function scene:show( event )

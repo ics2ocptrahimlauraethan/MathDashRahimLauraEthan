@@ -12,38 +12,37 @@ local scene = composer.newScene( sceneName )
 
 local bkgImage 
 
+-------------------------------------------------------------------------------------
+--LOCAL FUNCTIONS
+--------------------------------------------------------------------------------------
+
+-- goes back to level select after 4 seconds
+local function GoToLevelSelect()
+
+    composer.gotoScene ("level_select")
+end
 
 function scene:create( event )
 
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
-
-
     
     bkgImage = display.newImageRect("Images/YouLoseScreenLaura@2x.png", 3048, 1536)
    
-
-
     bkgImage.x = display.contentCenterX
     bkgImage.y = display.contentCenterY
     bkgImage.width = display.contentWidth
     bkgImage.height = display.contentHeight
-
-
-
 
     sceneGroup:insert( bkgImage )
 
 
     -----------------------------------------------------------------------------------------
     -- OBJECT CREATION
-    
+    -----------------------------------------------------------------------------------------
   
   
 end -- function scene:create( event )
-
-
-
 
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
@@ -63,14 +62,8 @@ function scene:show( event )
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
-        -- start the splash screen music
-
-
-        -- Call the moveBeetleship function as soon as we enter the frame.
-       
-
-               
-        
+        -- go to level select
+        timer.performWithDelay (4000, GoToLevelSelect)
     end
 
 end --function scene:show( event )
@@ -130,4 +123,3 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
-
