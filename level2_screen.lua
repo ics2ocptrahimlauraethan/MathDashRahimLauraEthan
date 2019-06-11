@@ -31,7 +31,23 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
 
 -- The local variables for this scene
+local shape
+
+
+local textCorrect
+local textIncorrect 
+
 local answerBox1
+local answerBox2
+local answerBox3
+
+local userAnswer1
+local userAnswer2
+local userAnswer3
+
+local answerBox1Filled = false
+local answerBox2Filled = false
+local answerBox3Filled = false
 
 local letterSize = 75
 local letterWidth = 75
@@ -86,7 +102,7 @@ local letterMOriginalX = letterAOriginalX + 900
 local letterMOriginalY = letterAOriginalY
 
 
-local letterNOriginalX = letterAOriginalX + 975
+local letterNOriginalX = letterAOriginalX + 400
 local letterNOriginalY = letterAOriginalY
 
 
@@ -134,7 +150,7 @@ local letterZOriginalY = letterAOriginalY
 
 local triangle
 local triangleImage
-local answerBox1Filled = false
+
 
 
 local square
@@ -158,176 +174,342 @@ local quadrilateralImage
 local Direction
 
 local bkgImage
-local A
-local B
-local C
-local D
-local E
-local F
-local G
-local H
+
 local I
-local J
-local K
+
 local L
-local M
+
 local N
-local O
-local P
-local Q
-local R
-local S
-local T
-local U
-local V
-local W
-local X
-local Y
-local Z
+
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
 local function CheckUserAnswerInput()
+	if (shape == "triangle") then
+		if (answerBox1Filled == true) then
+			print ("***answerBox1 is filled")
+			if (userAnswer1.text == "L") then
+				print ("***L is in answerBox1")
+			else 
+				print ("***L is NOT in answerBox1")
+			end
+		end
+		if (answerBox2Filled == true) then
+			print ("***answerBox2 is filled")
+			if (userAnswer2.text == "L") then
+				print ("***L is in answerBox2")
+			else 
+				print ("***L is NOT in answerBox2")
+			end
+		end
+		if (answerBox3Filled == true) then
+			print ("***answerBox3 is filled")
+			if (userAnswer3.text == "L") then
+				print ("***L is in answerBox3")
+			else 
+				print ("***L is NOT in answerBox3")
+			end
+		end
+
+		if (answerBox1Filled == true) and (answerBox2Filled == true) and ( answerBox3Filled == true) then
+			if (userAnswer1.text == "I") and (userAnswer2.text == "N") and (userAnswer3.text == "L") then
+				textCorrect.isVisible = true
+			else
+				textIncorrect.isVisible = true
+			end
+		end
+
+	end
+
+
 
 end
 
-local function TouchListenerA(touch)
+local function TouchListenerI(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked A")
+		
 		
 	elseif (touch.phase == "moved") then
-		A.x = touch.x
-		A.y = touch.y
+		I.x = touch.x
+		I.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < A.x ) and
-            ((answerBox1.x + answerBox1.width/2) > A.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < A.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > A.y ) ) then
+        if ( ((answerBox1.x - answerBox1.width/2) < I.x ) and
+             ((answerBox1.x + answerBox1.width/2) > I.x ) and 
+             ((answerBox1.y - answerBox1.height/2) < I.y ) and 
+             ((answerBox1.y + answerBox1.height/2) > I.y ) and 
+              answerBox1Filled == false) then
 
             -- setting the position of the number to be in the center of the box
-            A.x = answerBox1.x
-            A.y = answerBox1.y
-            answerBox1Filled = true
+            I.x = answerBox1.x
+            I.y = answerBox1.y
+            userAnswer1 = I
+
+            I:removeEventListener("touch", TouchListenerI)
+           
+            answerBox1Filled = true          
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        elseif ( ((answerBox2.x - answerBox2.width/2) < I.x ) and
+                 ((answerBox2.x + answerBox2.width/2) > I.x ) and 
+                 ((answerBox2.y - answerBox2.height/2) < I.y ) and 
+                 ((answerBox2.y + answerBox2.height/2) > I.y ) and
+        	      answerBox2Filled == false) then
+
+            -- setting the position of the number to be in the center of the box
+            I.x = answerBox2.x
+            I.y = answerBox2.y
+            userAnswer2 = I
+
+            I:removeEventListener("touch", TouchListenerI)
+           
+           	answerBox2Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+        
+        elseif (((answerBox3.x - answerBox3.width/2) < I.x ) and
+            ((answerBox3.x + answerBox3.width/2) > I.x ) and 
+            ((answerBox3.y - answerBox3.height/2) < I.y ) and 
+            ((answerBox3.y + answerBox3.height/2) > I.y ) ) then
+
+            -- setting the position of the number to be in the center of the box
+            I.x = answerBox3.x
+            I.y = answerBox3.y
+            userAnswer3 = I
+
+            I:removeEventListener("touch", TouchListenerI)
+           
+            answerBox3Filled = true
 
             -- call the function to check if the user's input is correct or not
             CheckUserAnswerInput()
 
         --else make box go back to where it was
         else
-            A.x = letterAOriginalX
-            A.y = letterAOriginalY
+           
+            I.x = letterIOriginalX
+            I.y = letterIOriginalY
         end
 	end     
 end 
 
+local function TouchListenerN(touch)
+
+	if (touch.phase == "began") then
+		
+		
+	elseif (touch.phase == "moved") then
+		N.x = touch.x
+		N.y = touch.y
+
+
+		
+	elseif (touch.phase == "ended") then
+	 -- if the number is dragged into the userAnswerBox, place it in the center of it
+        if ( ((answerBox1.x - answerBox1.width/2) < N.x ) and
+             ((answerBox1.x + answerBox1.width/2) > N.x ) and 
+             ((answerBox1.y - answerBox1.height/2) < N.y ) and 
+             ((answerBox1.y + answerBox1.height/2) > N.y ) and 
+              answerBox1Filled == false) then
+
+            -- setting the position of the number to be in the center of the box
+            N.x = answerBox1.x
+            N.y = answerBox1.y
+            userAnswer1 = N
+
+            N:removeEventListener("touch", TouchListenerN)
+           
+            answerBox1Filled = true          
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        elseif ( ((answerBox2.x - answerBox2.width/2) < N.x ) and
+                 ((answerBox2.x + answerBox2.width/2) > N.x ) and 
+                 ((answerBox2.y - answerBox2.height/2) < N.y ) and 
+                 ((answerBox2.y + answerBox2.height/2) > N.y ) and
+        	      answerBox2Filled == false) then
+
+            -- setting the position of the number to be in the center of the box
+            N.x = answerBox2.x
+            N.y = answerBox2.y
+            userAnswer2 = N
+
+            N:removeEventListener("touch", TouchListenerN)
+           
+           	answerBox2Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+        
+        elseif (((answerBox3.x - answerBox3.width/2) < N.x ) and
+            ((answerBox3.x + answerBox3.width/2) > N.x ) and 
+            ((answerBox3.y - answerBox3.height/2) < N.y ) and 
+            ((answerBox3.y + answerBox3.height/2) > N.y ) ) then
+
+            -- setting the position of the number to be in the center of the box
+            N.x = answerBox3.x
+            N.y = answerBox3.y
+            userAnswer3 = N
+
+            N:removeEventListener("touch", TouchListenerN)
+           
+            answerBox3Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        --else make box go back to where it was
+        else
+           
+            N.x = letterNOriginalX
+            N.y = letterNOriginalY
+        end
+	end     
+end 
+
+local function TouchListenerL(touch)
+
+	if (touch.phase == "began") then
+		
+		
+	elseif (touch.phase == "moved") then
+		L.x = touch.x
+		L.y = touch.y
+
+
+		
+	elseif (touch.phase == "ended") then
+	 -- if the number is dragged into the userAnswerBox, place it in the center of it
+        if ( ((answerBox1.x - answerBox1.width/2) < L.x ) and
+             ((answerBox1.x + answerBox1.width/2) > L.x ) and 
+             ((answerBox1.y - answerBox1.height/2) < L.y ) and 
+             ((answerBox1.y + answerBox1.height/2) > L.y ) and 
+              answerBox1Filled == false) then
+
+            -- setting the position of the number to be in the center of the box
+            L.x = answerBox1.x
+            L.y = answerBox1.y
+            userAnswer1 = L
+
+            L:removeEventListener("touch", TouchListenerL)
+           
+            answerBox1Filled = true          
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        elseif ( ((answerBox2.x - answerBox2.width/2) < L.x ) and
+                 ((answerBox2.x + answerBox2.width/2) > L.x ) and 
+                 ((answerBox2.y - answerBox2.height/2) < L.y ) and 
+                 ((answerBox2.y + answerBox2.height/2) > L.y ) and
+        	      answerBox2Filled == false) then
+
+            -- setting the position of the number to be in the center of the box
+            L.x = answerBox2.x
+            L.y = answerBox2.y
+            userAnswer2 = L
+
+            L:removeEventListener("touch", TouchListenerL)
+           
+           	answerBox2Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+        
+        elseif (((answerBox3.x - answerBox3.width/2) < L.x ) and
+            ((answerBox3.x + answerBox3.width/2) > L.x ) and 
+            ((answerBox3.y - answerBox3.height/2) < L.y ) and 
+            ((answerBox3.y + answerBox3.height/2) > L.y ) ) then
+
+            -- setting the position of the number to be in the center of the box
+            L.x = answerBox3.x
+            L.y = answerBox3.y
+            userAnswer3 = L
+
+            L:removeEventListener("touch", TouchListenerL)
+           
+            answerBox3Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        --else make box go back to where it was
+        else
+           
+            L.x = letterLOriginalX
+            L.y = letterLOriginalY
+        end
+	end     
+end 
+
+
 local function AskQuestion()
-	randomOperator = math.random(1,1)
+	randomOperator = math.random(1,2)
 
 	-- TRIANGLE
 	if (randomOperator == 1) then
+		shape = "triangle"
 		-- triangle is visible
 		triangle.isVisible = true
 		triangleImage.isVisible = true
+
+		
+		--square.isVisible = false
+		--squareImage.isVisible = false
+		rectangle.isVisible = false
+		rectangleImage.isVisible = false
+		pentagon.isVisible = false
+		pentagonImage.isVisible = false
+		octogon.isVisible = false
+		octogonImage.isVisible = false
+		quadrilateral.isVisible = false
+		quadrilateralImage.isVisible = false
+
 
 		-- place the answerboxes corresponding to the triangle
 		answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
 		answerBox1.y = display.contentHeight/2
 
-		-- add answerBox1 listener
-		A:addEventListener("touch", TouchListenerA)
+		answerBox2.x =  display.contentWidth/2 + 20
+		answerBox2.y = display.contentHeight/2
 
-		-- make all other shapes invisible
-		square.isVisible = false
-		squareImage.isVisible = false
-		rectangle.isVisible = false
-		rectangleImage.isVisible = false
-		pentagon.isVisible = false
-		pentagonImage.isVisible = false
-		octogon.isVisible = false
-		octogonImage.isVisible = false
-		quadrilateral.isVisible = false
-		quadrilateralImage.isVisible = false
+		answerBox3.x = display.contentWidth/2 + 190
+		answerBox3.y = display.contentHeight/2
+	--elseif (randomOperator == 2) then 
+		--shape = "square"
 
-	elseif (randomOperator == 2) then
-		square.isVisible = true
-		squareImage.isVisible = true
-		triangle.isVisible = false
-		triangleImage.isVisible = false
-		rectangle.isVisible = false
-		rectangleImage.isVisible = false
-		pentagon.isVisible = false
-		pentagonImage.isVisible = false
-		octogon.isVisible = false
-		octogonImage.isVisible = false
-		quadrilateral.isVisible = false		
-		quadrilateralImage.isVisible = false
+		--square.isVisible = true
+		--squareImage.isVisible = true
 
-	elseif (randomOperator == 3) then
-		rectangle.isVisible = true
-		rectangleImage.isVisible = true
-		triangle.isVisible = false
-		triangleImage.isVisible = false
-		square.isVisible = false
-		squareImage.isVisible = false
-		pentagon.isVisible = false
-		pentagonImage.isVisible = false
-		octogon.isVisible = false
-		octogonImage.isVisible = false
-		quadrilateral.isVisible = false
-		quadrilateralImage.isVisible = false
 
-	elseif (randomOperator == 4) then
-		pentagon.isVisible = true
-		pentagonImage.isVisible = true
-		triangle.isVisible = false
-		triangleImage.isVisible = false
-		square.isVisible = false
-		squareImage.isVisible = false
-		rectangle.isVisible = false
-		rectangleImage.isVisible = false
-		octogon.isVisible = false
-		octogonImage.isVisible = false
-		quadrilateral.isVisible = false
-		quadrilateralImage.isVisible = false
 
-	elseif (randomOperator == 5) then
-		octogon.isVisible = true
-		octogonImage.isVisible = true
-		triangle.isVisible = false
-		triangleImage.isVisible = false
-		square.isVisible = false
-		squareImage.isVisible = false
-		rectangle.isVisible = false
-		rectangleImage.isVisible = false
-		pentagon.isVisible = false
-		pentagonImage.isVisible = false
-		quadrilateral.isVisible = false
-		quadrilateralImage.isVisible = false
-
-	elseif (randomOperator == 6) then
-		quadrilateral.isVisible = true
-		quadrilateralImage.isVisible = true
-		triangle.isVisible = false
-		triangleImage.isVisible = false
-		square.isVisible = false
-		squareImage.isVisible = false
-		rectangle.isVisible = false
-		rectangleImage.isVisible = false
-		pentagon.isVisible = false
-		pentagonImage.isVisible = false
-		octogon.isVisible = false
-		octogonImage.isVisible = false
-	end
+	end	
 end
 
 
+local function AddTouchListeners()
+	N:addEventListener("touch", TouchListenerN)
+	I:addEventListener("touch", TouchListenerI)
+	L:addEventListener("touch", TouchListenerL)
 
+end
+
+
+local function RemoveTouchListeners()
+	N:removeEventListener("touch", TouchListenerN)
+	I:removeEventListener("touch", TouchListenerI)
+	L:removeEventListener("touch", TouchListenerL)
+
+end
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -339,10 +521,25 @@ function scene:create( event )
 	local sceneGroup = self.view
 	bkgImage = display.newImageRect("Images/bkg.jpg", 3048, 1536)
    
+
+
     bkgImage.x = display.contentCenterX
     bkgImage.y = display.contentCenterY
     bkgImage.width = display.contentWidth
     bkgImage.height = display.contentHeight
+
+
+    textIncorrect = display.newText("Try Again", display.contentWidth/2, display.contentHeight/1.5, nil, 100) 
+    textIncorrect.isVisible = false
+    textCorrect = display.newText("Correct", display.contentWidth/2, display.contentHeight/1.5, nil, 100)
+	textCorrect.isVisible = false
+	textCorrect:setTextColor(0/255, 255/255, 0/255)
+	textIncorrect:setTextColor(255/255, 0/255, 0/255)
+
+
+
+
+	
 
 	Direction = display.newText("Complete the spelling of the shape.", display.contentWidth/2, display.contentHeight/3, nil, 50)
 
@@ -352,105 +549,53 @@ function scene:create( event )
 	triangleImage.y = display.contentCenterY/3
 	
 
-	square = display.newText( "Sq_ar_", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	squareImage = display.newImageRect("Images/square.png",display.contentWidth/3.3, display.contentHeight/3.3 )
-	squareImage.x = display.contentCenterX/1.1
-	squareImage.y = display.contentCenterY/3
+	
+	I = display.newText("I", letterIOriginalX, letterAOriginalY, nil, letterSize)
+	
+	N = display.newText("N", letterNOriginalX, letterAOriginalY, nil, letterSize)
+	
+	L = display.newText("L", letterLOriginalX, letterAOriginalY, nil, letterSize)
 
 
-	rectangle = display.newText( "Rec__ng_e", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	rectangleImage = display.newImageRect("Images/rectangle.png",display.contentWidth/3.3, display.contentHeight/3.3 )
-	rectangleImage.x = display.contentCenterX/1.1
-	rectangleImage.y = display.contentCenterY/3
-
-
-	pentagon = display.newText( "P_nt_go_", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	pentagonImage = display.newImageRect("Images/pentagon.png",display.contentWidth/3.3, display.contentHeight/3.3 )
-	pentagonImage.x = display.contentCenterX/1.1
-	pentagonImage.y = display.contentCenterY/3
- 
-	octogon = display.newText( "_c_a_on", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	octogonImage = display.newImageRect("Images/octogon.png",display.contentWidth/3.3, display.contentHeight/3.3 )
-	octogonImage.x = display.contentCenterX/1.1
-	octogonImage.y = display.contentCenterY/3
-
-	quadrilateral = display.newText( "q__dr_lat_r_l", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	quadrilateralImage = display.newImageRect("Images/quadrilateral.png",display.contentWidth/3.3, display.contentHeight/3.3 )
-	quadrilateralImage.x = display.contentCenterX/1.1
-	quadrilateralImage.y = display.contentCenterY/3
-
-	A = display.newText(" A ", letterAOriginalX, letterAOriginalY, nil, letterSize)
-	B = display.newText(" B ", letterBOriginalX, letterAOriginalY, nil, letterSize)
-	C = display.newText(" C ", letterCOriginalX, letterAOriginalY, nil, letterSize)
-	D = display.newText(" D ", letterDOriginalX, letterAOriginalY, nil, letterSize)
-	E = display.newText(" E ", letterEOriginalX, letterAOriginalY, nil, letterSize)
-	F = display.newText(" F ", letterFOriginalX, letterAOriginalY, nil, letterSize)
-	G = display.newText(" G ", letterGOriginalX, letterAOriginalY, nil, letterSize)
-	H = display.newText(" H ", letterHOriginalX, letterAOriginalY, nil, letterSize)
-	I = display.newText(" I ", letterIOriginalX, letterAOriginalY, nil, letterSize)
-	J = display.newText(" J ", letterJOriginalX, letterAOriginalY, nil, letterSize)
-	K = display.newText(" K ", letterKOriginalX, letterAOriginalY, nil, letterSize)
-	L = display.newText(" L ", letterLOriginalX, letterAOriginalY, nil, letterSize)
-	M = display.newText(" M ", letterMOriginalX, letterAOriginalY, nil, letterSize)
-	N = display.newText(" N ", letterNOriginalX, letterAOriginalY, nil, letterSize)
-	O = display.newText(" O ", letterOOriginalX, letterAOriginalY, nil, letterSize)
-	P = display.newText(" P ", letterPOriginalX, letterAOriginalY, nil, letterSize)
-	Q = display.newText(" Q ", letterQOriginalX, letterAOriginalY, nil, letterSize)
-	R = display.newText(" R ", letterROriginalX, letterAOriginalY, nil, letterSize)
-	S = display.newText(" S ", letterSOriginalX, letterAOriginalY, nil, letterSize)
-	T = display.newText(" T ", letterTOriginalX, letterAOriginalY, nil, letterSize)
-	U = display.newText(" U ", letterUOriginalX, letterAOriginalY, nil, letterSize)
-	V = display.newText(" V ", letterVOriginalX, letterAOriginalY, nil, letterSize)
-	W = display.newText(" W ", letterWOriginalX, letterAOriginalY, nil, letterSize)
-	X = display.newText(" X ", letterXOriginalX, letterAOriginalY, nil, letterSize)
-	Y = display.newText(" Y ", letterYOriginalX, letterAOriginalY, nil, letterSize)
-	Z = display.newText(" Z ", letterZOriginalX, letterAOriginalY, nil, letterSize)
 	-----------------------------------------------------------------------------------------
+
 	-- the black box where the user will drag the answer
-    answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130, 0, 0)
+    answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
     answerBox1.x = display.contentWidth * 0.6
     answerBox1.y = display.contentHeight * 0.9
+    
+    answerBox2 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
+    answerBox2.x = display.contentWidth * 0.6
+    answerBox2.y = display.contentHeight * 0.9
+
+    answerBox3 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
+    answerBox3.x = display.contentWidth * 0.6
+    answerBox3.y = display.contentHeight * 0.9
+
+
+
+
 
 	sceneGroup:insert( bkgImage )-- Insert background image into the scene group in order to ONLY be associated with this scene
 	sceneGroup:insert( triangle )
 	sceneGroup:insert( triangleImage )  
-	sceneGroup:insert( square )  
-	sceneGroup:insert( squareImage )
-	sceneGroup:insert( rectangle )
-	sceneGroup:insert( rectangleImage )
-	sceneGroup:insert( pentagon )
-	sceneGroup:insert( pentagonImage )
-	sceneGroup:insert( octogon )
-	sceneGroup:insert( octogonImage )	
-	sceneGroup:insert( quadrilateral )
-	sceneGroup:insert( quadrilateralImage )
+  
+
 	sceneGroup:insert( Direction )
-	sceneGroup:insert( A )
-	sceneGroup:insert( B )
-	sceneGroup:insert( C )
-	sceneGroup:insert( D )
-	sceneGroup:insert( E )
-	sceneGroup:insert( F )
-	sceneGroup:insert( G )
-	sceneGroup:insert( H )
+	
+	
+	
 	sceneGroup:insert( I )
-	sceneGroup:insert( J )
-	sceneGroup:insert( K )
-	sceneGroup:insert( L )
-	sceneGroup:insert( M )
+	
 	sceneGroup:insert( N )
-	sceneGroup:insert( O )
-	sceneGroup:insert( P )
-	sceneGroup:insert( Q )
-	sceneGroup:insert( R )
-	sceneGroup:insert( S )
-	sceneGroup:insert( T )
-	sceneGroup:insert( U )
-	sceneGroup:insert( V )
-	sceneGroup:insert( W )
-	sceneGroup:insert( X )
-	sceneGroup:insert( Y )
-	sceneGroup:insert( Z )
+
+	sceneGroup:insert( L )
+
+	sceneGroup:insert(answerBox1)
+	sceneGroup:insert(answerBox2)
+	sceneGroup:insert(answerBox3)
+
+
 
 end --function scene:create( event )
 
@@ -471,7 +616,13 @@ function scene:show( event )
 	-----------------------------------------------------------------------------------------
 
 	elseif ( phase == "did" ) then
+		answerBox1Filled = false
+		answerBox2Filled = false
+		answerBox3Filled = false
 		AskQuestion()
+		AddTouchListeners()
+
+		
 
 		-- Called when the scene is now on screen.
 		-- Insert code here to make the scene come alive.
@@ -501,6 +652,7 @@ function scene:hide( event )
 
 	elseif ( phase == "did" ) then
 		-- Called immediately after scene goes off screen.
+		RemoveTouchListeners()
 		
 	end
 
@@ -537,3 +689,22 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
