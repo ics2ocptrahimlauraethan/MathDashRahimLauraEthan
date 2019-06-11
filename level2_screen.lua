@@ -33,131 +33,8 @@ local scene = composer.newScene( sceneName )
 -- The local variables for this scene
 local answerBox1
 
-local letterSize = 75
-local letterWidth = 75
+local letterWidth
 
-local letterAOrignalX = display.contentWidth/9
-local letterAOrignalY = display.contentHeight/1.2
-
-local letterBOriginalX = letterAOrignalX + 75
-local letterBOrignalY = letterAOrignalY
-
-local letterCOriginalX = letterAOrignalX + 150
-local letterCOrignalY = letterAOrignalY
-
-local letterDOriginalX = letterAOrignalX + 225
-local letterDOrignalY = letterAOrignalY
-
-
-local letterEOriginalX = letterAOrignalX + 300
-local letterEOrignalY = letterAOrignalY
-
-
-
-local letterFOriginalX = letterAOrignalX + 375
-local letterFOrignalY = letterAOrignalY
-
-
-local letterGOriginalX = letterAOrignalX + 450
-local letterGOrignalY = letterAOrignalY
-
-
-local letterHOriginalX = letterAOrignalX + 525
-local letterHOrignalY = letterAOrignalY
-
-
-local letterIOriginalX = letterAOrignalX + 600
-local letterIOrignalY = letterAOrignalY
-
-
-local letterJOriginalX = letterAOrignalX + 675
-local letterJOrignalY = letterAOrignalY
-
-
-local letterKOriginalX = letterAOrignalX + 750
-local letterKOrignalY = letterAOrignalY
-
-
-local letterLOriginalX = letterAOrignalX + 825
-local letterLOrignalY = letterAOrignalY
-
-
-local letterMOriginalX = letterAOrignalX + 900
-local letterMOrignalY = letterAOrignalY
-
-
-local letterNOriginalX = letterAOrignalX + 975
-local letterNOrignalY = letterAOrignalY
-
-
-local letterOOriginalX = letterAOrignalX + 1050
-local letterOOrignalY = letterAOrignalY
-
-
-local letterPOriginalX = letterAOrignalX + 1125
-local letterPOrignalY = letterAOrignalY
-
-
-local letterQOriginalX = letterAOrignalX + 1200
-local letterQOrignalY = letterAOrignalY
-
-
-local letterROriginalX = letterAOrignalX + 1275
-local letterROrignalY = letterAOrignalY
-
-
-local letterSOriginalX = letterAOrignalX + 1350
-local letterSOrignalY = letterAOrignalY
-
-
-local letterTOriginalX = letterAOrignalX + 1425
-local letterTOrignalY = letterAOrignalY
-
-
-local letterUOriginalX = letterAOrignalX + 1500
-local letterUOrignalY = letterAOrignalY
-
-local letterVOriginalX = letterAOrignalX + 1575
-local letterVOrignalY = letterAOrignalY
-
-local letterWOriginalX = letterAOrignalX + 1650
-local letterWOrignalY = letterAOrignalY
-
-local letterXOriginalX = letterAOrignalX + 1725
-local letterXOrignalY = letterAOrignalY
-
-local letterYOriginalX = letterAOrignalX + 1800
-local letterYOrignalY = letterAOrignalY
-
-local letterZOriginalX = letterAOrignalX + 1875
-local letterZOrignalY = letterAOrignalY
-
-local triangle
-local triangleImage
-local answerBox1Filled = false
-
-
-local square
-local squareImage 
-
-
-local rectangle
-local rectangleImage
-
-
-local pentagon
-local pentagonImage
-
-local octogon 
-local octogonImage
-
-
-local quadrilateral 
-local quadrilateralImage 
-
-local Direction
-
-local bkgImage
 local A
 local B
 local C
@@ -184,6 +61,112 @@ local W
 local X
 local Y
 local Z
+
+local letterAOriginalX
+local letterAOriginalY
+
+local letterBOriginalX
+local letterBOriginalY
+
+local letterCOriginalX
+local letterCOriginalY
+
+local letterDOriginalX
+local letterDOriginalY
+
+local letterEOriginalX
+local letterEOriginalY
+
+local letterFOriginalX
+local letterFOriginalY
+
+local letterGOriginalX
+local letterGOriginalY
+
+local letterHOriginalX
+local letterHOriginalY
+
+local letterIOriginalX
+local letterIOriginalY
+
+local letterJOriginalX
+local letterJOriginalY
+
+local letterKOriginalX
+local letterKOriginalY
+
+local letterLOriginalX
+local letterLOriginalY
+
+local letterMOriginalX
+local letterMOriginalY
+
+local letterNOriginalX
+local letterNOriginalY
+
+local letterOOriginalX
+local letterOOriginalY
+
+local letterPOriginalX
+local letterPOriginalY
+
+local letterQOriginalX
+local letterQOriginalY
+
+local letterROriginalX
+local letterROriginalY
+
+local letterSOriginalX
+local letterSOriginalY
+
+local letterTOriginalX
+local letterTOriginalY
+
+local letterUOriginalX
+local letterUOriginalY
+
+local letterVOriginalX
+local letterVOriginalY
+
+local letterWOriginalX
+local letterWOriginalY
+
+local letterXOriginalX
+local letterXOriginalY
+
+local letterYOriginalX
+local letterYOrignialY
+
+local letterZOriginalX
+local letterZOriginalY
+
+local triangle
+local triangleImage
+local answerBox1Filled
+
+
+local square
+local squareImage 
+
+
+local rectangle
+local rectangleImage
+
+
+local pentagon
+local pentagonImage
+
+local octogon 
+local octogonImage
+
+
+local quadrilateral 
+local quadrilateralImage 
+
+local Direction
+
+local bkgImage
+
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -220,8 +203,8 @@ local function TouchListenerA(touch)
 
         --else make box go back to where it was
         else
-            A.x = letterAOrignalX
-            A.y = letterAOrignalY
+            A.x = letterAOriginalX
+            A.y = letterAOriginalY
         end
 	end     
 end 
@@ -254,8 +237,8 @@ local function TouchListenerB(touch)
 
         --else make box go back to where it was
         else
-            B.x = letterBOrignalX
-            B.y = letterBOrignalY
+            B.x = letterBOriginalX
+            B.y = letterBOriginalY
         end
 	end     
 end 
@@ -288,8 +271,8 @@ local function TouchListenerC(touch)
 
         --else make box go back to where it was
         else
-            C.x = letterCOrignalX
-            C.y = letterCOrignalY
+            C.x = letterCOriginalX
+            C.y = letterCOriginalY
         end
 	end     
 end
@@ -322,8 +305,8 @@ local function TouchListenerD(touch)
 
         --else make box go back to where it was
         else
-            D.x = letterDOrignalX
-            D.y = letterDOrignalY
+            D.x = letterDOriginalX
+            D.y = letterDOriginalY
         end
 	end     
 end 
@@ -356,8 +339,8 @@ local function TouchListenerE(touch)
 
         --else make box go back to where it was
         else
-            E.x = letterEOrignalX
-            E.y = letterEOrignalY
+            E.x = letterEOriginalX
+            E.y = letterEOriginalY
         end
 	end     
 end
@@ -390,8 +373,8 @@ local function TouchListenerF(touch)
 
         --else make box go back to where it was
         else
-            F.x = letterFOrignalX
-            F.y = letterFOrignalY
+            F.x = letterFOriginalX
+            F.y = letterFOriginalY
         end
 	end     
 end
@@ -424,8 +407,8 @@ local function TouchListenerG(touch)
 
         --else make box go back to where it was
         else
-            G.x = letterGOrignalX
-            G.y = letterGOrignalY
+            G.x = letterGOriginalX
+            G.y = letterGOriginalY
         end
 	end     
 end
@@ -458,8 +441,8 @@ local function TouchListenerH(touch)
 
         --else make box go back to where it was
         else
-            H.x = letterHOrignalX
-            H.y = letterHOrignalY
+            H.x = letterHOriginalX
+            H.y = letterHOriginalY
         end
 	end     
 end
@@ -492,8 +475,8 @@ local function TouchListenerI(touch)
 
         --else make box go back to where it was
         else
-            I.x = letterIOrignalX
-            I.y = letterIOrignalY
+            I.x = letterIOriginalX
+            I.y = letterIOriginalY
         end
 	end     
 end
@@ -526,8 +509,8 @@ local function TouchListenerJ(touch)
 
         --else make box go back to where it was
         else
-            J.x = letterJOrignalX
-            J.y = letterJOrignalY
+            J.x = letterJOriginalX
+            J.y = letterJOriginalY
         end
 	end     
 end
@@ -560,8 +543,8 @@ local function TouchListenerK(touch)
 
         --else make box go back to where it was
         else
-            K.x = letterKOrignalX
-            K.y = letterKOrignalY
+            K.x = letterKOriginalX
+            K.y = letterKOriginalY
         end
 	end     
 end
@@ -594,8 +577,8 @@ local function TouchListenerL(touch)
 
         --else make box go back to where it was
         else
-            L.x = letterLOrignalX
-            L.y = letterLOrignalY
+            L.x = letterLOriginalX
+            L.y = letterLOriginalY
         end
 	end     
 end
@@ -628,8 +611,8 @@ local function TouchListenerM(touch)
 
         --else make box go back to where it was
         else
-            M.x = letterMOrignalX
-            M.y = letterMOrignalY
+            M.x = letterMOriginalX
+            M.y = letterMOriginalY
         end
 	end     
 end
@@ -662,8 +645,8 @@ local function TouchListenerN(touch)
 
         --else make box go back to where it was
         else
-            N.x = letterNOrignalX
-            N.y = letterNOrignalY
+            N.x = letterNOriginalX
+            N.y = letterNOriginalY
         end
 	end     
 end
@@ -696,8 +679,8 @@ local function TouchListenerO(touch)
 
         --else make box go back to where it was
         else
-            O.x = letterOOrignalX
-            O.y = letterOOrignalY
+            O.x = letterOOriginalX
+            O.y = letterOOriginalY
         end
 	end     
 end
@@ -730,8 +713,8 @@ local function TouchListenerP(touch)
 
         --else make box go back to where it was
         else
-            P.x = letterPOrignalX
-            P.y = letterPOrignalY
+            P.x = letterPOriginalX
+            P.y = letterPOriginalY
         end
 	end     
 end
@@ -764,8 +747,8 @@ local function TouchListenerQ(touch)
 
         --else make box go back to where it was
         else
-            Q.x = letterQOrignalX
-            Q.y = letterQOrignalY
+            Q.x = letterQOriginalX
+            Q.y = letterQOriginalY
         end
 	end     
 end
@@ -798,8 +781,8 @@ local function TouchListenerR(touch)
 
         --else make box go back to where it was
         else
-            R.x = letterROrignalX
-            R.y = letterROrignalY
+            R.x = letterROriginalX
+            R.y = letterROriginalY
         end
 	end     
 end
@@ -832,8 +815,8 @@ local function TouchListenerS(touch)
 
         --else make box go back to where it was
         else
-            S.x = letterSOrignalX
-            S.y = letterSOrignalY
+            S.x = letterSOriginalX
+            S.y = letterSOriginalY
         end
 	end     
 end
@@ -866,8 +849,8 @@ local function TouchListenerT(touch)
 
         --else make box go back to where it was
         else
-            T.x = letterTOrignalX
-            T.y = letterTOrignalY
+            T.x = letterTOriginalX
+            T.y = letterTOriginalY
         end
 	end     
 end
@@ -900,8 +883,8 @@ local function TouchListenerU(touch)
 
         --else make box go back to where it was
         else
-            U.x = letterUOrignalX
-            U.y = letterUOrignalY
+            U.x = letterUOriginalX
+            U.y = letterUOriginalY
         end
 	end     
 end
@@ -934,8 +917,8 @@ local function TouchListenerV(touch)
 
         --else make box go back to where it was
         else
-            V.x = letterVOrignalX
-            V.y = letterVOrignalY
+            V.x = letterVOriginalX
+            V.y = letterVOriginalY
         end
 	end     
 end
@@ -968,8 +951,8 @@ local function TouchListenerW(touch)
 
         --else make box go back to where it was
         else
-            W.x = letterWOrignalX
-            W.y = letterWOrignalY
+            W.x = letterWOriginalX
+            W.y = letterWOriginalY
         end
 	end     
 end
@@ -1002,8 +985,8 @@ local function TouchListenerX(touch)
 
         --else make box go back to where it was
         else
-            X.x = letterXOrignalX
-            X.y = letterXOrignalY
+            X.x = letterXOriginalX
+            X.y = letterXOriginalY
         end
 	end     
 end
@@ -1036,8 +1019,8 @@ local function TouchListenerY(touch)
 
         --else make box go back to where it was
         else
-            Y.x = letterYOrignalX
-            Y.y = letterYOrignalY
+            Y.x = letterYOriginalX
+            Y.y = letterYOriginalY
         end
 	end     
 end
@@ -1070,8 +1053,8 @@ local function TouchListenerZ(touch)
 
         --else make box go back to where it was
         else
-            Z.x = letterZOrignalX
-            Z.y = letterZOrignalY
+            Z.x = letterZOriginalX
+            Z.y = letterZOriginalY
         end
 	end     
 end
@@ -1090,9 +1073,6 @@ local function AskQuestion()
 		-- place the answerboxes corresponding to the triangle
 		answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
 		answerBox1.y = display.contentHeight/2
-
-		-- add answerBox1 listener
-		A:addEventListener("touch", TouchListenerA)
 
 		-- make all other shapes invisible
 		square.isVisible = false
@@ -1178,6 +1158,65 @@ local function AskQuestion()
 	end
 end
 
+local function AddEventListeners()
+			-- add answerBox1 listener
+	A:addEventListener("touch", TouchListenerA)
+	B:addEventListener("touch", TouchListenerB)
+	C:addEventListener("touch", TouchListenerC)
+	D:addEventListener("touch", TouchListenerD)
+	E:addEventListener("touch", TouchListenerE)
+	F:addEventListener("touch", TouchListenerF)
+	G:addEventListener("touch", TouchListenerG)
+	H:addEventListener("touch", TouchListenerH)
+	I:addEventListener("touch", TouchListenerI)
+	J:addEventListener("touch", TouchListenerJ)
+	K:addEventListener("touch", TouchListenerK)
+	L:addEventListener("touch", TouchListenerL)
+	M:addEventListener("touch", TouchListenerM)
+	N:addEventListener("touch", TouchListenerN)
+	O:addEventListener("touch", TouchListenerO)
+	P:addEventListener("touch", TouchListenerP)
+	Q:addEventListener("touch", TouchListenerQ)
+	R:addEventListener("touch", TouchListenerR)
+	S:addEventListener("touch", TouchListenerS)
+	T:addEventListener("touch", TouchListenerT)
+	U:addEventListener("touch", TouchListenerU)
+	V:addEventListener("touch", TouchListenerV)
+	W:addEventListener("touch", TouchListenerW)
+	X:addEventListener("touch", TouchListenerX)
+	Y:addEventListener("touch", TouchListenerY)
+	Z:addEventListener("touch", TouchListenerZ)
+end
+
+local function RemoveEventListeners()
+			-- add answerBox1 listener
+	A:removeEventListener("touch", TouchListenerA)
+	B:removeEventListener("touch", TouchListenerB)
+	C:removeEventListener("touch", TouchListenerC)
+	D:removeEventListener("touch", TouchListenerD)
+	E:removeEventListener("touch", TouchListenerE)
+	F:removeEventListener("touch", TouchListenerF)
+	G:removeEventListener("touch", TouchListenerG)
+	H:removeEventListener("touch", TouchListenerH)
+	I:removeEventListener("touch", TouchListenerI)
+	J:removeEventListener("touch", TouchListenerJ)
+	K:removeEventListener("touch", TouchListenerK)
+	L:removeEventListener("touch", TouchListenerL)
+	M:removeEventListener("touch", TouchListenerM)
+	N:removeEventListener("touch", TouchListenerN)
+	O:removeEventListener("touch", TouchListenerO)
+	P:removeEventListener("touch", TouchListenerP)
+	Q:removeEventListener("touch", TouchListenerQ)
+	R:removeEventListener("touch", TouchListenerR)
+	S:removeEventListener("touch", TouchListenerS)
+	T:removeEventListener("touch", TouchListenerT)
+	U:removeEventListener("touch", TouchListenerU)
+	V:removeEventListener("touch", TouchListenerV)
+	W:removeEventListener("touch", TouchListenerW)
+	X:removeEventListener("touch", TouchListenerX)
+	Y:removeEventListener("touch", TouchListenerY)
+	Z:removeEventListener("touch", TouchListenerZ)
+end
 
 
 
@@ -1190,16 +1229,14 @@ function scene:create( event )
 
 	-- Creating a group that associates objects with the scene
 	local sceneGroup = self.view
+	
 	bkgImage = display.newImageRect("Images/bkg.jpg", 3048, 1536)
    
-
 
     bkgImage.x = display.contentCenterX
     bkgImage.y = display.contentCenterY
     bkgImage.width = display.contentWidth
     bkgImage.height = display.contentHeight
-
-	
 
 	Direction = display.newText("Complete the spelling of the shape.", display.contentWidth/2, display.contentHeight/3, nil, 50)
 
@@ -1237,32 +1274,112 @@ function scene:create( event )
 	quadrilateralImage.x = display.contentCenterX/1.1
 	quadrilateralImage.y = display.contentCenterY/3
 
-	A = display.newText(" A ", letterAOrignalX, letterAOrignalY, nil, letterSize)
-	--B = display.newText(" B ", letterAStartX + letterWidth, display.contentHeight/1.2, nil, letterSize)
-	--C = display.newText(" C " ,letterAStartX + letterWidth*2, display.contentHeight/1.2, nil, 30)
-	D = display.newText(" D ", letterAStartX + letterWidth* 3, letterAOrignalY, nil, 30)
-	E = display.newText(" E ", letterEOriginalX, letterAOrignalY, nil, 30)
-	F = display.newText(" F ", letterFOriginalX, letterAOrignalY, nil, 30)
-	G = display.newText(" G ", letterGOriginalX, letterAOrignalY, nil, 30)
-	H = display.newText(" H ", letterHOriginalX, letterAOrignalY, nil, 30)
-	I = display.newText(" I ", letterIOriginalX, letterAOrignalY, nil, 30)
-	J = display.newText(" J ", letterJOriginalX, letterAOrignalY, nil, 30)
-	K = display.newText(" K ", letterKOriginalX, letterAOrignalY, nil, 30)
-	L = display.newText(" L ", letterLOriginalX, letterAOrignalY, nil, 30)
-	M = display.newText(" M ", letterMOriginalX, letterAOrignalY, nil, 30)
-	N = display.newText(" N ", letterNOriginalX, letterAOrignalY, nil, 30)
-	O = display.newText(" O ", letterOOriginalX, letterAOrignalY, nil, 30)
-	P = display.newText(" P ", letterPOriginalX, letterAOrignalY, nil, 30)
-	Q = display.newText(" Q ", letterQOriginalX, letterAOrignalY, nil, 30)
-	R = display.newText(" R ", letterROriginalX, letterAOrignalY, nil, 30)
-	S = display.newText(" S ", letterSOriginalX, letterAOrignalY, nil, 30)
-	T = display.newText(" T ", letterTOriginalX, letterAOrignalY, nil, 30)
-	U = display.newText(" U ", letterUOriginalX, letterAOrignalY, nil, 30)
-	V = display.newText(" V ", letterVOriginalX, letterAOrignalY, nil, 30)
-	W = display.newText(" W ", letterWOriginalX, letterAOrignalY, nil, 30)
-	X = display.newText(" X ", letterXOriginalX, letterAOrignalY, nil, 30)
-	Y = display.newText(" Y ", letterYOriginalX, letterAOrignalY, nil, 30)
-	Z = display.newText(" Z ", letterZOriginalX, letterAOrignalY , nil, 30)
+	A = display.newText(" A ", letterAOriginalX, display.contentHeight/1.2, nil, 30)
+	B = display.newText(" B ", letterBOriginalX, display.contentHeight/1.2, nil, 30)
+	C = display.newText(" C ", letterCOriginalX, display.contentHeight/1.2, nil, 30)
+	D = display.newText(" D ", letterDOriginalX, display.contentHeight/1.2, nil, 30)
+	E = display.newText(" E ", letterEOriginalX, display.contentHeight/1.2, nil, 30)
+	F = display.newText(" F ", letterFOriginalX, display.contentHeight/1.2, nil, 30)
+	G = display.newText(" G ", letterGOriginalX, display.contentHeight/1.2, nil, 30)
+	H = display.newText(" H ", letterHOriginalX, display.contentHeight/1.2, nil, 30)
+	I = display.newText(" I ", letterIOriginalX, display.contentHeight/1.2, nil, 30)
+	J = display.newText(" J ", letterJOriginalX, display.contentHeight/1.2, nil, 30)
+	K = display.newText(" K ", letterKOriginalX, display.contentHeight/1.2, nil, 30)
+	L = display.newText(" L ", letterLOriginalX, display.contentHeight/1.2, nil, 30)
+	M = display.newText(" M ", letterMOriginalX, display.contentHeight/1.2, nil, 30)
+	N = display.newText(" N ", letterNOriginalX, display.contentHeight/1.2, nil, 30)
+	O = display.newText(" O ", letterOOriginalX, display.contentHeight/1.2, nil, 30)
+	P = display.newText(" P ", letterPOriginalX, display.contentHeight/1.2, nil, 30)
+	Q = display.newText(" Q ", letterQOriginalX, display.contentHeight/1.2, nil, 30)
+	R = display.newText(" R ", letterROriginalX, display.contentHeight/1.2, nil, 30)
+	S = display.newText(" S ", letterSOriginalX, display.contentHeight/1.2, nil, 30)
+	T = display.newText(" T ", letterTOriginalX, display.contentHeight/1.2, nil, 30)
+	U = display.newText(" U ", letterUOriginalX, display.contentHeight/1.2, nil, 30)
+	V = display.newText(" V ", letterVOriginalX, display.contentHeight/1.2, nil, 30)
+	W = display.newText(" W ", letterWOriginalX, display.contentHeight/1.2, nil, 30)
+	X = display.newText(" X ", letterXOriginalX, display.contentHeight/1.2, nil, 30)
+	Y = display.newText(" Y ", letterYOriginalX, display.contentHeight/1.2, nil, 30)
+	Z = display.newText(" Z ", letterZOriginalX, display.contentHeight/1.2, nil, 30)
+
+	letterAOriginalX = display.contentWidth/9
+	letterAOriginalY = display.contentHeight/1.2
+
+	letterBOriginalX = letterAOriginalX.x + 75
+	letterBOriginalY = letterAOriginalY.y
+
+	letterCOriginalX = letterAOriginalX.x + 100
+	letterCOriginalY = letterAOriginalY.y
+
+	letterDOriginalX = letterAOriginalX.x + 125
+	letterDOriginalY = letterAOriginalY.y
+	
+	letterEOriginalX = letterAOriginalX.x + 150
+	letterEOriginalY = letterAOriginalY.y
+	
+	letterFOriginalX = letterAOriginalX.x + 175
+	letterFOriginalY = letterAOriginalY.y
+	
+	letterGOriginalX = letterAOriginalX.x + 200
+	letterGOriginalY = letterAOriginalY.y
+	
+	letterHOriginalX = letterAOriginalX.x + 225
+	letterHOriginalY = letterAOriginalY.y
+	
+	letterIOriginalX = letterAOriginalX.x + 250
+	letterIOriginalY = letterAOriginalY.y
+	
+	letterJOriginalX = letterAOriginalX.x + 275
+	letterJOriginalY = letterAOriginalY.y
+	
+	letterKOriginalX = letterAOriginalX.x + 300
+	letterKOriginalY = letterAOriginalY.y
+	
+	letterLOriginalX = letterAOriginalX.x + 325
+	letterLOriginalY = letterAOriginalY.y
+	
+	letterMOriginalX = letterAOriginalX.x + 350
+	letterMOriginalY = letterAOriginalY.y
+	
+	letterNOriginalX = letterAOriginalX.x + 350
+	letterNOriginalY = letterAOriginalY.y
+	
+	letterOOriginalX = letterAOriginalX.x + 375
+	letterOOriginalY = letterAOriginalY.y
+	
+	letterPOriginalX = letterAOriginalX.x + 400
+	letterPOriginalY = letterAOriginalY.y
+	
+	letterQOriginalX = letterAOriginalX.x + 425
+	letterQOriginalY = letterAOriginalY.y
+	
+	letterROriginalX = letterAOriginalX.x + 450
+	letterROriginalY = letterAOriginalY.y
+	
+	letterSOriginalX = letterAOriginalX.x + 475
+	letterSOriginalY = letterAOriginalY.y
+	
+	letterTOriginalX = letterAOriginalX.x + 500
+	letterTOriginalY = letterAOriginalY.y
+	
+	letterUOriginalX = letterAOriginalX.x + 525
+	letterUOriginalY = letterAOriginalY.y
+	
+	letterVOriginalX = letterAOriginalX.x + 550
+	letterVOriginalY = letterAOriginalY.y
+	
+	letterWOriginalX = letterAOriginalX.x + 575
+	letterWOriginalY = letterAOriginalY.y
+	
+	letterXOriginalX = letterAOriginalX.x + 600
+	letterXOriginalY = letterAOriginalY.y
+	
+	letterYOriginalX = letterAOriginalX.x + 675
+	letterYOriginalY = letterAOriginalY.y
+	
+	letterZOriginalX = letterAOriginalX.x + 700
+	letterZOriginalY = letterAOriginalY.y
+
+	letterWidth = 75
 
 
 	-----------------------------------------------------------------------------------------
@@ -1271,6 +1388,7 @@ function scene:create( event )
     answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130, 0, 0)
     answerBox1.x = display.contentWidth * 0.6
     answerBox1.y = display.contentHeight * 0.9
+    answerBox1Filled = false
 
 
 
@@ -1287,8 +1405,9 @@ function scene:create( event )
 	sceneGroup:insert( octogonImage )	
 	sceneGroup:insert( quadrilateral )
 	sceneGroup:insert( quadrilateralImage )
-	sceneGroup:insert( Direction )
 	sceneGroup:insert( A )
+	sceneGroup:insert( B )
+	sceneGroup:insert( C )
 	sceneGroup:insert( D )
 	sceneGroup:insert( E )
 	sceneGroup:insert( F )
@@ -1296,7 +1415,6 @@ function scene:create( event )
 	sceneGroup:insert( H )
 	sceneGroup:insert( I )
 	sceneGroup:insert( J )
-	sceneGroup:insert( A )
 	sceneGroup:insert( K )
 	sceneGroup:insert( L )
 	sceneGroup:insert( M )
@@ -1338,7 +1456,7 @@ function scene:show( event )
 
 	elseif ( phase == "did" ) then
 		AskQuestion()
-
+		AddEventListeners()
 		-- Called when the scene is now on screen.
 		-- Insert code here to make the scene come alive.
 		-- Example: start timers, begin animation, play audio, etc.
@@ -1367,7 +1485,7 @@ function scene:hide( event )
 
 	elseif ( phase == "did" ) then
 		-- Called immediately after scene goes off screen.
-		
+		RemoveEventListeners()
 	end
 
 end --function scene:hide( event )
