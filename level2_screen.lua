@@ -339,14 +339,10 @@ function scene:create( event )
 	local sceneGroup = self.view
 	bkgImage = display.newImageRect("Images/bkg.jpg", 3048, 1536)
    
-
-
     bkgImage.x = display.contentCenterX
     bkgImage.y = display.contentCenterY
     bkgImage.width = display.contentWidth
     bkgImage.height = display.contentHeight
-
-	
 
 	Direction = display.newText("Complete the spelling of the shape.", display.contentWidth/2, display.contentHeight/3, nil, 50)
 
@@ -373,7 +369,6 @@ function scene:create( event )
 	pentagonImage.x = display.contentCenterX/1.1
 	pentagonImage.y = display.contentCenterY/3
  
-
 	octogon = display.newText( "_c_a_on", display.contentWidth/2, display.contentHeight/2, nil, 150)
 	octogonImage = display.newImageRect("Images/octogon.png",display.contentWidth/3.3, display.contentHeight/3.3 )
 	octogonImage.x = display.contentCenterX/1.1
@@ -410,16 +405,11 @@ function scene:create( event )
 	X = display.newText(" X ", letterXOriginalX, letterAOriginalY, nil, letterSize)
 	Y = display.newText(" Y ", letterYOriginalX, letterAOriginalY, nil, letterSize)
 	Z = display.newText(" Z ", letterZOriginalX, letterAOriginalY, nil, letterSize)
-
-
 	-----------------------------------------------------------------------------------------
-
 	-- the black box where the user will drag the answer
     answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130, 0, 0)
     answerBox1.x = display.contentWidth * 0.6
     answerBox1.y = display.contentHeight * 0.9
-
-
 
 	sceneGroup:insert( bkgImage )-- Insert background image into the scene group in order to ONLY be associated with this scene
 	sceneGroup:insert( triangle )
@@ -461,7 +451,6 @@ function scene:create( event )
 	sceneGroup:insert( X )
 	sceneGroup:insert( Y )
 	sceneGroup:insert( Z )
-
 
 end --function scene:create( event )
 
