@@ -35,32 +35,32 @@ local answerBox1
 
 local letterWidth
 
-local A
-local B
-local C
-local D
-local E
-local F
-local G
-local H
-local I
-local J
-local K
-local L
-local M
-local N
-local O
-local P
-local Q
-local R
-local S
-local T
-local U
-local V
-local W
-local X
-local Y
-local Z
+local letterA
+local letterB
+local letterC
+local letterD
+local letterE
+local letterF
+local letterG
+local letterH
+local letterI
+local letterJ
+local letterK
+local letterL
+local letterM
+local letterN
+local letterO
+local letterP
+local letterQ
+local letterR
+local letterS
+local letterT
+local letterU
+local letterV
+local letterW
+local letterX
+local letterY
+local letterZ
 
 local letterAOriginalX
 local letterAOriginalY
@@ -178,24 +178,23 @@ end
 local function TouchListenerA(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked A")
 		
 	elseif (touch.phase == "moved") then
-		A.x = touch.x
-		A.y = touch.y
+		letterA.x = touch.x
+		letterA.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < A.x ) and
-            ((answerBox1.x + answerBox1.width/2) > A.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < A.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > A.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterA.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterA.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterA.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterA.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            A.x = answerBox1.x
-            A.y = answerBox1.y
+            letterA.x = answerBox1.x
+            letterA.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -203,8 +202,8 @@ local function TouchListenerA(touch)
 
         --else make box go back to where it was
         else
-            A.x = letterAOriginalX
-            A.y = letterAOriginalY
+            letterA.x = letterAOriginalX
+            letterA.y = letterAOriginalY
         end
 	end     
 end 
@@ -212,24 +211,23 @@ end
 local function TouchListenerB(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked B")
 		
 	elseif (touch.phase == "moved") then
-		B.x = touch.x
-		B.y = touch.y
+		letterB.x = touch.x
+		letterB.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < B.x ) and
-            ((answerBox1.x + answerBox1.width/2) > B.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < B.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > B.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterB.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterB.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterB.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterB.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            B.x = answerBox1.x
-            B.y = answerBox1.y
+            letterB.x = answerBox1.x
+            letterB.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -237,8 +235,8 @@ local function TouchListenerB(touch)
 
         --else make box go back to where it was
         else
-            B.x = letterBOriginalX
-            B.y = letterBOriginalY
+            letterB.x = letterBOriginalX
+            letterB.y = letterBOriginalY
         end
 	end     
 end 
@@ -246,24 +244,23 @@ end
 local function TouchListenerC(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked C")
 		
 	elseif (touch.phase == "moved") then
-		C.x = touch.x
-		C.y = touch.y
+		letterC.x = touch.x
+		letterC.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < C.x ) and
-            ((answerBox1.x + answerBox1.width/2) > C.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < C.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > C.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterC.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterC.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterC.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterC.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            C.x = answerBox1.x
-            C.y = answerBox1.y
+            letterC.x = answerBox1.x
+            letterC.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -271,8 +268,8 @@ local function TouchListenerC(touch)
 
         --else make box go back to where it was
         else
-            C.x = letterCOriginalX
-            C.y = letterCOriginalY
+            letterC.x = letterCOriginalX
+            letterC.y = letterCOriginalY
         end
 	end     
 end
@@ -280,24 +277,23 @@ end
 local function TouchListenerD(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked D")
 		
 	elseif (touch.phase == "moved") then
-		D.x = touch.x
-		D.y = touch.y
+		letterD.x = touch.x
+		letterD.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < D.x ) and
-            ((answerBox1.x + answerBox1.width/2) > D.x ) and 
-            ((answerBox1.y - answerBox1.height/2) <D.y ) and 
-            ((answerBox1.y + answerBox1.height/2) >D.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterD.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterD.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterD.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterD.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            D.x = answerBox1.x
-            D.y = answerBox1.y
+            letterD.x = answerBox1.x
+            letterD.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -305,8 +301,8 @@ local function TouchListenerD(touch)
 
         --else make box go back to where it was
         else
-            D.x = letterDOriginalX
-            D.y = letterDOriginalY
+            letterD.x = letterDOriginalX
+            letterD.y = letterDOriginalY
         end
 	end     
 end 
@@ -314,24 +310,24 @@ end
 local function TouchListenerE(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked E")
+
 		
 	elseif (touch.phase == "moved") then
-		E.x = touch.x
-		E.y = touch.y
+		letterE.x = touch.x
+		letterE.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < E.x ) and
-            ((answerBox1.x + answerBox1.width/2) > E.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < E.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > E.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterE.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterE.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterE.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterE.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            E.x = answerBox1.x
-            E.y = answerBox1.y
+            letterE.x = answerBox1.x
+            letterE.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -339,8 +335,8 @@ local function TouchListenerE(touch)
 
         --else make box go back to where it was
         else
-            E.x = letterEOriginalX
-            E.y = letterEOriginalY
+            letterE.x = letterEOriginalX
+            letterE.y = letterEOriginalY
         end
 	end     
 end
@@ -348,24 +344,23 @@ end
 local function TouchListenerF(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked F")
 		
 	elseif (touch.phase == "moved") then
-		F.x = touch.x
-		F.y = touch.y
+		letterF.x = touch.x
+		letterF.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < F.x ) and
-            ((answerBox1.x + answerBox1.width/2) > F.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < F.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > F.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterF.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterF.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterF.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterF.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            F.x = answerBox1.x
-            F.y = answerBox1.y
+            letterF.x = answerBox1.x
+            letterF.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -373,8 +368,8 @@ local function TouchListenerF(touch)
 
         --else make box go back to where it was
         else
-            F.x = letterFOriginalX
-            F.y = letterFOriginalY
+            letterF.x = letterFOriginalX
+            letterF.y = letterFOriginalY
         end
 	end     
 end
@@ -382,24 +377,23 @@ end
 local function TouchListenerG(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked G")
 		
 	elseif (touch.phase == "moved") then
-		G.x = touch.x
-		G.y = touch.y
+		letterG.x = touch.x
+		letterG.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < G.x ) and
-            ((answerBox1.x + answerBox1.width/2) > G.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < G.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > G.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterG.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterG.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterG.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterG.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            G.x = answerBox1.x
-            G.y = answerBox1.y
+            letterG.x = answerBox1.x
+            letterG.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -407,8 +401,8 @@ local function TouchListenerG(touch)
 
         --else make box go back to where it was
         else
-            G.x = letterGOriginalX
-            G.y = letterGOriginalY
+            letterG.x = letterGOriginalX
+            letterG.y = letterGOriginalY
         end
 	end     
 end
@@ -416,24 +410,23 @@ end
 local function TouchListenerH(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked H")
 		
 	elseif (touch.phase == "moved") then
-		H.x = touch.x
-		H.y = touch.y
+		letterH.x = touch.x
+		letterH.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < H.x ) and
-            ((answerBox1.x + answerBox1.width/2) > H.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < H.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > H.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterH.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterH.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterH.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterH.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            H.x = answerBox1.x
-            H.y = answerBox1.y
+            letterH.x = answerBox1.x
+            letterH.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -441,8 +434,8 @@ local function TouchListenerH(touch)
 
         --else make box go back to where it was
         else
-            H.x = letterHOriginalX
-            H.y = letterHOriginalY
+            letterH.x = letterHOriginalX
+            letterH.y = letterHOriginalY
         end
 	end     
 end
@@ -450,24 +443,23 @@ end
 local function TouchListenerI(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked I")
 		
 	elseif (touch.phase == "moved") then
-		I.x = touch.x
-		I.y = touch.y
+		letterI.x = touch.x
+		letterI.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < I.x ) and
-            ((answerBox1.x + answerBox1.width/2) > I.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < I.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > I.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterI.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterI.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterI.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterI.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            I.x = answerBox1.x
-            I.y = answerBox1.y
+            letterI.x = answerBox1.x
+            letterI.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -475,8 +467,8 @@ local function TouchListenerI(touch)
 
         --else make box go back to where it was
         else
-            I.x = letterIOriginalX
-            I.y = letterIOriginalY
+            letterI.x = letterIOriginalX
+            letterI.y = letterIOriginalY
         end
 	end     
 end
@@ -484,24 +476,23 @@ end
 local function TouchListenerJ(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked J")
 		
 	elseif (touch.phase == "moved") then
-		J.x = touch.x
-		J.y = touch.y
+		letterJ.x = touch.x
+		letterJ.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < J.x ) and
-            ((answerBox1.x + answerBox1.width/2) > J.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < J.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > J.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterJ.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterJ.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterJ.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterJ.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            J.x = answerBox1.x
-            J.y = answerBox1.y
+            letterJ.x = answerBox1.x
+            letterJ.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -509,8 +500,8 @@ local function TouchListenerJ(touch)
 
         --else make box go back to where it was
         else
-            J.x = letterJOriginalX
-            J.y = letterJOriginalY
+            letterJ.x = letterJOriginalX
+            letterJ.y = letterJOriginalY
         end
 	end     
 end
@@ -518,24 +509,23 @@ end
 local function TouchListenerK(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked K")
 		
 	elseif (touch.phase == "moved") then
-		K.x = touch.x
-		K.y = touch.y
+		letterK.x = touch.x
+		letterK.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < K.x ) and
-            ((answerBox1.x + answerBox1.width/2) > K.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < K.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > K.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterK.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterK.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterK.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterK.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            K.x = answerBox1.x
-            K.y = answerBox1.y
+            letterK.x = answerBox1.x
+            letterK.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -543,8 +533,8 @@ local function TouchListenerK(touch)
 
         --else make box go back to where it was
         else
-            K.x = letterKOriginalX
-            K.y = letterKOriginalY
+            letterK.x = letterKOriginalX
+            letterK.y = letterKOriginalY
         end
 	end     
 end
@@ -552,24 +542,23 @@ end
 local function TouchListenerL(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked L")
-		
+
 	elseif (touch.phase == "moved") then
-		L.x = touch.x
-		L.y = touch.y
+		letterL.x = touch.x
+		letterL.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < L.x ) and
-            ((answerBox1.x + answerBox1.width/2) > L.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < L.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > L.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterL.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterL.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterL.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterL.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            L.x = answerBox1.x
-            L.y = answerBox1.y
+            letterL.x = answerBox1.x
+            letterL.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -577,8 +566,8 @@ local function TouchListenerL(touch)
 
         --else make box go back to where it was
         else
-            L.x = letterLOriginalX
-            L.y = letterLOriginalY
+            letterL.x = letterLOriginalX
+            letterL.y = letterLOriginalY
         end
 	end     
 end
@@ -586,24 +575,23 @@ end
 local function TouchListenerM(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked M")
 		
 	elseif (touch.phase == "moved") then
-		M.x = touch.x
-		M.y = touch.y
+		letterM.x = touch.x
+		letterM.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < M.x ) and
-            ((answerBox1.x + answerBox1.width/2) > M.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < M.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > M.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterM.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterM.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterM.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterM.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            M.x = answerBox1.x
-            M.y = answerBox1.y
+            letterM.x = answerBox1.x
+            letterM.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -611,8 +599,8 @@ local function TouchListenerM(touch)
 
         --else make box go back to where it was
         else
-            M.x = letterMOriginalX
-            M.y = letterMOriginalY
+            letterM.x = letterMOriginalX
+            letterM.y = letterMOriginalY
         end
 	end     
 end
@@ -620,24 +608,23 @@ end
 local function TouchListenerN(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked N")
 		
 	elseif (touch.phase == "moved") then
-		N.x = touch.x
-		N.y = touch.y
+		letterN.x = touch.x
+		letterN.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < N.x ) and
-            ((answerBox1.x + answerBox1.width/2) > N.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < N.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > N.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterN.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterN.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterN.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterN.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            N.x = answerBox1.x
-            N.y = answerBox1.y
+            letterN.x = answerBox1.x
+            letterN.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -645,8 +632,8 @@ local function TouchListenerN(touch)
 
         --else make box go back to where it was
         else
-            N.x = letterNOriginalX
-            N.y = letterNOriginalY
+            letterN.x = letterNOriginalX
+            letterN.y = letterNOriginalY
         end
 	end     
 end
@@ -654,24 +641,23 @@ end
 local function TouchListenerO(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked O")
 		
 	elseif (touch.phase == "moved") then
-		O.x = touch.x
-		O.y = touch.y
+		letterO.x = touch.x
+		letterO.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < O.x ) and
-            ((answerBox1.x + answerBox1.width/2) > O.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < O.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > O.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterO.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterO.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterO.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterO.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            O.x = answerBox1.x
-            O.y = answerBox1.y
+            letterO.x = answerBox1.x
+            letterO.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -679,8 +665,8 @@ local function TouchListenerO(touch)
 
         --else make box go back to where it was
         else
-            O.x = letterOOriginalX
-            O.y = letterOOriginalY
+            letterO.x = letterOOriginalX
+            letterO.y = letterOOriginalY
         end
 	end     
 end
@@ -688,24 +674,23 @@ end
 local function TouchListenerP(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked P")
 		
 	elseif (touch.phase == "moved") then
-		P.x = touch.x
-		P.y = touch.y
+		letterP.x = touch.x
+		letterP.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < P.x ) and
-            ((answerBox1.x + answerBox1.width/2) > P.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < P.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > P.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterP.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterP.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterP.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterP.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            P.x = answerBox1.x
-            P.y = answerBox1.y
+            letterP.x = answerBox1.x
+            letterP.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -713,8 +698,8 @@ local function TouchListenerP(touch)
 
         --else make box go back to where it was
         else
-            P.x = letterPOriginalX
-            P.y = letterPOriginalY
+            letterP.x = letterPOriginalX
+            letterP.y = letterPOriginalY
         end
 	end     
 end
@@ -722,24 +707,23 @@ end
 local function TouchListenerQ(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked Q")
 		
 	elseif (touch.phase == "moved") then
-		Q.x = touch.x
-		Q.y = touch.y
+		letterQ.x = touch.x
+		letterQ.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < Q.x ) and
-            ((answerBox1.x + answerBox1.width/2) > Q.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < Q.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > Q.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterQ.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterQ.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterQ.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterQ.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            Q.x = answerBox1.x
-            Q.y = answerBox1.y
+            letterQ.x = answerBox1.x
+            letterQ.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -747,8 +731,8 @@ local function TouchListenerQ(touch)
 
         --else make box go back to where it was
         else
-            Q.x = letterQOriginalX
-            Q.y = letterQOriginalY
+            letterQ.x = letterQOriginalX
+            letterQ.y = letterQOriginalY
         end
 	end     
 end
@@ -756,24 +740,23 @@ end
 local function TouchListenerR(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked R")
 		
 	elseif (touch.phase == "moved") then
-		R.x = touch.x
-		R.y = touch.y
+		letterR.x = touch.x
+		letterR.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < R.x ) and
-            ((answerBox1.x + answerBox1.width/2) > R.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < R.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > R.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterR.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterR.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterR.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterR.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            R.x = answerBox1.x
-            R.y = answerBox1.y
+            letterR.x = answerBox1.x
+            letterR.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -781,8 +764,8 @@ local function TouchListenerR(touch)
 
         --else make box go back to where it was
         else
-            R.x = letterROriginalX
-            R.y = letterROriginalY
+            letterR.x = letterROriginalX
+            letterR.y = letterROriginalY
         end
 	end     
 end
@@ -790,24 +773,23 @@ end
 local function TouchListenerS(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked S")
 		
 	elseif (touch.phase == "moved") then
-		S.x = touch.x
-		S.y = touch.y
+		letterS.x = touch.x
+		letterS.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < S.x ) and
-            ((answerBox1.x + answerBox1.width/2) > S.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < S.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > S.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterS.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterS.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterS.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterS.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            S.x = answerBox1.x
-            S.y = answerBox1.y
+            letterS.x = answerBox1.x
+            letterS.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -815,8 +797,8 @@ local function TouchListenerS(touch)
 
         --else make box go back to where it was
         else
-            S.x = letterSOriginalX
-            S.y = letterSOriginalY
+            letterS.x = letterSOriginalX
+            letterS.y = letterSOriginalY
         end
 	end     
 end
@@ -824,24 +806,23 @@ end
 local function TouchListenerT(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked T")
 		
 	elseif (touch.phase == "moved") then
-		T.x = touch.x
-		T.y = touch.y
+		letterT.x = touch.x
+		letterT.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < T.x ) and
-            ((answerBox1.x + answerBox1.width/2) > T.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < T.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > T.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterT.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterT.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterT.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterT.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            T.x = answerBox1.x
-            T.y = answerBox1.y
+            letterT.x = answerBox1.x
+            letterT.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -849,8 +830,8 @@ local function TouchListenerT(touch)
 
         --else make box go back to where it was
         else
-            T.x = letterTOriginalX
-            T.y = letterTOriginalY
+            letterT.x = letterTOriginalX
+            letterT.y = letterTOriginalY
         end
 	end     
 end
@@ -858,24 +839,23 @@ end
 local function TouchListenerU(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked U")
 		
 	elseif (touch.phase == "moved") then
-		U.x = touch.x
-		U.y = touch.y
+		letterU.x = touch.x
+		letterU.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < U.x ) and
-            ((answerBox1.x + answerBox1.width/2) > U.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < U.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > U.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterU.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterU.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterU.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterU.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            U.x = answerBox1.x
-            U.y = answerBox1.y
+            letterU.x = answerBox1.x
+            letterletterU.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -883,8 +863,8 @@ local function TouchListenerU(touch)
 
         --else make box go back to where it was
         else
-            U.x = letterUOriginalX
-            U.y = letterUOriginalY
+            letterU.x = letterUOriginalX
+            letterU.y = letterUOriginalY
         end
 	end     
 end
@@ -892,24 +872,23 @@ end
 local function TouchListenerV(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked V")
 		
 	elseif (touch.phase == "moved") then
-		V.x = touch.x
-		V.y = touch.y
+		letterV.x = touch.x
+		letterV.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < V.x ) and
-            ((answerBox1.x + answerBox1.width/2) > V.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < V.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > V.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterV.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterV.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterV.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterV.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            V.x = answerBox1.x
-            V.y = answerBox1.y
+            letterV.x = answerBox1.x
+            letterletterV.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -917,8 +896,8 @@ local function TouchListenerV(touch)
 
         --else make box go back to where it was
         else
-            V.x = letterVOriginalX
-            V.y = letterVOriginalY
+            letterV.x = letterVOriginalX
+            letterV.y = letterVOriginalY
         end
 	end     
 end
@@ -926,24 +905,23 @@ end
 local function TouchListenerW(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked W")
 		
 	elseif (touch.phase == "moved") then
-		W.x = touch.x
-		W.y = touch.y
+		letterW.x = touch.x
+		letterW.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < W.x ) and
-            ((answerBox1.x + answerBox1.width/2) > W.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < W.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > W.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterW.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterW.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterW.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterW.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            W.x = answerBox1.x
-            W.y = answerBox1.y
+            letterW.x = answerBox1.x
+            letterW.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -951,8 +929,8 @@ local function TouchListenerW(touch)
 
         --else make box go back to where it was
         else
-            W.x = letterWOriginalX
-            W.y = letterWOriginalY
+            letterW.x = letterWOriginalX
+            letterW.y = letterWOriginalY
         end
 	end     
 end
@@ -960,24 +938,23 @@ end
 local function TouchListenerX(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked X")
 		
 	elseif (touch.phase == "moved") then
-		X.x = touch.x
-		X.y = touch.y
+		letterX.x = touch.x
+		letterX.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < X.x ) and
-            ((answerBox1.x + answerBox1.width/2) > X.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < X.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > X.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterX.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterX.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterX.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterX.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            X.x = answerBox1.x
-            X.y = answerBox1.y
+            letterX.x = answerBox1.x
+            letterX.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -985,8 +962,8 @@ local function TouchListenerX(touch)
 
         --else make box go back to where it was
         else
-            X.x = letterXOriginalX
-            X.y = letterXOriginalY
+            letterX.x = letterXOriginalX
+            letterX.y = letterXOriginalY
         end
 	end     
 end
@@ -994,24 +971,23 @@ end
 local function TouchListenerY(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked Y")
 		
 	elseif (touch.phase == "moved") then
-		Y.x = touch.x
-		Y.y = touch.y
+		letterY.x = touch.x
+		letterY.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < Y.x ) and
-            ((answerBox1.x + answerBox1.width/2) > Y.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < Y.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > Y.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterY.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterY.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterY.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterY.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            Y.x = answerBox1.x
-            Y.y = answerBox1.y
+            letterY.x = answerBox1.x
+            letterY.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -1019,8 +995,8 @@ local function TouchListenerY(touch)
 
         --else make box go back to where it was
         else
-            Y.x = letterYOriginalX
-            Y.y = letterYOriginalY
+            letterY.x = letterYOriginalX
+            letterY.y = letterYOriginalY
         end
 	end     
 end
@@ -1028,24 +1004,23 @@ end
 local function TouchListenerZ(touch)
 
 	if (touch.phase == "began") then
-		print ("***Clicked Z")
 		
 	elseif (touch.phase == "moved") then
-		Z.x = touch.x
-		Z.y = touch.y
+		letterZ.x = touch.x
+		letterZ.y = touch.y
 
 
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if (((answerBox1.x - answerBox1.width/2) < Z.x ) and
-            ((answerBox1.x + answerBox1.width/2) > Z.x ) and 
-            ((answerBox1.y - answerBox1.height/2) < Z.y ) and 
-            ((answerBox1.y + answerBox1.height/2) > Z.y ) ) then
+        if (((answerBox1.x - answerBox1.width/2) < letterZ.x ) and
+            ((answerBox1.x + answerBox1.width/2) > letterZ.x ) and 
+            ((answerBox1.y - answerBox1.height/2) < letterZ.y ) and 
+            ((answerBox1.y + answerBox1.height/2) > letterZ.y ) ) then
 
             -- setting the position of the number to be in the center of the box
-            Z.x = answerBox1.x
-            Z.y = answerBox1.y
+            letterZ.x = answerBox1.x
+            letterZ.y = answerBox1.y
             answerBox1Filled = true
 
             -- call the function to check if the user's input is correct or not
@@ -1053,8 +1028,8 @@ local function TouchListenerZ(touch)
 
         --else make box go back to where it was
         else
-            Z.x = letterZOriginalX
-            Z.y = letterZOriginalY
+            letterZ.x = letterZOriginalX
+            letterZ.y = letterZOriginalY
         end
 	end     
 end
@@ -1160,62 +1135,62 @@ end
 
 local function AddEventListeners()
 			-- add answerBox1 listener
-	A:addEventListener("touch", TouchListenerA)
-	B:addEventListener("touch", TouchListenerB)
-	C:addEventListener("touch", TouchListenerC)
-	D:addEventListener("touch", TouchListenerD)
-	E:addEventListener("touch", TouchListenerE)
-	F:addEventListener("touch", TouchListenerF)
-	G:addEventListener("touch", TouchListenerG)
-	H:addEventListener("touch", TouchListenerH)
-	I:addEventListener("touch", TouchListenerI)
-	J:addEventListener("touch", TouchListenerJ)
-	K:addEventListener("touch", TouchListenerK)
-	L:addEventListener("touch", TouchListenerL)
-	M:addEventListener("touch", TouchListenerM)
-	N:addEventListener("touch", TouchListenerN)
-	O:addEventListener("touch", TouchListenerO)
-	P:addEventListener("touch", TouchListenerP)
-	Q:addEventListener("touch", TouchListenerQ)
-	R:addEventListener("touch", TouchListenerR)
-	S:addEventListener("touch", TouchListenerS)
-	T:addEventListener("touch", TouchListenerT)
-	U:addEventListener("touch", TouchListenerU)
-	V:addEventListener("touch", TouchListenerV)
-	W:addEventListener("touch", TouchListenerW)
-	X:addEventListener("touch", TouchListenerX)
-	Y:addEventListener("touch", TouchListenerY)
-	Z:addEventListener("touch", TouchListenerZ)
+	letterA:addEventListener("touch", TouchListenerA)
+	letterB:addEventListener("touch", TouchListenerB)
+	letterC:addEventListener("touch", TouchListenerC)
+	letterD:addEventListener("touch", TouchListenerD)
+	letterE:addEventListener("touch", TouchListenerE)
+	letterF:addEventListener("touch", TouchListenerF)
+	letterG:addEventListener("touch", TouchListenerG)
+	letterH:addEventListener("touch", TouchListenerH)
+	letterI:addEventListener("touch", TouchListenerI)
+	letterJ:addEventListener("touch", TouchListenerJ)
+	letterK:addEventListener("touch", TouchListenerK)
+	letterL:addEventListener("touch", TouchListenerL)
+	letterM:addEventListener("touch", TouchListenerM)
+	letterN:addEventListener("touch", TouchListenerN)
+	letterO:addEventListener("touch", TouchListenerO)
+	letterP:addEventListener("touch", TouchListenerP)
+	letterQ:addEventListener("touch", TouchListenerQ)
+	letterR:addEventListener("touch", TouchListenerR)
+	letterS:addEventListener("touch", TouchListenerS)
+	letterT:addEventListener("touch", TouchListenerT)
+	letterU:addEventListener("touch", TouchListenerU)
+	letterV:addEventListener("touch", TouchListenerV)
+	letterW:addEventListener("touch", TouchListenerW)
+	letterX:addEventListener("touch", TouchListenerX)
+	letterY:addEventListener("touch", TouchListenerY)
+	letterZ:addEventListener("touch", TouchListenerZ)
 end
 
 local function RemoveEventListeners()
 			-- add answerBox1 listener
-	A:removeEventListener("touch", TouchListenerA)
-	B:removeEventListener("touch", TouchListenerB)
-	C:removeEventListener("touch", TouchListenerC)
-	D:removeEventListener("touch", TouchListenerD)
-	E:removeEventListener("touch", TouchListenerE)
-	F:removeEventListener("touch", TouchListenerF)
-	G:removeEventListener("touch", TouchListenerG)
-	H:removeEventListener("touch", TouchListenerH)
-	I:removeEventListener("touch", TouchListenerI)
-	J:removeEventListener("touch", TouchListenerJ)
-	K:removeEventListener("touch", TouchListenerK)
-	L:removeEventListener("touch", TouchListenerL)
-	M:removeEventListener("touch", TouchListenerM)
-	N:removeEventListener("touch", TouchListenerN)
-	O:removeEventListener("touch", TouchListenerO)
-	P:removeEventListener("touch", TouchListenerP)
-	Q:removeEventListener("touch", TouchListenerQ)
-	R:removeEventListener("touch", TouchListenerR)
-	S:removeEventListener("touch", TouchListenerS)
-	T:removeEventListener("touch", TouchListenerT)
-	U:removeEventListener("touch", TouchListenerU)
-	V:removeEventListener("touch", TouchListenerV)
-	W:removeEventListener("touch", TouchListenerW)
-	X:removeEventListener("touch", TouchListenerX)
-	Y:removeEventListener("touch", TouchListenerY)
-	Z:removeEventListener("touch", TouchListenerZ)
+	letterA:removeEventListener("touch", TouchListenerA)
+	letterB:removeEventListener("touch", TouchListenerB)
+	letterC:removeEventListener("touch", TouchListenerC)
+	letterD:removeEventListener("touch", TouchListenerD)
+	letterE:removeEventListener("touch", TouchListenerE)
+	letterF:removeEventListener("touch", TouchListenerF)
+	letterG:removeEventListener("touch", TouchListenerG)
+	letterH:removeEventListener("touch", TouchListenerH)
+	letterI:removeEventListener("touch", TouchListenerI)
+	letterJ:removeEventListener("touch", TouchListenerJ)
+	letterK:removeEventListener("touch", TouchListenerK)
+	letterL:removeEventListener("touch", TouchListenerL)
+	letterM:removeEventListener("touch", TouchListenerM)
+	letterN:removeEventListener("touch", TouchListenerN)
+	letterO:removeEventListener("touch", TouchListenerO)
+	letterP:removeEventListener("touch", TouchListenerP)
+	letterQ:removeEventListener("touch", TouchListenerQ)
+	letterR:removeEventListener("touch", TouchListenerR)
+	letterS:removeEventListener("touch", TouchListenerS)
+	letterT:removeEventListener("touch", TouchListenerT)
+	letterU:removeEventListener("touch", TouchListenerU)
+	letterV:removeEventListener("touch", TouchListenerV)
+	letterW:removeEventListener("touch", TouchListenerW)
+	letterX:removeEventListener("touch", TouchListenerX)
+	letterY:removeEventListener("touch", TouchListenerY)
+	letterZ:removeEventListener("touch", TouchListenerZ)
 end
 
 
@@ -1274,32 +1249,32 @@ function scene:create( event )
 	quadrilateralImage.x = display.contentCenterX/1.1
 	quadrilateralImage.y = display.contentCenterY/3
 
-	A = display.newText(" A ", letterAOriginalX, display.contentHeight/1.2, nil, 30)
-	B = display.newText(" B ", letterBOriginalX, display.contentHeight/1.2, nil, 30)
-	C = display.newText(" C ", letterCOriginalX, display.contentHeight/1.2, nil, 30)
-	D = display.newText(" D ", letterDOriginalX, display.contentHeight/1.2, nil, 30)
-	E = display.newText(" E ", letterEOriginalX, display.contentHeight/1.2, nil, 30)
-	F = display.newText(" F ", letterFOriginalX, display.contentHeight/1.2, nil, 30)
-	G = display.newText(" G ", letterGOriginalX, display.contentHeight/1.2, nil, 30)
-	H = display.newText(" H ", letterHOriginalX, display.contentHeight/1.2, nil, 30)
-	I = display.newText(" I ", letterIOriginalX, display.contentHeight/1.2, nil, 30)
-	J = display.newText(" J ", letterJOriginalX, display.contentHeight/1.2, nil, 30)
-	K = display.newText(" K ", letterKOriginalX, display.contentHeight/1.2, nil, 30)
-	L = display.newText(" L ", letterLOriginalX, display.contentHeight/1.2, nil, 30)
-	M = display.newText(" M ", letterMOriginalX, display.contentHeight/1.2, nil, 30)
-	N = display.newText(" N ", letterNOriginalX, display.contentHeight/1.2, nil, 30)
-	O = display.newText(" O ", letterOOriginalX, display.contentHeight/1.2, nil, 30)
-	P = display.newText(" P ", letterPOriginalX, display.contentHeight/1.2, nil, 30)
-	Q = display.newText(" Q ", letterQOriginalX, display.contentHeight/1.2, nil, 30)
-	R = display.newText(" R ", letterROriginalX, display.contentHeight/1.2, nil, 30)
-	S = display.newText(" S ", letterSOriginalX, display.contentHeight/1.2, nil, 30)
-	T = display.newText(" T ", letterTOriginalX, display.contentHeight/1.2, nil, 30)
-	U = display.newText(" U ", letterUOriginalX, display.contentHeight/1.2, nil, 30)
-	V = display.newText(" V ", letterVOriginalX, display.contentHeight/1.2, nil, 30)
-	W = display.newText(" W ", letterWOriginalX, display.contentHeight/1.2, nil, 30)
-	X = display.newText(" X ", letterXOriginalX, display.contentHeight/1.2, nil, 30)
-	Y = display.newText(" Y ", letterYOriginalX, display.contentHeight/1.2, nil, 30)
-	Z = display.newText(" Z ", letterZOriginalX, display.contentHeight/1.2, nil, 30)
+	letterA = display.newText(" A ", letterAOriginalX, display.contentHeight/1.2, nil, 30)
+	letterB = display.newText(" B ", letterBOriginalX, display.contentHeight/1.2, nil, 30)
+	letterC = display.newText(" C ", letterCOriginalX, display.contentHeight/1.2, nil, 30)
+	letterD = display.newText(" D ", letterDOriginalX, display.contentHeight/1.2, nil, 30)
+	letterE = display.newText(" E ", letterEOriginalX, display.contentHeight/1.2, nil, 30)
+	letterF = display.newText(" F ", letterFOriginalX, display.contentHeight/1.2, nil, 30)
+	letterG = display.newText(" G ", letterGOriginalX, display.contentHeight/1.2, nil, 30)
+	letterH = display.newText(" H ", letterHOriginalX, display.contentHeight/1.2, nil, 30)
+	letterI = display.newText(" I ", letterIOriginalX, display.contentHeight/1.2, nil, 30)
+	letterJ = display.newText(" J ", letterJOriginalX, display.contentHeight/1.2, nil, 30)
+	letterK = display.newText(" K ", letterKOriginalX, display.contentHeight/1.2, nil, 30)
+	letterL = display.newText(" L ", letterLOriginalX, display.contentHeight/1.2, nil, 30)
+	letterM = display.newText(" M ", letterMOriginalX, display.contentHeight/1.2, nil, 30)
+	letterN = display.newText(" N ", letterNOriginalX, display.contentHeight/1.2, nil, 30)
+	letterO = display.newText(" O ", letterOOriginalX, display.contentHeight/1.2, nil, 30)
+	letterP = display.newText(" P ", letterPOriginalX, display.contentHeight/1.2, nil, 30)
+	letterQ = display.newText(" Q ", letterQOriginalX, display.contentHeight/1.2, nil, 30)
+	letterR = display.newText(" R ", letterROriginalX, display.contentHeight/1.2, nil, 30)
+	letterS = display.newText(" S ", letterSOriginalX, display.contentHeight/1.2, nil, 30)
+	letterT = display.newText(" T ", letterTOriginalX, display.contentHeight/1.2, nil, 30)
+	letterU = display.newText(" U ", letterUOriginalX, display.contentHeight/1.2, nil, 30)
+	letterV = display.newText(" V ", letterVOriginalX, display.contentHeight/1.2, nil, 30)
+	letterW = display.newText(" W ", letterWOriginalX, display.contentHeight/1.2, nil, 30)
+	letterX = display.newText(" X ", letterXOriginalX, display.contentHeight/1.2, nil, 30)
+	letterY = display.newText(" Y ", letterYOriginalX, display.contentHeight/1.2, nil, 30)
+	letterZ = display.newText(" Z ", letterZOriginalX, display.contentHeight/1.2, nil, 30)
 
 	letterAOriginalX = display.contentWidth/9
 	letterAOriginalY = display.contentHeight/1.2
@@ -1405,32 +1380,32 @@ function scene:create( event )
 	sceneGroup:insert( octogonImage )	
 	sceneGroup:insert( quadrilateral )
 	sceneGroup:insert( quadrilateralImage )
-	sceneGroup:insert( A )
-	sceneGroup:insert( B )
-	sceneGroup:insert( C )
-	sceneGroup:insert( D )
-	sceneGroup:insert( E )
-	sceneGroup:insert( F )
-	sceneGroup:insert( G )
-	sceneGroup:insert( H )
-	sceneGroup:insert( I )
-	sceneGroup:insert( J )
-	sceneGroup:insert( K )
-	sceneGroup:insert( L )
-	sceneGroup:insert( M )
-	sceneGroup:insert( N )
-	sceneGroup:insert( O )
-	sceneGroup:insert( P )
-	sceneGroup:insert( Q )
-	sceneGroup:insert( R )
-	sceneGroup:insert( S )
-	sceneGroup:insert( T )
-	sceneGroup:insert( U )
-	sceneGroup:insert( V )
-	sceneGroup:insert( W )
-	sceneGroup:insert( X )
-	sceneGroup:insert( Y )
-	sceneGroup:insert( Z )
+	sceneGroup:insert( letterA )
+	sceneGroup:insert( letterB )
+	sceneGroup:insert( letterC )
+	sceneGroup:insert( letterD )
+	sceneGroup:insert( letterE )
+	sceneGroup:insert( letterF )
+	sceneGroup:insert( letterG )
+	sceneGroup:insert( letterH )
+	sceneGroup:insert( letterI )
+	sceneGroup:insert( letterJ )
+	sceneGroup:insert( letterK )
+	sceneGroup:insert( letterL )
+	sceneGroup:insert( letterM )
+	sceneGroup:insert( letterN )
+	sceneGroup:insert( letterO )
+	sceneGroup:insert( letterP )
+	sceneGroup:insert( letterQ )
+	sceneGroup:insert( letterR )
+	sceneGroup:insert( letterS )
+	sceneGroup:insert( letterT )
+	sceneGroup:insert( letterU )
+	sceneGroup:insert( letterV )
+	sceneGroup:insert( letterW )
+	sceneGroup:insert( letterX )
+	sceneGroup:insert( letterY )
+	sceneGroup:insert( letterZ )
 
 
 
