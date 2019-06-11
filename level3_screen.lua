@@ -78,8 +78,8 @@ local countDownTimer
 local clockText
 
 -- seconds 
-local secondsLeft = 17
-local totalSeconds = 17
+local secondsLeft = 30
+local totalSeconds = 30
 
 --lives
 local lives = 3
@@ -483,7 +483,7 @@ end
 -- if the user's answer and the correct answer are the same:
 local function AnswerListener ( touch )
 
-    if (touch.phase == "began") then
+    if (touch.phase == "ended") then
    
         -- make the correct object visible
         correctTextObject.isVisible = true    
@@ -498,7 +498,7 @@ local function AnswerListener ( touch )
         correctSoundChannel = audio.play( correctSound )
 
         -- ask new question
-        timer.performWithDelay( 2000, AskQuestion() )
+        timer.performWithDelay( 2000, AskQuestion )
 
         -- call HideCorrect after 2 seconds
         timer.performWithDelay( 2000, HideCorrectTextObject )
@@ -507,7 +507,7 @@ end
 
 local function IncorrectObject1Listener (touch)
 
-    if (touch.phase == "began") then
+    if (touch.phase == "ended") then
 
         -- make the correct object visible
         incorrectTextObject.isVisible = true    
@@ -520,12 +520,15 @@ local function IncorrectObject1Listener (touch)
 
         -- hide the incorrect object after 2 seconds
         timer.performWithDelay ( 2000, HideIncorrectTextObject )
+
+        -- ask new question
+        timer.performWithDelay( 2000, AskQuestion )
     end
 end
 
 local function IncorrectObject2Listener (touch)
      
-    if (touch.phase == "began") then
+    if (touch.phase == "ended") then
         -- make the correct object visible
         incorrectTextObject.isVisible = true    
     
@@ -537,12 +540,15 @@ local function IncorrectObject2Listener (touch)
 
         -- hide the incorrect object after 2 seconds
         timer.performWithDelay ( 2000, HideIncorrectTextObject )
+
+        -- ask new question
+        timer.performWithDelay( 2000, AskQuestion )
     end
 end
 
 local function IncorrectObject3Listener (touch)
     
-    if (touch.phase == "began") then
+    if (touch.phase == "ended") then
     
         -- make the correct object visible
         incorrectTextObject.isVisible = true    
@@ -555,12 +561,15 @@ local function IncorrectObject3Listener (touch)
 
         -- hide the incorrect object after 2 seconds
         timer.performWithDelay ( 2000, HideIncorrectTextObject )
+
+        -- ask new question        
+        timer.performWithDelay( 2000, AskQuestion )
     end
 end
 
 local function IncorrectObject4Listener (touch)
 
-    if (touch.phase == "began") then
+    if (touch.phase == "ended") then
 
         -- make the correct object visible
         incorrectTextObject.isVisible = true    
@@ -573,6 +582,9 @@ local function IncorrectObject4Listener (touch)
 
         -- hide the incorrect object after 2 seconds
         timer.performWithDelay ( 2000, HideIncorrectTextObject )
+
+        -- ask new question
+        timer.performWithDelay( 2000, AskQuestion )
     end
 end
 
@@ -616,7 +628,8 @@ end
 local function Win()
     if (score == 4) then
         composer.gotoScene( "youWinScreen" )
-        timer.performWithDelay ( 4500, composer.gotoScene ("level_SelectScreen.lua") )
+        --timer.performWithDelay ( 4500, 
+        composer.gotoScene ("level_select")
     end
 end
 

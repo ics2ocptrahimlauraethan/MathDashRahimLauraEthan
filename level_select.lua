@@ -27,7 +27,7 @@ local lev1Icon
 local lev1TextObject
 
 local lev2Icon
-local lev2IextOject
+local lev2IextObject
 
 local lev3Icon
 local lev3TextObject
@@ -79,29 +79,31 @@ function scene:create( event )
     display.setDefault("background", 62/255, 154/255, 196/255)
 
      -- text object
-    lev1TextObject = display.newText("Level 1", 150, 600, nil, 80)
+
+    lev1TextObject = display.newText("Level 1", 150, 575, nil, 70)
 
     -- set color
     lev1TextObject:setTextColor(41/255, 88/255, 24/255)
 
     -- text object
-    lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
+    lev2TextObject = display.newText("Level 2", display.contentWidth/2, 575, nil, 70)
 
-    -- set color
+-- set color
     lev2TextObject:setTextColor(41/255, 88/255, 24/255)
 
     -- text object
-    lev3TextObject = display.newText("Level 3", 875, 600, nil, 80)
+    lev3TextObject = display.newText("Level 3", 875, 575, nil, 70)
 
     -- set color
     lev3TextObject:setTextColor(41/255, 88/255, 24/255)
+
 
 
 -----------------------------------------------------------------------------------------
     -- BUTTON WIDGETS
     -----------------------------------------------------------------------------------------
 
-    -- Creating Back Button
+    -- Creating level 1 Button
     lev1Icon = widget.newButton( 
     {
         -- Setting Position
@@ -122,6 +124,7 @@ function scene:create( event )
     } )
 
     -- Creating lev2Icon Button
+
     lev2Icon = widget.newButton( 
     {
         -- Setting Position
@@ -142,6 +145,7 @@ function scene:create( event )
     } )
 
         -- Creating lev3Icon Button
+
     lev3Icon = widget.newButton( 
     {
         -- Setting Position
@@ -160,7 +164,6 @@ function scene:create( event )
         onRelease = Level3ScreenTransition
 
     } )
-
 
     -- Creating Back Button
     backButton = widget.newButton( 
@@ -193,7 +196,7 @@ function scene:create( event )
     sceneGroup:insert(lev2TextObject)
     sceneGroup:insert(lev3Icon)
     sceneGroup:insert(lev3TextObject)
-    --sceneGroup:insert(level3icon)
+
 end --function scene:create( event )
 
 -----------------------------------------------------------------------------------------
