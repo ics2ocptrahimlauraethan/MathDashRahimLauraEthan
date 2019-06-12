@@ -78,8 +78,15 @@ function scene:create( event )
     -- BACKGROUND AND DISPLAY STATIC OBJECTS
     -----------------------------------------------------------------------------------------
 
+<<<<<<< HEAD
+    -- set backgrouhnd color
+    display.setDefault("background", 62/255, 154/255, 196/255)
+
+     -- text object
+=======
     -- set background
     bkg = display.newImageRect ("Images/levelSelectbkg.png", 1024, 768)
+>>>>>>> 035c45cbc374cd20e8484880f614a178ebc17ab2
 
     -- set x and y position
     bkg.x = display.contentWidth/2
@@ -88,23 +95,21 @@ function scene:create( event )
     -- text object
     lev1TextObject = display.newText("Level 1", 150, 575, nil, 70)
 
- --   lev1TextObject = display.newText("Level 1", 150, 600, nil, 80)
-
     -- set color
     lev1TextObject:setTextColor(168/255, 238/255, 231/255)
 
+    -- text object
     lev2TextObject = display.newText("Level 2", display.contentWidth/2, 575, nil, 70)
-
- --  lev2TextObject = display.newText("Level 2", display.contentWidth/2, 600, nil, 80)
 
 -- set color
     lev2TextObject:setTextColor(168/255, 238/255, 231/255)
 
--- text object
+    -- text object
     lev3TextObject = display.newText("Level 3", 875, 575, nil, 70)
 
     -- set color
     lev3TextObject:setTextColor(168/255, 238/255, 231/255)
+
 
 
 -----------------------------------------------------------------------------------------
@@ -131,7 +136,8 @@ function scene:create( event )
 
     } )
 
-    -- Creating level 2 Button
+    -- Creating lev2Icon Button
+
     lev2Icon = widget.newButton( 
     {
         -- Setting Position
@@ -151,7 +157,8 @@ function scene:create( event )
 
     } )
 
-    -- Creating level 3 Button
+        -- Creating lev3Icon Button
+
     lev3Icon = widget.newButton( 
     {
         -- Setting Position
