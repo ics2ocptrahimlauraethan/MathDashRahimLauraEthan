@@ -42,9 +42,14 @@ local muteButtonPressed
 -----------------------------------------------------------------------------------------
 -- SOUNDS
 -----------------------------------------------------------------------------------------
+
+-- bkg music
 local backgroundMusic = audio.loadSound("Sounds/CIRCUSII.wav")
 local backgroundMusicChannel
 
+-- click sound
+local clickOn
+local clickOnSoundChannel
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 ----------------------------------------------------------------------------------------
@@ -181,10 +186,11 @@ function scene:create( event )
     muteButtonPressed = display.newImage("Images/MuteButtonPressed.png", 900, 350)
     muteButtonPressed:scale(0.5, 0.5)
     
-
     muteButtonUnpressed = display.newImage("Images/MuteButtonUnpressed.png", 900, 350)
     muteButtonUnpressed:scale(0.5, 0.5)
     muteButtonUnpressed.isVisible = false
+
+    clickOn = audio.loadSound("Sounds/clickOn.mp3")
 
     -- Associating button widgets with this scene
     sceneGroup:insert( bkg_image )
@@ -193,12 +199,8 @@ function scene:create( event )
     sceneGroup:insert( instructionsButton )
     sceneGroup:insert( muteButtonUnpressed )
     sceneGroup:insert( muteButtonPressed )
-    
-    -- INSERT INSTRUCTIONS BUTTON INTO SCENE GROUP
 
 end -- function scene:create( event )   
-
-
 
 -----------------------------------------------------------------------------------------
 
