@@ -187,6 +187,7 @@ local N
 
 local function CheckUserAnswerInput()
 	if (shape == "triangle") then
+        print ("***Shape is a triangle")
 		if (answerBox1Filled == true) then
 			print ("***answerBox1 is filled")
 			if (userAnswer1.text == "L") then
@@ -327,7 +328,9 @@ local function TouchListenerN(touch)
 
             N:removeEventListener("touch", TouchListenerN)
            
-            answerBox1Filled = true          
+            answerBox1Filled = true   
+
+            print ("***Calling CheckUserAnswerInput")      
 
             -- call the function to check if the user's input is correct or not
             CheckUserAnswerInput()
@@ -462,19 +465,6 @@ local function AskQuestion()
 		triangle.isVisible = true
 		triangleImage.isVisible = true
 
-		
-		--square.isVisible = false
-		--squareImage.isVisible = false
-		rectangle.isVisible = false
-		rectangleImage.isVisible = false
-		pentagon.isVisible = false
-		pentagonImage.isVisible = false
-		octogon.isVisible = false
-		octogonImage.isVisible = false
-		quadrilateral.isVisible = false
-		quadrilateralImage.isVisible = false
-
-
 		-- place the answerboxes corresponding to the triangle
 		answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
 		answerBox1.y = display.contentHeight/2
@@ -482,7 +472,7 @@ local function AskQuestion()
 		answerBox2.x =  display.contentWidth/2 + 20
 		answerBox2.y = display.contentHeight/2
 
-		answerBox3.x = display.contentWidth/2 + 190
+		answerBox3.x = display.contentWidth/2 + 165
 		answerBox3.y = display.contentHeight/2
 	--elseif (randomOperator == 2) then 
 		--shape = "square"
@@ -560,17 +550,17 @@ function scene:create( event )
 	-----------------------------------------------------------------------------------------
 
 	-- the black box where the user will drag the answer
-    answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
-    answerBox1.x = display.contentWidth * 0.6
-    answerBox1.y = display.contentHeight * 0.9
+    answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  80, 130)
+    answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
+    answerBox1.y = display.contentHeight/2
     
-    answerBox2 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
-    answerBox2.x = display.contentWidth * 0.6
-    answerBox2.y = display.contentHeight * 0.9
+    answerBox2 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  80, 130)
+    answerBox2.x = display.contentWidth/2 + 20
+    answerBox2.y = display.contentHeight/2
 
-    answerBox3 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
-    answerBox3.x = display.contentWidth * 0.6
-    answerBox3.y = display.contentHeight * 0.9
+    answerBox3 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  80, 130)
+    answerBox3.x = display.contentWidth/2 + 165
+    answerBox3.y = display.contentHeight/2
 
 
 
