@@ -6,7 +6,6 @@
 -- Date: Month Day, Year
 -- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
-
 -----------------------------------------------------------------------------------------
 -- INITIALIZATIONS
 -----------------------------------------------------------------------------------------
@@ -646,7 +645,6 @@ local function TouchListenerO(touch)
 		letterO.x = touch.x
 		letterO.y = touch.y
 
-
 		
 	elseif (touch.phase == "ended") then
 	 -- if the number is dragged into the userAnswerBox, place it in the center of it
@@ -1201,7 +1199,6 @@ end
 
 -- The function called when the screen doesn't exist
 function scene:create( event )
-
 	-- Creating a group that associates objects with the scene
 	local sceneGroup = self.view
 	
@@ -1355,6 +1352,33 @@ function scene:create( event )
 	letterZOriginalY = letterAOriginalY.y
 
 	letterWidth = 75
+
+	A = display.newText(" A ", letterAOriginalX, letterAOriginalY, nil, letterSize)
+	B = display.newText(" B ", letterBOriginalX, letterAOriginalY, nil, letterSize)
+	C = display.newText(" C ", letterCOriginalX, letterAOriginalY, nil, letterSize)
+	D = display.newText(" D ", letterDOriginalX, letterAOriginalY, nil, letterSize)
+	E = display.newText(" E ", letterEOriginalX, letterAOriginalY, nil, letterSize)
+	F = display.newText(" F ", letterFOriginalX, letterAOriginalY, nil, letterSize)
+	G = display.newText(" G ", letterGOriginalX, letterAOriginalY, nil, letterSize)
+	H = display.newText(" H ", letterHOriginalX, letterAOriginalY, nil, letterSize)
+	I = display.newText(" I ", letterIOriginalX, letterAOriginalY, nil, letterSize)
+	J = display.newText(" J ", letterJOriginalX, letterAOriginalY, nil, letterSize)
+	K = display.newText(" K ", letterKOriginalX, letterAOriginalY, nil, letterSize)
+	L = display.newText(" L ", letterLOriginalX, letterAOriginalY, nil, letterSize)
+	M = display.newText(" M ", letterMOriginalX, letterAOriginalY, nil, letterSize)
+	N = display.newText(" N ", letterNOriginalX, letterAOriginalY, nil, letterSize)
+	O = display.newText(" O ", letterOOriginalX, letterAOriginalY, nil, letterSize)
+	P = display.newText(" P ", letterPOriginalX, letterAOriginalY, nil, letterSize)
+	Q = display.newText(" Q ", letterQOriginalX, letterAOriginalY, nil, letterSize)
+	R = display.newText(" R ", letterROriginalX, letterAOriginalY, nil, letterSize)
+	S = display.newText(" S ", letterSOriginalX, letterAOriginalY, nil, letterSize)
+	T = display.newText(" T ", letterTOriginalX, letterAOriginalY, nil, letterSize)
+	U = display.newText(" U ", letterUOriginalX, letterAOriginalY, nil, letterSize)
+	V = display.newText(" V ", letterVOriginalX, letterAOriginalY, nil, letterSize)
+	W = display.newText(" W ", letterWOriginalX, letterAOriginalY, nil, letterSize)
+	X = display.newText(" X ", letterXOriginalX, letterAOriginalY, nil, letterSize)
+	Y = display.newText(" Y ", letterYOriginalX, letterAOriginalY, nil, letterSize)
+	Z = display.newText(" Z ", letterZOriginalX, letterAOriginalY, nil, letterSize)
 
 
 	-----------------------------------------------------------------------------------------
