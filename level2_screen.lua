@@ -33,7 +33,6 @@ local scene = composer.newScene( sceneName )
 -- The local variables for this scene
 local shape
 
-
 local textCorrect
 local textIncorrect 
 
@@ -67,7 +66,6 @@ local letterDOriginalY = letterAOriginalY
 
 local letterEOriginalX = letterAOriginalX + 300
 local letterEOriginalY = letterAOriginalY
-
 
 
 local letterFOriginalX = letterAOriginalX + 375
@@ -185,62 +183,67 @@ local N
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
 
+-- goes back to level select after 4 seconds
+local function GoToLevelSelect()
+    textCorrect.isVisible = false
+    textIncorrect.isVisible = false
+    composer.gotoScene ("level_select")
+end
+
 local function CheckUserAnswerInput()
-	if (shape == "triangle") then
-        print ("***Shape is a triangle")
-		if (answerBox1Filled == true) then
-			print ("***answerBox1 is filled")
-			if (userAnswer1.text == "L") then
-				print ("***L is in answerBox1")
-			else 
-				print ("***L is NOT in answerBox1")
-			end
-		end
-		if (answerBox2Filled == true) then
-			print ("***answerBox2 is filled")
-			if (userAnswer2.text == "L") then
-				print ("***L is in answerBox2")
-			else 
-				print ("***L is NOT in answerBox2")
-			end
-		end
-		if (answerBox3Filled == true) then
-			print ("***answerBox3 is filled")
-			if (userAnswer3.text == "L") then
-				print ("***L is in answerBox3")
-			else 
-				print ("***L is NOT in answerBox3")
-			end
-		end
+    if (shape == "triangle") then
+        if (answerBox1Filled == true) then
+            print ("***answerBox1 is filled")
+            if (userAnswer1.text == "L") then
+                print ("***L is in answerBox1")
+            else 
+                print ("***L is NOT in answerBox1")
+            end
+        end
+        if (answerBox2Filled == true) then
+            print ("***answerBox2 is filled")
+            if (userAnswer2.text == "L") then
+                print ("***L is in answerBox2")
+            else 
+                print ("***L is NOT in answerBox2")
+            end
+        end
+        if (answerBox3Filled == true) then
+            print ("***answerBox3 is filled")
+            if (userAnswer3.text == "L") then
+                print ("***L is in answerBox3")
+            else 
+                print ("***L is NOT in answerBox3")
+            end
+        end
 
-		if (answerBox1Filled == true) and (answerBox2Filled == true) and ( answerBox3Filled == true) then
-			if (userAnswer1.text == "I") and (userAnswer2.text == "N") and (userAnswer3.text == "L") then
-				textCorrect.isVisible = true
-                timer.performWithDelay (2500, GoToLevelSelect)
-			else
-				textIncorrect.isVisible = false
-			end
-		end
+        if (answerBox1Filled == true) and (answerBox2Filled == true) and ( answerBox3Filled == true) then
+            if (userAnswer1.text == "I") and (userAnswer2.text == "N") and (userAnswer3.text == "L") then
+                textCorrect.isVisible = true
+                timer.performWithDelay (2000, GoToLevelSelect)
+            else
+                textIncorrect.isVisible = true
+                timer.performWithDelay (2000, GoToLevelSelect)
+            end
+        end
 
-	end
-
-
+    end
 
 end
 
 local function TouchListenerI(touch)
 
-	if (touch.phase == "began") then
-		
-		
-	elseif (touch.phase == "moved") then
-		I.x = touch.x
-		I.y = touch.y
+    if (touch.phase == "began") then
+        
+        
+    elseif (touch.phase == "moved") then
+        I.x = touch.x
+        I.y = touch.y
 
 
-		
-	elseif (touch.phase == "ended") then
-	 -- if the number is dragged into the userAnswerBox, place it in the center of it
+        
+    elseif (touch.phase == "ended") then
+     -- if the number is dragged into the userAnswerBox, place it in the center of it
         if ( ((answerBox1.x - answerBox1.width/2) < I.x ) and
              ((answerBox1.x + answerBox1.width/2) > I.x ) and 
              ((answerBox1.y - answerBox1.height/2) < I.y ) and 
@@ -263,7 +266,7 @@ local function TouchListenerI(touch)
                  ((answerBox2.x + answerBox2.width/2) > I.x ) and 
                  ((answerBox2.y - answerBox2.height/2) < I.y ) and 
                  ((answerBox2.y + answerBox2.height/2) > I.y ) and
-        	      answerBox2Filled == false) then
+                  answerBox2Filled == false) then
 
             -- setting the position of the number to be in the center of the box
             I.x = answerBox2.x
@@ -272,7 +275,7 @@ local function TouchListenerI(touch)
 
             I:removeEventListener("touch", TouchListenerI)
            
-           	answerBox2Filled = true
+            answerBox2Filled = true
 
             -- call the function to check if the user's input is correct or not
             CheckUserAnswerInput()
@@ -300,99 +303,22 @@ local function TouchListenerI(touch)
             I.x = letterIOriginalX
             I.y = letterIOriginalY
         end
-	end     
-end 
-
-local function TouchListenerN(touch)
-
-	if (touch.phase == "began") then
-		
-		
-	elseif (touch.phase == "moved") then
-		N.x = touch.x
-		N.y = touch.y
-
-
-		
-	elseif (touch.phase == "ended") then
-	 -- if the number is dragged into the userAnswerBox, place it in the center of it
-        if ( ((answerBox1.x - answerBox1.width/2) < N.x ) and
-             ((answerBox1.x + answerBox1.width/2) > N.x ) and 
-             ((answerBox1.y - answerBox1.height/2) < N.y ) and 
-             ((answerBox1.y + answerBox1.height/2) > N.y ) and 
-              answerBox1Filled == false) then
-
-            -- setting the position of the number to be in the center of the box
-            N.x = answerBox1.x
-            N.y = answerBox1.y
-            userAnswer1 = N
-
-            N:removeEventListener("touch", TouchListenerN)
-           
-            answerBox1Filled = true   
-
-            print ("***Calling CheckUserAnswerInput")      
-
-            -- call the function to check if the user's input is correct or not
-            CheckUserAnswerInput()
-
-        elseif ( ((answerBox2.x - answerBox2.width/2) < N.x ) and
-                 ((answerBox2.x + answerBox2.width/2) > N.x ) and 
-                 ((answerBox2.y - answerBox2.height/2) < N.y ) and 
-                 ((answerBox2.y + answerBox2.height/2) > N.y ) and
-        	      answerBox2Filled == false) then
-
-            -- setting the position of the number to be in the center of the box
-            N.x = answerBox2.x
-            N.y = answerBox2.y
-            userAnswer2 = N
-
-            N:removeEventListener("touch", TouchListenerN)
-           
-           	answerBox2Filled = true
-
-            -- call the function to check if the user's input is correct or not
-            CheckUserAnswerInput()
-        
-        elseif (((answerBox3.x - answerBox3.width/2) < N.x ) and
-            ((answerBox3.x + answerBox3.width/2) > N.x ) and 
-            ((answerBox3.y - answerBox3.height/2) < N.y ) and 
-            ((answerBox3.y + answerBox3.height/2) > N.y ) ) then
-
-            -- setting the position of the number to be in the center of the box
-            N.x = answerBox3.x
-            N.y = answerBox3.y
-            userAnswer3 = N
-
-            N:removeEventListener("touch", TouchListenerN)
-           
-            answerBox3Filled = true
-
-            -- call the function to check if the user's input is correct or not
-            CheckUserAnswerInput()
-
-        --else make box go back to where it was
-        else
-           
-            N.x = letterNOriginalX
-            N.y = letterNOriginalY
-        end
-	end     
+    end     
 end 
 
 local function TouchListenerL(touch)
 
-	if (touch.phase == "began") then
-		
-		
-	elseif (touch.phase == "moved") then
-		L.x = touch.x
-		L.y = touch.y
+    if (touch.phase == "began") then
+        
+        
+    elseif (touch.phase == "moved") then
+        L.x = touch.x
+        L.y = touch.y
 
 
-		
-	elseif (touch.phase == "ended") then
-	 -- if the number is dragged into the userAnswerBox, place it in the center of it
+        
+    elseif (touch.phase == "ended") then
+     -- if the number is dragged into the userAnswerBox, place it in the center of it
         if ( ((answerBox1.x - answerBox1.width/2) < L.x ) and
              ((answerBox1.x + answerBox1.width/2) > L.x ) and 
              ((answerBox1.y - answerBox1.height/2) < L.y ) and 
@@ -415,7 +341,7 @@ local function TouchListenerL(touch)
                  ((answerBox2.x + answerBox2.width/2) > L.x ) and 
                  ((answerBox2.y - answerBox2.height/2) < L.y ) and 
                  ((answerBox2.y + answerBox2.height/2) > L.y ) and
-        	      answerBox2Filled == false) then
+                  answerBox2Filled == false) then
 
             -- setting the position of the number to be in the center of the box
             L.x = answerBox2.x
@@ -424,7 +350,7 @@ local function TouchListenerL(touch)
 
             L:removeEventListener("touch", TouchListenerL)
            
-           	answerBox2Filled = true
+            answerBox2Filled = true
 
             -- call the function to check if the user's input is correct or not
             CheckUserAnswerInput()
@@ -452,53 +378,131 @@ local function TouchListenerL(touch)
             L.x = letterLOriginalX
             L.y = letterLOriginalY
         end
-	end     
+    end     
+end 
+
+local function TouchListenerN(touch)
+
+    if (touch.phase == "began") then
+        
+        
+    elseif (touch.phase == "moved") then
+        N.x = touch.x
+        N.y = touch.y
+
+
+        elseif (touch.phase == "ended") then
+     -- if the number is dragged into the userAnswerBox, place it in the center of it
+        if ( ((answerBox1.x - answerBox1.width/2) < N.x ) and
+             ((answerBox1.x + answerBox1.width/2) > N.x ) and 
+             ((answerBox1.y - answerBox1.height/2) < N.y ) and 
+             ((answerBox1.y + answerBox1.height/2) > N.y ) and 
+              answerBox1Filled == false) then
+
+            -- setting the position of the number to be in the center of the box
+            N.x = answerBox1.x
+            N.y = answerBox1.y
+            userAnswer1 = N
+
+            N:removeEventListener("touch", TouchListenerN)
+           
+            answerBox1Filled = true          
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        elseif ( ((answerBox2.x - answerBox2.width/2) < N.x ) and
+                 ((answerBox2.x + answerBox2.width/2) > N.x ) and 
+                 ((answerBox2.y - answerBox2.height/2) < N.y ) and 
+                 ((answerBox2.y + answerBox2.height/2) > N.y ) and
+                  answerBox2Filled == false) then
+
+            -- setting the position of the number to be in the center of the box
+            N.x = answerBox2.x
+            N.y = answerBox2.y
+            userAnswer2 = N
+
+            N:removeEventListener("touch", TouchListenerN)
+           
+            answerBox2Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+        
+        elseif (((answerBox3.x - answerBox3.width/2) < N.x ) and
+            ((answerBox3.x + answerBox3.width/2) > N.x ) and 
+            ((answerBox3.y - answerBox3.height/2) < N.y ) and 
+            ((answerBox3.y + answerBox3.height/2) > N.y ) ) then
+
+            -- setting the position of the number to be in the center of the box
+            N.x = answerBox3.x
+            N.y = answerBox3.y
+            userAnswer3 = N
+
+            N:removeEventListener("touch", TouchListenerN)
+           
+            answerBox3Filled = true
+
+            -- call the function to check if the user's input is correct or not
+            CheckUserAnswerInput()
+
+        --else make box go back to where it was
+        else
+           
+            N.x = letterNOriginalX
+            N.y = letterNOriginalY
+        end
+    end     
 end 
 
 
+
 local function AskQuestion()
-	randomOperator = math.random(1,2)
+    randomOperator = math.random(1,1)
 
-	-- TRIANGLE
-	if (randomOperator == 1) then
-		shape = "triangle"
-		-- triangle is visible
-		triangle.isVisible = true
-		triangleImage.isVisible = true
+    -- TRIANGLE
+    if (randomOperator == 1) then
+        shape = "triangle"
+        -- triangle is visible
+        triangle.isVisible = true
+        triangleImage.isVisible = true
 
-		-- place the answerboxes corresponding to the triangle
-		answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
-		answerBox1.y = display.contentHeight/2
+        
+        
 
-		answerBox2.x =  display.contentWidth/2 + 20
-		answerBox2.y = display.contentHeight/2
+        -- place the answerboxes corresponding to the triangle
+        answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
+        answerBox1.y = display.contentHeight/2
 
-		answerBox3.x = display.contentWidth/2 + 165
-		answerBox3.y = display.contentHeight/2
-	--elseif (randomOperator == 2) then 
-		--shape = "square"
+        answerBox2.x =  display.contentWidth/2 + 20
+        answerBox2.y = display.contentHeight/2
 
-		--square.isVisible = true
-		--squareImage.isVisible = true
+        answerBox3.x = display.contentWidth/2 + 190
+        answerBox3.y = display.contentHeight/2
+    --elseif (randomOperator == 2) then 
+        --shape = "square"
+
+        --square.isVisible = true
+        --squareImage.isVisible = true
 
 
 
-	end	
+    end 
 end
 
 
 local function AddTouchListeners()
-	N:addEventListener("touch", TouchListenerN)
-	I:addEventListener("touch", TouchListenerI)
-	L:addEventListener("touch", TouchListenerL)
+    N:addEventListener("touch", TouchListenerN)
+    I:addEventListener("touch", TouchListenerI)
+    L:addEventListener("touch", TouchListenerL)
 
 end
 
 
 local function RemoveTouchListeners()
-	N:removeEventListener("touch", TouchListenerN)
-	I:removeEventListener("touch", TouchListenerI)
-	L:removeEventListener("touch", TouchListenerL)
+    N:removeEventListener("touch", TouchListenerN)
+    I:removeEventListener("touch", TouchListenerI)
+    L:removeEventListener("touch", TouchListenerL)
 
 end
 
@@ -508,9 +512,9 @@ end
 
 -- The function called when the screen doesn't exist
 function scene:create( event )
-	-- Creating a group that associates objects with the scene
-	local sceneGroup = self.view
-	bkgImage = display.newImageRect("Images/bkg.jpg", 3048, 1536)
+    -- Creating a group that associates objects with the scene
+    local sceneGroup = self.view
+    bkgImage = display.newImageRect("Images/bkg.jpg", 3048, 1536)
    
 
 
@@ -523,70 +527,57 @@ function scene:create( event )
     textIncorrect = display.newText("Try Again", display.contentWidth/2, display.contentHeight/1.5, nil, 100) 
     textIncorrect.isVisible = false
     textCorrect = display.newText("Correct", display.contentWidth/2, display.contentHeight/1.5, nil, 100)
-	textCorrect.isVisible = false
-	textCorrect:setTextColor(0/255, 255/255, 0/255)
-	textIncorrect:setTextColor(255/255, 0/255, 0/255)
+    textCorrect.isVisible = false
+    textCorrect:setTextColor(0/255, 255/255, 0/255)
+    textIncorrect:setTextColor(255/255, 0/255, 0/255)
 
 
 
 
-	
-
-	Direction = display.newText("Complete the spelling of the shape.", display.contentWidth/2, display.contentHeight/3, nil, 50)
-
- 	triangle = display.newText( "Tr_a_g_e", display.contentWidth/2, display.contentHeight/2, nil, 150)
-	triangleImage = display.newImageRect("Images/triangle.png",display.contentWidth/3.3, display.contentHeight/3.3 )
-	triangleImage.x = display.contentCenterX/1.1
-	triangleImage.y = display.contentCenterY/3
-	
-
-	
-	I = display.newText("I", letterIOriginalX, letterAOriginalY, nil, letterSize)
-	
-	N = display.newText("N", letterNOriginalX, letterAOriginalY, nil, letterSize)
-	
-	L = display.newText("L", letterLOriginalX, letterAOriginalY, nil, letterSize)
-
-
-	-----------------------------------------------------------------------------------------
-
-	-- the black box where the user will drag the answer
-    answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  80, 130)
-    answerBox1.x = display.contentWidth/2 - answerBox1.width*1.5
-    answerBox1.y = display.contentHeight/2
     
-    answerBox2 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  80, 130)
-    answerBox2.x = display.contentWidth/2 + 20
-    answerBox2.y = display.contentHeight/2
 
-    answerBox3 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  80, 130)
-    answerBox3.x = display.contentWidth/2 + 165
-    answerBox3.y = display.contentHeight/2
+    Direction = display.newText("Complete the spelling of the shape.", display.contentWidth/2, display.contentHeight/3, nil, 50)
 
+    triangle = display.newText( "Tr_a_g_e", display.contentWidth/2, display.contentHeight/2, nil, 150)
+    triangleImage = display.newImageRect("Images/triangle.png",display.contentWidth/3.3, display.contentHeight/3.3 )
+    triangleImage.x = display.contentCenterX/1.1
+    triangleImage.y = display.contentCenterY/3
+    
 
-
-
-
-	sceneGroup:insert( bkgImage )-- Insert background image into the scene group in order to ONLY be associated with this scene
-	sceneGroup:insert( triangle )
-	sceneGroup:insert( triangleImage )  
-  
-
-	sceneGroup:insert( Direction )
-	
-	
-	
-	sceneGroup:insert( I )
-	
-	sceneGroup:insert( N )
-
-	sceneGroup:insert( L )
-
-	sceneGroup:insert(answerBox1)
-	sceneGroup:insert(answerBox2)
-	sceneGroup:insert(answerBox3)
+    
+    I = display.newText("I", letterIOriginalX, letterAOriginalY, nil, letterSize)
+    
+    N = display.newText("N", letterNOriginalX, letterAOriginalY, nil, letterSize)
+    
+    L = display.newText("L", letterLOriginalX, letterAOriginalY, nil, letterSize)
 
 
+    -----------------------------------------------------------------------------------------
+
+    -- the black box where the user will drag the answer
+    answerBox1 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
+    answerBox1.x = display.contentWidth * 0.6
+    answerBox1.y = display.contentHeight * 0.9
+    
+    answerBox2 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
+    answerBox2.x = display.contentWidth * 0.6
+    answerBox2.y = display.contentHeight * 0.9
+
+    answerBox3 = display.newImageRect("Images/userAnswerBoxPlaceholder.png",  100, 130)
+    answerBox3.x = display.contentWidth * 0.6
+    answerBox3.y = display.contentHeight * 0.9
+
+    sceneGroup:insert( bkgImage )-- Insert background image into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( triangle )
+    sceneGroup:insert( triangleImage ) 
+    sceneGroup:insert(textCorrect)
+    sceneGroup:insert( Direction )
+    sceneGroup:insert( I )
+    sceneGroup:insert( N )
+    sceneGroup:insert( L )
+    sceneGroup:insert(answerBox1)
+    sceneGroup:insert(answerBox2)
+    sceneGroup:insert(answerBox3)
 
 end --function scene:create( event )
 
@@ -595,31 +586,29 @@ end --function scene:create( event )
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
 
-	-- Creating a group that associates objects with the scene
-	local sceneGroup = self.view
-	local phase = event.phase
+    -- Creating a group that associates objects with the scene
+    local sceneGroup = self.view
+    local phase = event.phase
 
-	-----------------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------------
 
-	if ( phase == "will" ) then
+    if ( phase == "will" ) then
 
-		-- Called when the scene is still off screen (but is about to come on screen).
-	-----------------------------------------------------------------------------------------
+        -- Called when the scene is still off screen (but is about to come on screen).
+    -----------------------------------------------------------------------------------------
 
-	elseif ( phase == "did" ) then
-		answerBox1Filled = false
-		answerBox2Filled = false
-		answerBox3Filled = false
-		AskQuestion()
-		AddTouchListeners()
-
-		
-
-		-- Called when the scene is now on screen.
-		-- Insert code here to make the scene come alive.
-		-- Example: start timers, begin animation, play audio, etc.
-		
-	end
+    elseif ( phase == "did" ) then
+        answerBox1Filled = false
+        answerBox2Filled = false
+        answerBox3Filled = false
+        AskQuestion()
+        AddTouchListeners()
+        
+        -- Called when the scene is now on screen.
+        -- Insert code here to make the scene come alive.
+        -- Example: start timers, begin animation, play audio, etc.
+        
+    end
 
 end --function scene:show( event )
 
@@ -628,24 +617,24 @@ end --function scene:show( event )
 -- The function called when the scene is issued to leave the screen
 function scene:hide( event )
 
-	-- Creating a group that associates objects with the scene
-	local sceneGroup = self.view
-	local phase = event.phase
+    -- Creating a group that associates objects with the scene
+    local sceneGroup = self.view
+    local phase = event.phase
 
-	-----------------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------------
 
-	if ( phase == "will" ) then
-		-- Called when the scene is on screen (but is about to go off screen).
-		-- Insert code here to "pause" the scene.
-		-- Example: stop timers, stop animation, stop audio, etc.
+    if ( phase == "will" ) then
+        -- Called when the scene is on screen (but is about to go off screen).
+        -- Insert code here to "pause" the scene.
+        -- Example: stop timers, stop animation, stop audio, etc.
 
-	-----------------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------------
 
-	elseif ( phase == "did" ) then
-		-- Called immediately after scene goes off screen.
-		RemoveTouchListeners()
-		
-	end
+    elseif ( phase == "did" ) then
+        -- Called immediately after scene goes off screen.
+        RemoveTouchListeners()
+        
+    end
 
 end --function scene:hide( event )
 
@@ -654,14 +643,14 @@ end --function scene:hide( event )
 -- The function called when the scene is issued to be destroyed
 function scene:destroy( event )
 
-	-- Creating a group that associates objects with the scene
-	local sceneGroup = self.view
+    -- Creating a group that associates objects with the scene
+    local sceneGroup = self.view
 
-	-----------------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------------
 
-	-- Called prior to the removal of scene's view ("sceneGroup").
-	-- Insert code here to clean up the scene.
-	-- Example: remove display objects, save state, etc.
+    -- Called prior to the removal of scene's view ("sceneGroup").
+    -- Insert code here to clean up the scene.
+    -- Example: remove display objects, save state, etc.
 
 end -- function scene:destroy( event )
 
@@ -680,4 +669,22 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
