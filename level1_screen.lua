@@ -464,6 +464,7 @@ local function CheckUserInput()
 		Runtime:removeEventListener("enterFrame", RotateClock)
 		lives = lives - 1
 		CheckDirectionTriangle()
+
 	
 	if (userTrapezoid.rotation == correctShapeAnswerBoxPlaceholder.rotation) then
 		timerSpot:setFillColor(0, 1, 0)
@@ -472,6 +473,7 @@ local function CheckUserInput()
 	elseif (userTrapezoid.rotation ~= correctShapeAnswerBoxPlaceholder.rotation) then
 		timerSpot:setFillColor(1, 0, 0)
 		timer.performWithDelay(2000, RestartClock)
+		Runtime:removeEventListener("enterFrame", RotateClock)
 		end
 	end
 	Scoreboard()
@@ -729,7 +731,9 @@ local function TouchListenerShapeAnswerSlot3(touch)
 	end                
 end
 
-
+local function ResetScore()
+	score = 0
+end
 
 local function AddShapeListeners()
 
@@ -1111,6 +1115,7 @@ function scene:show( event )
 		CheckDirectionTriangle()
 		CheckDirectionTrapezoid()
 		RandomizeShapeQuestion()
+		ResetScore()
 	end
 
 end --function scene:show( event )
