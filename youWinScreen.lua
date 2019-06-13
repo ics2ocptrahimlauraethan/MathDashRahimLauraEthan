@@ -3,12 +3,18 @@ local composer = require( "composer" )
 sceneName = "youWinScreen"
 
 -----------------------------------------------------------------------------------------
+--LOCAL FUNCTIONS
+-----------------------------------------------------------------------------------------
+
+-- goes back to level select after 4 seconds
+local function GoToLevelSelect()
+
+    composer.gotoScene ("level_select")
+end
 
 local scene = composer.newScene( sceneName )
 
-
 local bkgImage 
-
 
 function scene:create( event )
 
@@ -60,14 +66,8 @@ function scene:show( event )
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
-        -- start the splash screen music
-
-
-        -- Call the moveBeetleship function as soon as we enter the frame.
-       
-
-               
-        
+        -- go to level select
+        timer.performWithDelay (4000, GoToLevelSelect)
     end
 
 end --function scene:show( event )

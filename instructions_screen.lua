@@ -34,6 +34,7 @@ local instructionsButton
 
 -- Creating Transitioning Function back to main menu
 local function BackTransition( )
+    local clickOnSoundChannel = audio.play (clickOn)
     composer.gotoScene( "main_menu", {effect = "zoomInOut", time = 500})
 end
 
@@ -86,6 +87,7 @@ function scene:create( event )
 
         -- Setting Functional Properties
         onRelease = BackTransition
+        --onRelease = local clickOnSoundChannel = audio.play (clickOn)
 
     } )
 
