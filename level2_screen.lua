@@ -216,8 +216,9 @@ local function CheckUserAnswerInput()
 		if (answerBox1Filled == true) and (answerBox2Filled == true) and ( answerBox3Filled == true) then
 			if (userAnswer1.text == "I") and (userAnswer2.text == "N") and (userAnswer3.text == "L") then
 				textCorrect.isVisible = true
+                timer.performWithDelay (2500, GoToLevelSelect)
 			else
-				textIncorrect.isVisible = true
+				textIncorrect.isVisible = false
 			end
 		end
 
